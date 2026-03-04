@@ -1,8 +1,21 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://now.time/sitemap.xml
+# Primary sitemap
+Sitemap: https://time24.co.in/sitemap.xml
 
-# Crawl-delay for bots (optional, prevents server overload)
-Crawl-delay: 1
+# Welcome all major crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /

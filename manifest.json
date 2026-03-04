@@ -1,14 +1,14 @@
 {
-  "name": "now.time — World Clock & Timezone Converter",
-  "short_name": "now.time",
-  "description": "Exact current time in every timezone. World clock, timezone converter, stopwatch, timer and calendar.",
+  "name": "time24 — Current Time India & World Clock",
+  "short_name": "time24",
+  "description": "Exact current time in India (IST) and worldwide. World clock, IST timezone converter, stopwatch, timer and calendar.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0f",
   "theme_color": "#c8f060",
   "orientation": "any",
   "categories": ["utilities", "productivity"],
-  "lang": "en",
+  "lang": "en-IN",
   "icons": [
     {
       "src": "/icons/icon-192.png",
@@ -23,41 +23,24 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "/screenshots/clock.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "label": "World Clock view showing current time and timezone data"
-    },
-    {
-      "src": "/screenshots/converter.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "label": "Timezone converter showing multiple zones side by side"
-    }
-  ],
   "shortcuts": [
     {
-      "name": "Timezone Converter",
+      "name": "IST Timezone Converter",
       "short_name": "Converter",
-      "description": "Convert time between timezones",
-      "url": "/#view=converter",
-      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+      "description": "Convert IST to any timezone",
+      "url": "/#view=converter"
     },
     {
       "name": "Stopwatch",
       "short_name": "Stopwatch",
-      "description": "Start a stopwatch",
-      "url": "/#view=stopwatch",
-      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+      "description": "Online stopwatch with laps",
+      "url": "/#view=stopwatch"
     },
     {
-      "name": "Timer",
+      "name": "Countdown Timer",
       "short_name": "Timer",
-      "description": "Start a countdown timer",
-      "url": "/#view=timer",
-      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+      "description": "Free countdown timer",
+      "url": "/#view=timer"
     }
   ]
 }

@@ -1,0 +1,4182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ═══════════ PRIMARY SEO ═══════════ -->
+<title>now.time — Current Time, Timezone Converter & World Clock</title>
+<meta name="description" content="Free online world clock showing exact current time in every timezone. Convert timezones instantly, track sunrise & sunset, stopwatch, timer, and calendar — all in one place.">
+<meta name="keywords" content="current time, world clock, timezone converter, time zones, what time is it, online clock, stopwatch, timer, sunrise sunset, UTC time, GMT time, international time">
+<meta name="author" content="now.time">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://now.time/">
+
+<!-- ═══════════ OPEN GRAPH (Facebook, LinkedIn, WhatsApp) ═══════════ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://now.time/">
+<meta property="og:title" content="now.time — Current Time, Timezone Converter & World Clock">
+<meta property="og:description" content="Exact time in every timezone. Convert between timezones, track world clocks, sunrise & sunset, stopwatch and timer — free and instant.">
+<meta property="og:image" content="https://now.time/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="now.time">
+<meta property="og:locale" content="en_US">
+
+<!-- ═══════════ TWITTER CARD ═══════════ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@nowtime">
+<meta name="twitter:title" content="now.time — Current Time & Timezone Converter">
+<meta name="twitter:description" content="Exact time in every timezone. Free world clock, timezone converter, stopwatch, timer and more.">
+<meta name="twitter:image" content="https://now.time/og-image.png">
+
+<!-- ═══════════ STRUCTURED DATA — WebApplication ═══════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "now.time",
+  "url": "https://now.time/",
+  "description": "Free online world clock, timezone converter, stopwatch, timer and calendar. Shows exact current time in every timezone with sunrise, sunset and moon phase.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "World Clock",
+    "Timezone Converter",
+    "Stopwatch",
+    "Countdown Timer",
+    "Calendar",
+    "Alarm Clock",
+    "Sunrise Sunset Times",
+    "Moon Phase"
+  ],
+  "creator": {
+    "@type": "Organization",
+    "name": "now.time"
+  }
+}
+</script>
+
+<!-- ═══════════ STRUCTURED DATA — FAQPage (boosts featured snippets) ═══════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the current UTC time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "now.time shows the exact current UTC time updated every second. UTC (Coordinated Universal Time) is the primary time standard used worldwide."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert timezones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the Converter tab on now.time to instantly convert any time between multiple timezones simultaneously. You can add any number of zones and see a 24-hour overlap grid."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What time is it in [city]?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "now.time shows live current time for any city worldwide using its timezone. Use the World Clocks section or Timezone Converter to check the current time in any location."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a Unix timestamp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Unix timestamp is the number of seconds elapsed since January 1, 1970 (UTC). now.time displays the current Unix timestamp live and lets you copy it instantly."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ═══════════ PERFORMANCE HINTS ═══════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+<!-- ═══════════ PWA / FAVICON ═══════════ -->
+<meta name="theme-color" content="#0a0a0f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="now.time">
+<link rel="manifest" href="/manifest.json">
+
+<!-- ═══════════ GOOGLE ANALYTICS 4 ═══════════ -->
+<!-- Replace G-XXXXXXXXXX with your real GA4 Measurement ID from analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: 'now.time — World Clock & Timezone Converter',
+    page_location: window.location.href,
+    send_page_view: true
+  });
+
+  // Custom event tracking helpers — call these from feature buttons
+  function trackEvent(action, category, label) {
+    gtag('event', action, {
+      event_category: category,
+      event_label: label
+    });
+  }
+</script>
+
+<!-- ═══════════ FONTS ═══════════ -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --surface2: #16161f;
+  --border: #1e1e2e;
+  --accent: #c8f060;
+  --accent2: #60c8f0;
+  --accent3: #f060a8;
+  --text: #e8e8f0;
+  --muted: #5a5a78;
+  --dim: #2a2a3e;
+  --green: #4ade80;
+  --amber: #fbbf24;
+  --red: #f87171;
+}
+
+/* ── LIGHT: Clean white (Google / Apple inspired) ── */
+[data-theme="light"] {
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --surface2: #f1f3f4;
+  --border: #dadce0;
+  --text: #202124;
+  --muted: #80868b;
+  --dim: #e8eaed;
+  --accent: #1a73e8;
+  --accent2: #0f9d58;
+  --accent3: #ea4335;
+  --green: #1e8e3e;
+  --amber: #f9ab00;
+  --red: #d93025;
+}
+
+/* ── SEPIA: Warm paper (Kindle / Notion inspired) ── */
+[data-theme="sepia"] {
+  --bg: #f5f0e8;
+  --surface: #faf7f2;
+  --surface2: #ede8de;
+  --border: #d4c8b0;
+  --text: #2c2416;
+  --muted: #8a7a60;
+  --dim: #e0d8c8;
+  --accent: #b5591a;
+  --accent2: #5a7a3a;
+  --accent3: #8a4488;
+  --green: #4a7a2a;
+  --amber: #c47a1a;
+  --red: #b83224;
+}
+
+/* ── SLATE: Cool blue-grey (Linear / Vercel inspired) ── */
+[data-theme="slate"] {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --surface2: #1c2128;
+  --border: #30363d;
+  --text: #e6edf3;
+  --muted: #6e7681;
+  --dim: #21262d;
+  --accent: #58a6ff;
+  --accent2: #3fb950;
+  --accent3: #f78166;
+  --green: #3fb950;
+  --amber: #d29922;
+  --red: #f85149;
+}
+
+/* ── NAVY: Deep ocean (Stripe / GitHub dark) ── */
+[data-theme="navy"] {
+  --bg: #0a0e1a;
+  --surface: #0f1629;
+  --surface2: #141e35;
+  --border: #1e2d50;
+  --text: #d4e0f7;
+  --muted: #4a6090;
+  --dim: #1a2644;
+  --accent: #7eb8f7;
+  --accent2: #52c4b8;
+  --accent3: #f47aaf;
+  --green: #4ade80;
+  --amber: #fbbf24;
+  --red: #f87171;
+}
+
+/* ── ROSE: Warm blush (Notion pink / dribbble) ── */
+[data-theme="rose"] {
+  --bg: #1a0e10;
+  --surface: #221318;
+  --surface2: #2a1820;
+  --border: #3d2030;
+  --text: #f5e6ea;
+  --muted: #8a5a68;
+  --dim: #331824;
+  --accent: #f9a8c8;
+  --accent2: #c084f5;
+  --accent3: #fdba74;
+  --green: #86efac;
+  --amber: #fde68a;
+  --red: #fca5a5;
+}
+
+/* ── FOREST: Deep green (Arc / Nature) ── */
+[data-theme="forest"] {
+  --bg: #0a1208;
+  --surface: #0f1a0e;
+  --surface2: #142014;
+  --border: #1e3020;
+  --text: #e0f0dc;
+  --muted: #5a8058;
+  --dim: #1a2a18;
+  --accent: #8fdc5e;
+  --accent2: #5ec4dc;
+  --accent3: #dc8f5e;
+  --green: #4ade80;
+  --amber: #fbbf24;
+  --red: #f87171;
+}
+
+/* ── DUSK: Purple twilight (Discord / Twitch vibes) ── */
+[data-theme="dusk"] {
+  --bg: #0e0b18;
+  --surface: #150f22;
+  --surface2: #1c1430;
+  --border: #2e2050;
+  --text: #e8e0f8;
+  --muted: #7060a0;
+  --dim: #241c3c;
+  --accent: #b89ef8;
+  --accent2: #7ec8f8;
+  --accent3: #f87eb8;
+  --green: #78dba0;
+  --amber: #f8c860;
+  --red: #f87878;
+}
+
+/* ── MONO: Pure B&W (Figma / Editorial) ── */
+[data-theme="mono"] {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --surface2: #222222;
+  --border: #333333;
+  --text: #f0f0f0;
+  --muted: #666666;
+  --dim: #2a2a2a;
+  --accent: #ffffff;
+  --accent2: #aaaaaa;
+  --accent3: #888888;
+  --green: #aaaaaa;
+  --amber: #cccccc;
+  --red: #888888;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+  cursor: default;
+}
+
+/* Custom cursor */
+body { cursor: none; }
+#cursor {
+  position: fixed;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: difference;
+}
+#cursor.big { width: 30px; height: 30px; }
+
+/* Grid bg */
+body::after {
+  content:'';
+  position:fixed;inset:0;
+  background-image: linear-gradient(var(--border) 1px,transparent 1px), linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:50px 50px;
+  opacity:0.25;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Grain */
+body::before {
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity:0.5;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* ─── LAYOUT ─────────────────────────── */
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+header {
+  position: sticky; top: 0;
+  z-index: 500;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  transition: background 0.3s, border-color 0.3s;
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 32px;
+  max-width: 1200px; margin: 0 auto;
+}
+
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px; letter-spacing: 4px;
+  color: var(--accent); text-decoration: none;
+}
+.logo span { color: var(--text); }
+
+nav { display: flex; gap: 4px; }
+.nav-btn {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 7px 14px; cursor: pointer;
+  transition: all 0.2s;
+}
+.nav-btn:hover { color: var(--text); border-color: var(--border); }
+.nav-btn.active { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+
+.header-tools { display: flex; align-items: center; gap: 10px; }
+
+.icon-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted); font-size: 14px;
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.2s;
+}
+.icon-btn:hover { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+
+/* ─── VIEWS ──────────────────────────── */
+.view { display: none; position: relative; z-index: 2; }
+.view.active { display: block; }
+
+/* ─── CLOCK VIEW ─────────────────────── */
+.hero {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 52px 32px 32px;
+  position: relative; z-index: 2;
+}
+
+.location-badge {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 20px;
+  padding: 7px 16px; border: 1px solid var(--border); background: var(--surface);
+}
+.pulse-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+
+/* Analog + Digital split */
+.time-core {
+  display: flex; align-items: center; gap: 48px;
+  margin-bottom: 16px;
+}
+
+/* Analog clock */
+.analog-clock {
+  width: 160px; height: 160px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  position: relative;
+  background: var(--surface);
+  flex-shrink: 0;
+  box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 12%, transparent), 0 2px 20px color-mix(in srgb, var(--text) 6%, transparent);
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.analog-clock::before {
+  content:'';
+  position:absolute;
+  inset:6px;
+  border-radius:50%;
+  border: 1px solid var(--dim);
+}
+.clock-hand {
+  position: absolute; bottom: 50%; left: 50%;
+  transform-origin: bottom center;
+  border-radius: 4px;
+}
+.hand-hour { width: 3px; height: 48px; margin-left: -1.5px; background: var(--text); }
+.hand-min  { width: 2px; height: 62px; margin-left: -1px; background: var(--text); }
+.hand-sec  { width: 1px; height: 68px; margin-left: -0.5px; background: var(--accent); }
+.clock-center {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:8px; height:8px; border-radius:50%;
+  background: var(--accent);
+  z-index:10;
+}
+/* Tick marks */
+.tick {
+  position:absolute; top:4px; left:50%; width:1px;
+  transform-origin: bottom center;
+  background: var(--muted);
+}
+
+.time-display {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 14vw, 190px);
+  line-height: 0.88;
+  letter-spacing: -1px;
+  color: var(--text);
+  text-align: center;
+  white-space: nowrap;
+}
+.colon {
+  color: var(--accent);
+  animation: blink 1s step-start infinite;
+  display: inline-block; margin: 0 2px;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.1} }
+
+.ampm-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 16px; color: var(--accent2); letter-spacing: 4px;
+  text-align: center; margin-top: 6px;
+}
+
+.date-row {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center;
+  margin-top: 20px;
+  font-family: 'DM Mono', monospace; font-size: 12px;
+  color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase;
+}
+.date-row .sep { color: var(--border); }
+.hl { color: var(--text); }
+
+/* Year progress bar */
+.year-bar-wrap {
+  width: 100%; max-width: 860px;
+  margin: 28px auto 0;
+  position: relative; z-index: 2;
+}
+.year-bar-label {
+  display: flex; justify-content: space-between;
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px;
+  color: var(--muted); text-transform: uppercase; margin-bottom: 6px;
+}
+.year-bar-track {
+  height: 3px; background: var(--dim); width: 100%;
+  position: relative; overflow: hidden;
+}
+.year-bar-fill {
+  height: 100%; background: var(--accent);
+  transition: width 1s linear;
+  position: relative;
+}
+.year-bar-fill::after {
+  content:''; position:absolute; right:0; top:-2px;
+  width:7px; height:7px; border-radius:50%;
+  background: var(--accent);
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border);
+  width: 100%; max-width: 860px;
+  margin: 1px auto 0;
+  position: relative; z-index: 2;
+}
+.stat-cell {
+  background: var(--surface); padding: 18px 20px;
+  transition: background 0.3s;
+}
+.stat-cell:hover { background: var(--surface2); }
+.stat-lbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
+.stat-val { font-family:'Bebas Neue',sans-serif; font-size:30px; letter-spacing:1px; color:var(--text); }
+.stat-sub { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); margin-top:3px; }
+
+/* Unix / ISO strip */
+.mono-strip {
+  display: flex; align-items: center; gap: 0;
+  width: 100%; max-width: 860px;
+  margin: 1px auto 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: none;
+  position: relative; z-index: 2;
+}
+.mono-cell {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 18px;
+  border-right: 1px solid var(--border);
+  flex: 1; overflow: hidden;
+}
+.mono-cell:last-child { border-right: none; }
+.mono-tag { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+.mono-val { font-family:'DM Mono',monospace; font-size:15px; color:var(--accent); letter-spacing:1px; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.copy-btn {
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--muted); font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 4px 10px; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.copy-btn:hover { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+
+/* ─── SECTION HEADER ─────────────────── */
+.sec-hdr {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 10px;
+}
+.sec-title {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--muted);
+  white-space: nowrap;
+}
+.sec-line { flex:1; height:1px; background:var(--border); }
+
+/* ─── TIMEZONE SEARCH ────────────────── */
+.tz-search-wrap {
+  width: 100%; max-width: 860px;
+  margin: 24px auto 0;
+  position: relative; z-index: 50;
+}
+.tz-input-row { display: flex; gap: 0; }
+#tz-search {
+  flex: 1;
+  background: var(--surface); border: 1px solid var(--border);
+  border-right: none;
+  color: var(--text); font-family: 'DM Mono', monospace;
+  font-size: 13px; padding: 13px 16px;
+  outline: none; transition: border-color 0.2s, background 0.3s; letter-spacing: 1px;
+}
+#tz-search:focus { border-color: var(--accent); }
+#tz-search::placeholder { color: var(--muted); }
+.tz-results {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--surface); border: 1px solid var(--border);
+  border-top: none; max-height: 260px; overflow-y: auto;
+  display: none; z-index: 200;
+  scrollbar-width: thin; scrollbar-color: var(--dim) transparent;
+}
+.tz-results.open { display: block; }
+.tz-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 16px; cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.tz-item:hover { background: var(--dim); }
+.tz-item-name { font-size: 13px; color: var(--text); }
+.tz-item-off  { font-family:'DM Mono',monospace; font-size:11px; color:var(--accent); letter-spacing:1px; }
+
+/* ─── WORLD CLOCKS ───────────────────── */
+.world-wrap {
+  width: 100%; max-width: 860px;
+  margin: 24px auto 0;
+  position: relative; z-index: 2;
+}
+.clocks-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border);
+}
+.clock-card {
+  background: var(--surface);
+  padding: 16px 18px;
+  position: relative; overflow: hidden;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.clock-card:hover { background: var(--surface2); }
+/* Business hours indicator strip at top */
+.clock-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--muted);
+  transition: background 0.5s;
+}
+.clock-card.biz-open::before  { background: var(--green); }
+.clock-card.biz-soon::before  { background: var(--amber); }
+.clock-card.biz-closed::before { background: var(--red); }
+
+.clock-card-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 8px;
+}
+.cc-city {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+}
+.cc-status {
+  font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 1px;
+  padding: 2px 6px; border-radius: 0;
+  background: transparent; border: 1px solid;
+}
+.biz-open  .cc-status { color: var(--green); border-color: var(--green); }
+.biz-soon  .cc-status { color: var(--amber); border-color: var(--amber); }
+.biz-closed .cc-status { color: var(--red);  border-color: var(--red); }
+
+.cc-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px; letter-spacing: 1px; color: var(--text); line-height: 1;
+}
+.cc-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 5px;
+}
+.cc-date { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); }
+.cc-offset { font-family:'DM Mono',monospace; font-size:10px; color:var(--accent2); }
+.cc-remove {
+  position: absolute; top: 8px; right: 8px;
+  width: 18px; height: 18px;
+  background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
+  font-size: 12px; cursor: pointer; display: none;
+  align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.clock-card:hover .cc-remove { display: flex; }
+.cc-remove:hover { background: var(--red); color: white; border-color: var(--red); }
+
+/* Add city card */
+.add-city-card {
+  background: var(--surface); border: 1px dashed var(--border);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.2s; min-height: 110px; gap: 6px;
+}
+.add-city-card:hover { border-color: var(--accent); background: var(--surface2); }
+.add-city-card span:first-child { font-size: 22px; color: var(--muted); }
+.add-city-card span:last-child {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+}
+
+/* ─── SUNRISE/SUNSET ─────────────────── */
+.sun-strip {
+  width: 100%; max-width: 860px;
+  margin: 1px auto 0;
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-top: none;
+  position: relative; z-index: 2;
+}
+.sun-cell {
+  background: var(--surface); padding: 14px 18px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.sun-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+.sun-val { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:1px; color:var(--text); }
+.sun-sub { font-family:'DM Mono',monospace; font-size:9px; color:var(--muted); }
+
+/* Sun arc visualization */
+.sun-arc-wrap {
+  grid-column: span 2;
+  background: var(--surface); padding: 14px 18px;
+  position: relative; overflow: hidden;
+}
+.sun-arc-svg { width: 100%; height: 60px; }
+
+/* Moon */
+.moon-cell {
+  background: var(--surface); padding: 14px 18px;
+  display: flex; align-items: center; gap: 14px;
+}
+.moon-icon { font-size: 28px; line-height: 1; }
+.moon-info { display: flex; flex-direction: column; gap: 2px; }
+
+/* ─── NEXT HOLIDAY ───────────────────── */
+.holiday-strip {
+  width: 100%; max-width: 860px;
+  margin: 1px auto 0;
+  background: var(--surface);
+  border: 1px solid var(--border); border-top: none;
+  display: flex; align-items: center; gap: 0;
+  position: relative; z-index: 2;
+}
+.holiday-cell {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 18px;
+  border-right: 1px solid var(--border); flex: 1;
+}
+.holiday-cell:last-child { border-right: none; }
+.hol-icon { font-size: 20px; }
+.hol-name { font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text); }
+.hol-days { font-family:'DM Mono',monospace; font-size:11px; color:var(--accent); letter-spacing:1px; }
+.hol-date { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); }
+
+/* ─── STOPWATCH ──────────────────────── */
+.sw-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 60px 32px;
+  position: relative; z-index: 2;
+  gap: 24px;
+}
+.sw-display {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(60px, 15vw, 180px);
+  letter-spacing: -2px; color: var(--text); line-height: 1;
+  text-align: center;
+}
+.sw-ms { font-size: 0.4em; color: var(--muted); }
+.sw-controls { display: flex; gap: 12px; }
+.sw-btn {
+  font-family: 'DM Mono', monospace; font-size: 12px;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 12px 28px; cursor: pointer;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--muted); transition: all 0.2s;
+}
+.sw-btn:hover { color: var(--text); border-color: var(--text); background: var(--surface2); }
+.sw-btn.primary { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+.sw-btn.primary:hover { background: color-mix(in srgb, var(--accent) 18%, var(--surface)); }
+.sw-btn.danger { border-color: var(--red); color: var(--red); background: color-mix(in srgb, var(--red) 5%, var(--surface)); }
+.laps-table {
+  width: 100%; max-width: 500px;
+  border: 1px solid var(--border); background: var(--surface);
+  max-height: 280px; overflow-y: auto;
+}
+.lap-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 18px; border-bottom: 1px solid var(--border);
+  font-family: 'DM Mono', monospace; font-size: 13px;
+}
+.lap-row:last-child { border-bottom: none; }
+.lap-num { color: var(--muted); font-size: 11px; letter-spacing: 1px; }
+.lap-time { color: var(--text); }
+.lap-delta { color: var(--muted); font-size: 11px; }
+.lap-best  { color: var(--green); }
+.lap-worst { color: var(--red); }
+
+/* ─── TIMER ──────────────────────────── */
+.timer-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 60px 32px; gap: 24px;
+  position: relative; z-index: 2;
+}
+.timer-inputs {
+  display: flex; align-items: center; gap: 8px;
+}
+.timer-input-group { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.timer-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(50px, 12vw, 140px);
+  color: var(--text); line-height: 1; text-align: center;
+  border: none; background: var(--surface); outline: none;
+  width: clamp(80px, 14vw, 180px); text-align: center; cursor: text;
+  border-bottom: 2px solid var(--border); transition: border-color 0.2s, background 0.3s;
+}
+.timer-num:focus { color: var(--accent); border-bottom-color: var(--accent); background: color-mix(in srgb, var(--accent) 4%, var(--surface)); }
+.timer-unit { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+.timer-sep { font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,10vw,120px); color:var(--muted); line-height:1; align-self:flex-start; margin-top:4px; opacity: 0.5; }
+.timer-display {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(60px, 15vw, 180px);
+  letter-spacing: -2px; color: var(--text); line-height: 1;
+  display: none;
+}
+.timer-display.critical { color: var(--red); animation: flashRed 0.5s step-start infinite; }
+@keyframes flashRed { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.timer-progress-ring {
+  position: relative; width: 200px; height: 200px; display: none;
+  align-items: center; justify-content: center;
+}
+.timer-progress-ring.show { display: flex; }
+.timer-ring-svg { position:absolute; top:0;left:0; transform:rotate(-90deg); }
+.timer-ring-bg { fill:none; stroke:var(--dim); stroke-width:4; }
+.timer-ring-fill { fill:none; stroke:var(--accent); stroke-width:4; stroke-linecap:round; transition:stroke-dashoffset 1s linear; }
+.timer-ring-text {
+  font-family:'Bebas Neue',sans-serif; font-size:36px; color:var(--text);
+  letter-spacing:1px; text-align:center;
+}
+
+.presets { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+.preset-btn {
+  font-family:'DM Mono',monospace; font-size:11px; letter-spacing:1px;
+  padding:7px 14px; background:var(--surface); border:1px solid var(--border);
+  color:var(--muted); cursor:pointer; transition:all 0.2s;
+}
+.preset-btn:hover { border-color:var(--accent2); color:var(--accent2); background: color-mix(in srgb, var(--accent2) 8%, var(--surface)); }
+
+/* ─── CALENDAR VIEW ──────────────────── */
+.cal-wrap {
+  padding: 40px 32px;
+  position: relative; z-index: 2;
+  max-width: 860px; margin: 0 auto;
+}
+.cal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
+}
+.cal-nav { display:flex; gap:8px; }
+.cal-nav-btn {
+  background:var(--surface); border:1px solid var(--border); color:var(--muted);
+  width:32px; height:32px; cursor:pointer; font-size:14px;
+  display:flex; align-items:center; justify-content:center; transition:all 0.2s;
+}
+.cal-nav-btn:hover { border-color:var(--accent); color:var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+.cal-month-title {
+  font-family:'Bebas Neue',sans-serif; font-size:32px;
+  letter-spacing:2px; color:var(--text);
+}
+.cal-grid {
+  display: grid; grid-template-columns: repeat(7,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border);
+}
+.cal-day-name {
+  background: var(--surface2); padding: 10px;
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:2px; text-transform:uppercase; color:var(--muted);
+  text-align:center;
+}
+.cal-day {
+  background: var(--surface); padding: 12px 10px;
+  min-height: 70px; cursor: pointer;
+  transition: background 0.15s; position: relative;
+}
+.cal-day:hover { background: var(--surface2); }
+.cal-day.other-month { opacity: 0.3; }
+.cal-day.today { background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+.cal-day.today .cal-day-num { color: var(--accent); }
+.cal-day.selected { background: color-mix(in srgb, var(--accent2) 12%, var(--surface)); }
+.cal-day-num {
+  font-family:'DM Mono',monospace; font-size:13px; color:var(--text);
+  display:block; margin-bottom:4px;
+}
+.cal-day-event {
+  font-size:9px; font-family:'DM Mono',monospace;
+  letter-spacing:1px; color:var(--accent2);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  display:block; margin-top:2px;
+}
+.cal-side {
+  margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.cal-info-card {
+  background: var(--surface); border: 1px solid var(--border); padding: 16px 18px;
+}
+.cal-info-title { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+.cal-info-item {
+  display:flex; justify-content:space-between; align-items:center;
+  padding: 7px 0; border-bottom:1px solid var(--border);
+  font-family:'DM Mono',monospace; font-size:12px;
+}
+.cal-info-item:last-child { border-bottom:none; }
+.cal-info-key { color:var(--muted); }
+.cal-info-val { color:var(--text); }
+
+/* ─── TZ CONVERTER (NEW) ─────────────── */
+.conv-page {
+  padding: 32px;
+  max-width: 960px; margin: 0 auto;
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; gap: 24px;
+}
+.conv-page-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+}
+.conv-page-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px; letter-spacing: 2px; color: var(--text); margin-bottom: 4px;
+}
+.conv-page-sub {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  color: var(--muted); letter-spacing: 1px;
+}
+.conv-add-zone-btn {
+  background: var(--surface); border: 1px solid var(--accent);
+  color: var(--accent); font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 10px 18px; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.conv-add-zone-btn:hover { background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
+
+/* Scrubber row */
+.conv-scrubber-row {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 16px 20px;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.conv-scrubber-label {
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; color: var(--muted); white-space: nowrap;
+}
+.conv-scrubber-inputs { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.conv-master-input {
+  background: var(--bg); border: 1px solid var(--border);
+  color: var(--text); font-family: 'DM Mono', monospace; font-size: 16px;
+  padding: 8px 14px; outline: none; transition: border-color 0.2s;
+  color-scheme: light dark;
+}
+.conv-master-input:focus { border-color: var(--accent); }
+.conv-date-btns { display: flex; gap: 8px; align-items: center; }
+.conv-date-btn {
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--muted); font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+  padding: 8px 12px; cursor: pointer; transition: all 0.2s;
+}
+.conv-date-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+.conv-offset-legend { display: flex; gap: 16px; margin-left: auto; flex-wrap: wrap; }
+.col-legend { display: flex; align-items: center; gap: 5px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
+.col-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Zone cards */
+.conv-zones {
+  display: flex; flex-direction: column; gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+}
+.conv-zone-card {
+  background: var(--surface);
+  display: grid;
+  grid-template-columns: 260px 1fr auto;
+  align-items: center;
+  gap: 0;
+  transition: background 0.2s;
+  position: relative;
+}
+.conv-zone-card:hover { background: var(--surface2); }
+.conv-zone-card.is-local { background: color-mix(in srgb, var(--accent) 5%, var(--surface)); }
+.conv-zone-card.is-local .czc-tz-name::after {
+  content: ' · YOU'; font-size: 9px; color: var(--accent); letter-spacing: 2px;
+}
+
+/* Left: TZ selector */
+.czc-left {
+  padding: 16px 20px;
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.czc-select {
+  background: none; border: none; color: var(--text);
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  outline: none; cursor: pointer; width: 100%;
+  padding: 0; appearance: none; -webkit-appearance: none;
+}
+.czc-select:focus { color: var(--accent); }
+.czc-tz-name {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 1px; color: var(--muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.czc-offset-tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 1px; color: var(--accent2);
+  margin-top: 2px;
+}
+
+/* Middle: Time display */
+.czc-mid {
+  padding: 16px 24px;
+  display: flex; align-items: baseline; gap: 12px;
+}
+.czc-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px; letter-spacing: 1px; line-height: 1;
+  color: var(--text);
+}
+.czc-ampm {
+  font-family: 'DM Mono', monospace; font-size: 14px; color: var(--muted);
+}
+.czc-date-badge {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border: 1px solid;
+  margin-left: 4px;
+}
+.czc-date-badge.same  { color: var(--green);  border-color: var(--green); }
+.czc-date-badge.plus1 { color: var(--amber);  border-color: var(--amber); }
+.czc-date-badge.min1  { color: var(--accent3); border-color: var(--accent3); }
+.czc-day-date {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  color: var(--muted); margin-left: 4px;
+  white-space: nowrap;
+}
+
+/* Right: remove btn */
+.czc-right {
+  padding: 16px 16px 16px 0;
+  display: flex; align-items: center; gap: 8px;
+}
+.czc-remove {
+  background: none; border: 1px solid transparent;
+  color: var(--muted); font-size: 14px; width: 28px; height: 28px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.czc-remove:hover { border-color: var(--red); color: var(--red); }
+.czc-drag-handle {
+  color: var(--muted); font-size: 16px; cursor: grab;
+  padding: 4px; opacity: 0.4; transition: opacity 0.2s;
+}
+.czc-drag-handle:hover { opacity: 1; }
+
+/* Offset bar section */
+.conv-section-label {
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 10px;
+}
+.conv-offset-bar-wrap {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.conv-offset-row {
+  display: flex; align-items: center; gap: 12px;
+}
+.conv-offset-city {
+  font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text);
+  width: 140px; flex-shrink: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.conv-offset-track {
+  flex: 1; height: 28px; background: var(--dim); position: relative; overflow: hidden;
+}
+.conv-offset-fill {
+  position: absolute; top: 0; bottom: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace; font-size: 10px; color: var(--bg);
+  letter-spacing: 1px; font-weight: 500;
+  transition: all 0.4s;
+}
+.conv-offset-utc-line {
+  position: absolute; top: 0; bottom: 0; width: 1px;
+  background: var(--muted); opacity: 0.5;
+}
+.conv-offset-val {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  color: var(--accent2); width: 80px; text-align: right; flex-shrink: 0;
+}
+
+/* 24h grid */
+.conv-grid-wrap {
+  background: var(--surface); border: 1px solid var(--border);
+  overflow-x: auto;
+}
+.conv-grid-table {
+  width: 100%; min-width: 700px; border-collapse: collapse;
+}
+.conv-grid-table th {
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 1px; color: var(--muted); text-align: center;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+  font-weight: normal;
+}
+.conv-grid-table td {
+  text-align: center; padding: 6px 0;
+  font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text);
+  border-right: 1px solid var(--border); border-bottom: 1px solid var(--dim);
+  position: relative;
+}
+.conv-grid-table td:last-child { border-right: none; }
+.conv-grid-table .grid-city {
+  text-align: left; padding: 8px 14px;
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  color: var(--text); white-space: nowrap;
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+  position: sticky; left: 0; z-index: 2;
+}
+.conv-grid-table td.work-hour { background: color-mix(in srgb, var(--green) 12%, var(--surface)); color: var(--green); }
+.conv-grid-table td.sleep-hour { background: color-mix(in srgb, var(--text) 4%, var(--surface)); color: var(--muted); }
+.conv-grid-table td.selected-hour {
+  background: var(--accent); color: var(--bg);
+  font-weight: bold;
+}
+.conv-grid-table .grid-row-label {
+  font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted);
+  text-align: left; padding: 4px 14px; border-bottom: 1px solid var(--dim);
+}
+
+/* Share button */
+.conv-share-btn {
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--muted); font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 10px 16px; cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; gap: 6px;
+}
+.conv-share-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+
+/* Share toast */
+.conv-share-toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px);
+  background: var(--surface); border: 1px solid var(--accent);
+  color: var(--accent); font-family: 'DM Mono', monospace;
+  font-size: 12px; letter-spacing: 1px;
+  padding: 12px 24px; z-index: 9000;
+  opacity: 0; transition: all 0.3s; pointer-events: none;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+.conv-share-toast.show {
+  opacity: 1; transform: translateX(-50%) translateY(0);
+}
+
+/* Zone search add bar */
+.conv-add-bar {
+  position: relative;
+  background: var(--surface); border: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0;
+  transition: border-color 0.2s;
+}
+.conv-add-bar:focus-within { border-color: var(--accent); }
+.conv-add-icon {
+  padding: 0 14px; font-size: 20px; color: var(--accent);
+  font-weight: 300; line-height: 1; flex-shrink: 0;
+}
+.conv-zone-search-input {
+  flex: 1; background: none; border: none; outline: none;
+  color: var(--text); font-family: 'DM Mono', monospace;
+  font-size: 13px; padding: 14px 0; letter-spacing: 0.5px;
+}
+.conv-zone-search-input::placeholder { color: var(--muted); }
+.conv-zone-results {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--surface); border: 1px solid var(--accent);
+  border-top: none; z-index: 400;
+  max-height: 260px; overflow-y: auto;
+  display: none;
+}
+.conv-zone-results.open { display: block; }
+.conv-zone-result-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 16px; cursor: pointer;
+  transition: background 0.15s; border-bottom: 1px solid var(--border);
+  font-family: 'DM Mono', monospace;
+}
+.conv-zone-result-item:last-child { border-bottom: none; }
+.conv-zone-result-item:hover,
+.conv-zone-result-item.focused { background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+.conv-zone-result-item.already-added { opacity: 0.4; cursor: default; pointer-events: none; }
+.czri-name { font-size: 13px; color: var(--text); }
+.czri-meta { display: flex; gap: 12px; align-items: center; }
+.czri-offset { font-size: 11px; color: var(--accent2); }
+.czri-added { font-size: 10px; color: var(--muted); letter-spacing: 1px; }
+
+/* Drag styles */
+.conv-zone-card { transition: background 0.15s, opacity 0.15s, transform 0.15s; }
+.conv-zone-card.dragging {
+  opacity: 0.4; transform: scale(0.98);
+}
+.conv-zone-card.drag-over {
+  border-top: 2px solid var(--accent);
+}
+.czc-drag-handle {
+  color: var(--muted); font-size: 18px; cursor: grab;
+  padding: 6px; opacity: 0.35; transition: opacity 0.2s;
+  user-select: none; line-height: 1;
+}
+.czc-drag-handle:hover { opacity: 1; }
+.czc-drag-handle:active { cursor: grabbing; }
+
+@media(max-width:760px) {
+  .conv-page-header { flex-direction: column; gap: 12px; }
+  .conv-scrubber-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .conv-offset-legend { margin-left: 0; }
+}
+
+/* ─── ALARM ──────────────────────────── */
+.alarm-wrap {
+  padding: 40px 32px; max-width: 860px; margin: 0 auto;
+  position: relative; z-index: 2; display: flex; flex-direction: column; gap: 20px;
+}
+.alarm-add {
+  display:flex; gap:0; background:var(--surface); border:1px solid var(--border);
+}
+#alarm-time-input {
+  flex:1; background:transparent; border:none; color:var(--text);
+  font-family:'DM Mono',monospace; font-size:18px;
+  padding:14px 18px; outline:none; letter-spacing:2px;
+  color-scheme: light dark;
+}
+.alarm-label-input {
+  flex:2; background:none; border:none; border-left:1px solid var(--border);
+  color:var(--text); font-family:'DM Sans',sans-serif; font-size:13px;
+  padding:14px 18px; outline:none;
+}
+.alarm-label-input::placeholder { color:var(--muted); }
+.alarm-add-btn {
+  background:var(--accent); border:none; color:var(--bg);
+  font-family:'DM Mono',monospace; font-size:11px; letter-spacing:2px;
+  text-transform:uppercase; padding:14px 20px; cursor:pointer;
+  transition:opacity 0.2s; font-weight:500;
+}
+.alarm-add-btn:hover { opacity:0.85; }
+.alarms-list { display:flex; flex-direction:column; gap:1px; background:var(--border); border:1px solid var(--border); }
+.alarm-item {
+  display:flex; align-items:center; gap:16px;
+  background:var(--surface); padding:16px 20px;
+  transition:background 0.2s;
+}
+.alarm-item:hover { background:var(--surface2); }
+.alarm-item-time {
+  font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--text); letter-spacing:1px;
+}
+.alarm-item-info { flex:1; }
+.alarm-item-label { font-size:13px; color:var(--text); }
+.alarm-item-countdown { font-family:'DM Mono',monospace; font-size:11px; color:var(--accent); letter-spacing:1px; }
+.alarm-toggle { position:relative; width:44px; height:24px; }
+.alarm-toggle input { opacity:0; width:0; height:0; }
+.alarm-slider {
+  position:absolute; cursor:pointer; inset:0;
+  background:var(--dim); border:1px solid var(--border); transition:0.3s;
+}
+.alarm-slider::before {
+  content:''; position:absolute;
+  height:16px; width:16px; left:3px; bottom:3px;
+  background:var(--muted); transition:0.3s;
+}
+.alarm-toggle input:checked + .alarm-slider { background:color-mix(in srgb,var(--accent) 20%,transparent); border-color:var(--accent); }
+.alarm-toggle input:checked + .alarm-slider::before { transform:translateX(20px); background:var(--accent); }
+.alarm-del-btn {
+  background:var(--surface2); border:1px solid var(--border); color:var(--muted);
+  width:28px; height:28px; cursor:pointer; font-size:14px;
+  display:flex; align-items:center; justify-content:center; transition:all 0.2s;
+}
+.alarm-del-btn:hover { border-color:var(--red); color:var(--red); background: color-mix(in srgb, var(--red) 8%, var(--surface)); }
+.alarm-fired {
+  position:fixed; inset:0; background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  display:none; align-items:center; justify-content:center;
+  z-index:9999; flex-direction:column; gap:20px;
+  border: 2px solid var(--accent);
+}
+.alarm-fired.show { display:flex; }
+.alarm-fired-time { font-family:'Bebas Neue',sans-serif; font-size:120px; color:var(--accent); letter-spacing:-2px; animation:pulse 0.8s infinite; }
+.alarm-fired-label { font-family:'DM Mono',monospace; font-size:16px; letter-spacing:3px; color:var(--text); text-transform:uppercase; }
+.alarm-dismiss { background:var(--surface); border:1px solid var(--border); color:var(--text); font-family:'DM Mono',monospace; font-size:12px; letter-spacing:2px; text-transform:uppercase; padding:12px 28px; cursor:pointer; transition:all 0.2s; margin-top:16px; }
+.alarm-dismiss:hover { border-color:var(--accent); color:var(--accent); }
+
+/* ─── KEYBOARD SHORTCUT HINT ─────────── */
+.kbd-hint {
+  position:fixed; bottom:20px; right:20px;
+  background:var(--surface); border:1px solid var(--border);
+  padding:10px 14px; z-index:200;
+  display:none;
+  box-shadow: 0 4px 24px color-mix(in srgb, var(--text) 12%, transparent);
+}
+.kbd-hint.show { display:block; }
+.kbd-row { display:flex; gap:8px; align-items:center; padding:4px 0; }
+kbd {
+  background:var(--surface2); border:1px solid var(--border); color:var(--text);
+  font-family:'DM Mono',monospace; font-size:10px; padding:2px 7px; border-radius:0;
+}
+.kbd-desc { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); letter-spacing:1px; }
+
+/* ─── ACCENT PICKER ──────────────────── */
+.accent-picker { display:flex; gap:6px; align-items:center; }
+.accent-swatch {
+  width:18px; height:18px; border-radius:50%; cursor:pointer;
+  border:2px solid transparent; transition:border-color 0.2s;
+}
+.accent-swatch:hover, .accent-swatch.active { border-color:var(--text); }
+
+/* ─── FOOTER ─────────────────────────── */
+footer {
+  margin-top: 60px; padding: 20px 32px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 2;
+}
+.footer-l { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); letter-spacing:1px; }
+.footer-links { display:flex; gap:16px; }
+.footer-links a { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); text-decoration:none; letter-spacing:1px; transition:color 0.2s; }
+.footer-links a:hover { color:var(--accent); }
+
+/* ─── SIDEBAR LAYOUT (desktop ≥1280px) ──────────────── */
+.app-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+}
+
+@media(min-width:1280px) {
+  .app-layout {
+    grid-template-columns: 220px 1fr 220px;
+    gap: 0;
+  }
+  .sidebar-left, .sidebar-right {
+    display: flex !important;
+  }
+  .main-content { min-width: 0; }
+}
+
+/* Sidebars */
+.sidebar-left, .sidebar-right {
+  display: none;
+  flex-direction: column;
+  gap: 1px;
+  padding: 24px 0;
+  position: sticky;
+  top: 57px; /* header height */
+  height: calc(100vh - 57px);
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+  scrollbar-width: none;
+}
+.sidebar-right { border-right: none; border-left: 1px solid var(--border); }
+.sidebar-left::-webkit-scrollbar,
+.sidebar-right::-webkit-scrollbar { display: none; }
+
+.sb-section {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.sb-section:last-child { border-bottom: none; }
+.sb-label {
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 12px;
+}
+.sb-clock-item {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 8px 0; border-bottom: 1px solid var(--dim);
+  cursor: pointer; transition: opacity 0.2s;
+}
+.sb-clock-item:last-child { border-bottom: none; }
+.sb-clock-item:hover { opacity: 0.75; }
+.sb-city { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--text); }
+.sb-time { font-family: 'DM Mono', monospace; font-size: 18px; color: var(--accent); letter-spacing: 1px; }
+.sb-offset { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
+
+.sb-shortcut-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 6px 0; border-bottom: 1px solid var(--dim);
+  font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted);
+}
+.sb-shortcut-item:last-child { border-bottom: none; }
+.sb-shortcut-item kbd {
+  background: var(--surface2); border: 1px solid var(--border);
+  padding: 2px 6px; font-size: 10px; color: var(--text);
+}
+
+.sb-fact {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  color: var(--text); line-height: 1.6;
+}
+.sb-fact-label {
+  font-size: 9px; color: var(--muted); letter-spacing: 2px;
+  text-transform: uppercase; margin-top: 10px; margin-bottom: 4px;
+}
+.sb-fact-label:first-child { margin-top: 0; }
+.sb-fact-val { color: var(--accent); }
+
+.sb-nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; cursor: pointer;
+  font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted);
+  letter-spacing: 1px; transition: all 0.15s;
+  border-left: 2px solid transparent; margin: 0 6px;
+}
+.sb-nav-item:hover { color: var(--text); background: var(--surface); }
+.sb-nav-item.active { color: var(--accent); border-left-color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, var(--surface)); }
+.sb-nav-icon { font-size: 14px; width: 18px; text-align: center; }
+
+/* ─── TOOLTIP SYSTEM ─────────────────── */
+[data-tip] { position: relative; }
+[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%; transform: translateX(-50%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.5px;
+  padding: 5px 10px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s, transform 0.15s;
+  transform: translateX(-50%) translateY(4px);
+  z-index: 999;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+[data-tip]::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%; transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--border);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 999;
+}
+[data-tip]:hover::after,
+[data-tip]:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+/* Tooltip right-aligned for items near left edge */
+[data-tip-right]::after {
+  left: 0; transform: translateX(0) translateY(4px);
+}
+[data-tip-right]:hover::after { transform: translateX(0) translateY(0); }
+[data-tip-right]::before { left: 12px; }
+/* Tooltip left-aligned for items near right edge */
+[data-tip-left]::after {
+  left: auto; right: 0;
+  transform: translateX(0) translateY(4px);
+}
+[data-tip-left]:hover::after { transform: translateX(0) translateY(0); }
+[data-tip-left]::before { left: auto; right: 12px; }
+/* Tooltip pointing down (for items at top of page) */
+[data-tip-down]::after {
+  bottom: auto; top: calc(100% + 8px);
+  transform: translateX(-50%) translateY(-4px);
+}
+[data-tip-down]:hover::after { transform: translateX(-50%) translateY(0); }
+[data-tip-down]::before {
+  bottom: auto; top: calc(100% + 2px);
+  border-top-color: transparent;
+  border-bottom-color: var(--border);
+}
+
+/* ─── MOBILE BOTTOM NAV ──────────────── */
+.mobile-nav {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  z-index: 600;
+  padding: env(safe-area-inset-bottom) 0 0; /* iOS safe area */
+}
+.mobile-nav-inner {
+  display: flex; justify-content: space-around;
+  padding: 6px 0 8px;
+}
+.mob-nav-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  background: none; border: none; cursor: pointer;
+  padding: 6px 12px; transition: opacity 0.2s;
+  flex: 1;
+}
+.mob-nav-btn:active { opacity: 0.6; }
+.mob-nav-icon { font-size: 20px; }
+.mob-nav-label {
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
+}
+.mob-nav-btn.active .mob-nav-label { color: var(--accent); }
+.mob-nav-btn.active .mob-nav-icon { filter: drop-shadow(0 0 4px var(--accent)); }
+
+/* ─── MOBILE HEADER FIX ──────────────── */
+.mobile-menu-btn {
+  display: none;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--muted); font-size: 18px;
+  width: 34px; height: 34px; cursor: pointer;
+  align-items: center; justify-content: center;
+}
+
+/* ─── RESPONSIVE: tablet (760–1279px) ── */
+@media(max-width:1279px) {
+  .sidebar-left, .sidebar-right { display: none !important; }
+}
+
+@media(max-width:760px) {
+  /* Layout */
+  .time-core { flex-direction: column; gap: 20px; }
+  .analog-clock { width: 120px; height: 120px; }
+  .hero { padding: 24px 16px 16px; }
+  .header-inner { padding: 10px 16px; }
+  .wrap { padding: 0 16px; }
+
+  /* Nav: hide desktop nav, show mobile bottom bar */
+  nav { display: none !important; }
+  .mobile-nav { display: block; }
+  .mobile-menu-btn { display: flex; }
+
+  /* Add bottom padding so content clears the mobile nav */
+  body { padding-bottom: 70px; }
+
+  /* Grids */
+  .clocks-grid { grid-template-columns: 1fr 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .sun-strip { grid-template-columns: 1fr 1fr; }
+  .conv-zone-card { grid-template-columns: 1fr; }
+  .czc-left { border-right: none; border-bottom: 1px solid var(--border); }
+
+  /* Footer */
+  footer { flex-direction: column; gap: 12px; text-align: center; }
+  footer { padding-bottom: 80px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+
+  /* Time display */
+  .time-display { font-size: clamp(56px, 20vw, 120px); }
+
+  /* Converter */
+  .conv-page { padding: 16px; }
+  .conv-page-header { flex-direction: column; gap: 12px; }
+  .conv-scrubber-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .conv-offset-legend { margin-left: 0; }
+
+  /* Calendar */
+  .cal-wrap { padding: 20px 16px; }
+  .cal-side { grid-template-columns: 1fr; }
+
+  /* Stopwatch / Timer */
+  .sw-wrap { padding: 32px 16px; }
+  .timer-wrap { padding: 32px 16px; }
+}
+
+@media(max-width:480px) {
+  /* Even smaller phones */
+  .clocks-grid { grid-template-columns: 1fr 1fr; }
+  .mono-strip { flex-direction: column; }
+  .mono-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .holiday-strip { flex-direction: column; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .date-row { font-size: 10px; gap: 8px; }
+
+  /* Stopwatch display */
+  .sw-display { font-size: clamp(48px, 16vw, 80px); }
+  .sw-controls { gap: 8px; }
+  .sw-btn { padding: 12px 16px; font-size: 11px; }
+
+  /* Timer */
+  .timer-num { font-size: 56px; width: 80px; }
+}
+
+/* ─── TOUCH IMPROVEMENTS ─────────────── */
+@media(hover: none) {
+  /* Disable tooltips on touch (they get stuck) */
+  [data-tip]::after, [data-tip]::before { display: none; }
+
+  /* Bigger tap targets */
+  .nav-btn, .icon-btn { min-height: 44px; min-width: 44px; }
+  .copy-btn { padding: 8px 14px; }
+  .mob-nav-btn { min-height: 44px; }
+  .cal-nav-btn { width: 40px; height: 40px; }
+
+  /* Remove hover states that look broken on touch */
+  .stat-cell:hover,
+  .clock-card:hover,
+  .alarm-item:hover { background: var(--surface); }
+}
+
+/* iOS safe area for notch phones */
+@supports(padding: max(0px)) {
+  .mobile-nav {
+    padding-bottom: max(env(safe-area-inset-bottom), 8px);
+  }
+  header {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+
+/* ─── LIGHT THEMES SHARED OVERRIDES ─── */
+[data-theme="light"],
+[data-theme="sepia"] {
+  --radius: 0px;
+}
+[data-theme="light"] body::after,
+[data-theme="sepia"] body::after { opacity: 0.12; }
+[data-theme="light"] body::before,
+[data-theme="sepia"] body::before { opacity: 0.15; }
+[data-theme="light"] .time-display,
+[data-theme="sepia"] .time-display { color: var(--text); }
+[data-theme="light"] .stats-grid,
+[data-theme="sepia"] .stats-grid,
+[data-theme="light"] .mono-strip,
+[data-theme="sepia"] .mono-strip,
+[data-theme="light"] .clocks-grid,
+[data-theme="sepia"] .clocks-grid,
+[data-theme="light"] .sun-strip,
+[data-theme="sepia"] .sun-strip,
+[data-theme="light"] .holiday-strip,
+[data-theme="sepia"] .holiday-strip { box-shadow: 0 1px 8px rgba(0,0,0,0.07); }
+[data-theme="light"] .clock-card,
+[data-theme="sepia"] .clock-card { background: var(--surface); }
+[data-theme="light"] .clock-card:hover,
+[data-theme="sepia"] .clock-card:hover { background: var(--surface2); }
+[data-theme="light"] .location-badge,
+[data-theme="sepia"] .location-badge { box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+[data-theme="light"] .alarm-fired,
+[data-theme="sepia"] .alarm-fired { background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(10px); }
+[data-theme="light"] #tz-result-card,
+[data-theme="sepia"] #tz-result-card { background: color-mix(in srgb, var(--accent) 5%, var(--surface)); }
+
+/* Theme panel */
+.theme-panel {
+  position: fixed; top: 0; right: -320px; bottom: 0;
+  width: 300px; background: var(--surface);
+  border-left: 1px solid var(--border);
+  z-index: 800; transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+  display: flex; flex-direction: column;
+  box-shadow: -4px 0 30px rgba(0,0,0,0.3);
+}
+.theme-panel.open { right: 0; }
+.theme-panel-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.4); backdrop-filter: blur(2px);
+  z-index: 799; display: none;
+}
+.theme-panel-overlay.open { display: block; }
+.theme-panel-header {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.theme-panel-title {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--muted);
+}
+.theme-panel-close {
+  background: none; border: 1px solid var(--border); color: var(--muted);
+  width: 28px; height: 28px; cursor: pointer; font-size: 16px;
+  display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+}
+.theme-panel-close:hover { border-color: var(--accent); color: var(--accent); }
+.theme-panel-body { padding: 20px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; }
+
+.tp-section-label {
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 10px;
+}
+
+/* Theme cards */
+.theme-cards {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+.theme-card {
+  border: 2px solid var(--border); cursor: pointer;
+  transition: all 0.2s; overflow: hidden; position: relative;
+  aspect-ratio: 16/9;
+}
+.theme-card:hover { border-color: var(--muted); transform: translateY(-1px); }
+.theme-card.active { border-color: var(--accent); }
+.theme-card.active::after {
+  content: '✓';
+  position: absolute; top: 4px; right: 6px;
+  font-size: 11px; color: var(--accent);
+  font-family: 'DM Mono', monospace; font-weight: bold;
+}
+.tc-preview {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+}
+.tc-header { height: 30%; display: flex; align-items: center; gap: 4px; padding: 0 6px; }
+.tc-dot { width: 5px; height: 5px; border-radius: 50%; }
+.tc-body { flex: 1; display: flex; align-items: center; justify-content: center; }
+.tc-time { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; line-height: 1; }
+.tc-name {
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 4px 6px;
+  border-top-width: 1px; border-top-style: solid;
+}
+
+/* Accent row */
+.accent-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.tp-swatch {
+  width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+  border: 2px solid transparent; transition: all 0.2s; position: relative;
+}
+.tp-swatch:hover { transform: scale(1.15); }
+.tp-swatch.active { border-color: var(--text); }
+.tp-swatch.active::after {
+  content: ''; position: absolute; inset: 4px; border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,0.4);
+}
+
+
+
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--dim); }
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div id="cursor"></div>
+
+<!-- Alarm fired overlay -->
+<div class="alarm-fired" id="alarm-fired-overlay">
+  <div class="alarm-fired-time" id="alarm-fired-time">00:00</div>
+  <div class="alarm-fired-label" id="alarm-fired-label">Alarm</div>
+  <button class="alarm-dismiss" onclick="dismissAlarm()">Dismiss</button>
+</div>
+
+<!-- Keyboard shortcuts panel -->
+<div class="kbd-hint" id="kbd-hint">
+  <div class="kbd-row"><kbd>C</kbd><span class="kbd-desc">Copy Unix timestamp</span></div>
+  <div class="kbd-row"><kbd>T</kbd><span class="kbd-desc">Toggle 12/24h</span></div>
+  <div class="kbd-row"><kbd>L</kbd><span class="kbd-desc">Cycle themes</span></div>
+  <div class="kbd-row"><kbd>1-5</kbd><span class="kbd-desc">Switch view</span></div>
+  <div class="kbd-row"><kbd>?</kbd><span class="kbd-desc">Toggle this panel</span></div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">now<span>.</span>time</a>
+    <nav>
+      <button class="nav-btn active" onclick="switchView('clock',this)" data-tip="Current time & world clocks" data-tip-down>Clock</button>
+      <button class="nav-btn" onclick="switchView('stopwatch',this)" data-tip="Stopwatch with lap timing" data-tip-down>Stopwatch</button>
+      <button class="nav-btn" onclick="switchView('timer',this)" data-tip="Countdown timer" data-tip-down>Timer</button>
+      <button class="nav-btn" onclick="switchView('calendar',this)" data-tip="Calendar & holidays" data-tip-down>Calendar</button>
+      <button class="nav-btn" onclick="switchView('converter',this)" data-tip="Compare multiple timezones" data-tip-down>Converter</button>
+      <button class="nav-btn" onclick="switchView('alarm',this)" data-tip="Set alarms" data-tip-down>Alarm</button>
+    </nav>
+    <div class="header-tools">
+      <button class="icon-btn" onclick="toggleThemePanel()" title="Themes & appearance" id="theme-btn" style="font-size:16px;" data-tip="Themes & appearance" data-tip-left>⬡</button>
+      <button class="icon-btn" onclick="toggle24h()" id="h24-btn" data-tip="Toggle 12/24h format" data-tip-left>24</button>
+      <button class="icon-btn" onclick="toggleKbd()" data-tip="Keyboard shortcuts" data-tip-left>?</button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ SIDEBAR LAYOUT WRAPPER ═══ -->
+<div class="app-layout">
+
+  <!-- LEFT SIDEBAR: Quick world clocks + keyboard shortcuts -->
+  <aside class="sidebar-left" id="sidebar-left">
+    <div class="sb-section">
+      <div class="sb-label">Quick Nav</div>
+      <div id="sb-nav-items">
+        <div class="sb-nav-item active" onclick="switchView('clock',null);sbSetActive(this)" data-tip-right data-tip="Clock view"><span class="sb-nav-icon">🕐</span>Clock</div>
+        <div class="sb-nav-item" onclick="switchView('stopwatch',null);sbSetActive(this)" data-tip-right data-tip="Stopwatch"><span class="sb-nav-icon">⏱</span>Stopwatch</div>
+        <div class="sb-nav-item" onclick="switchView('timer',null);sbSetActive(this)" data-tip-right data-tip="Countdown timer"><span class="sb-nav-icon">⏳</span>Timer</div>
+        <div class="sb-nav-item" onclick="switchView('calendar',null);sbSetActive(this)" data-tip-right data-tip="Calendar"><span class="sb-nav-icon">📅</span>Calendar</div>
+        <div class="sb-nav-item" onclick="switchView('converter',null);sbSetActive(this)" data-tip-right data-tip="Timezone converter"><span class="sb-nav-icon">🌐</span>Converter</div>
+        <div class="sb-nav-item" onclick="switchView('alarm',null);sbSetActive(this)" data-tip-right data-tip="Alarms"><span class="sb-nav-icon">🔔</span>Alarm</div>
+      </div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Quick Clocks</div>
+      <div id="sb-world-clocks"></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Shortcuts</div>
+      <div class="sb-shortcut-item"><span>Clock</span><kbd>1</kbd></div>
+      <div class="sb-shortcut-item"><span>Stopwatch</span><kbd>2</kbd></div>
+      <div class="sb-shortcut-item"><span>Timer</span><kbd>3</kbd></div>
+      <div class="sb-shortcut-item"><span>Calendar</span><kbd>4</kbd></div>
+      <div class="sb-shortcut-item"><span>Converter</span><kbd>5</kbd></div>
+      <div class="sb-shortcut-item"><span>Alarm</span><kbd>6</kbd></div>
+      <div class="sb-shortcut-item"><span>Theme cycle</span><kbd>L</kbd></div>
+      <div class="sb-shortcut-item"><span>Help</span><kbd>?</kbd></div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+<!-- ═══════════════════ CLOCK VIEW ═════════════════════ -->
+<div class="view active" id="view-clock">
+
+  <div class="hero">
+    <div class="location-badge">
+      <div class="pulse-dot"></div>
+      <span id="tz-label">Detecting…</span>
+    </div>
+
+    <div class="time-core">
+      <!-- Analog clock -->
+      <div class="analog-clock" id="analog-clock">
+        <div class="clock-hand hand-hour" id="hand-hour"></div>
+        <div class="clock-hand hand-min"  id="hand-min"></div>
+        <div class="clock-hand hand-sec"  id="hand-sec"></div>
+        <div class="clock-center"></div>
+      </div>
+      <!-- Digital -->
+      <div>
+        <div class="time-display">
+          <span id="dh">00</span><span class="colon">:</span><span id="dm">00</span><span class="colon">:</span><span id="ds">00</span>
+        </div>
+        <div class="ampm-tag" id="ampm-tag">AM</div>
+      </div>
+    </div>
+
+    <div class="date-row">
+      <span id="d-weekday" class="hl"></span>
+      <span class="sep">·</span>
+      <span id="d-full"></span>
+      <span class="sep">·</span>
+      <span>Week <span id="d-week" class="hl"></span></span>
+      <span class="sep">·</span>
+      <span>Day <span id="d-doy" class="hl"></span> of <span id="d-diy"></span></span>
+    </div>
+  </div>
+
+  <!-- Year progress bar -->
+  <div class="year-bar-wrap wrap">
+    <div class="year-bar-label">
+      <span>Year progress</span>
+      <span id="yr-pct-label">0%</span>
+    </div>
+    <div class="year-bar-track"><div class="year-bar-fill" id="yr-bar" style="width:0%"></div></div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid wrap" style="margin-top:12px;">
+    <div class="stat-cell" data-tip="Which day of the year this is (1–365)">
+      <div class="stat-lbl">Day of year</div>
+      <div class="stat-val" id="s-doy">—</div>
+      <div class="stat-sub" id="s-doy-pct">—</div>
+    </div>
+    <div class="stat-cell" data-tip="ISO week number (Monday start)">
+      <div class="stat-lbl">Week number</div>
+      <div class="stat-val" id="s-week">—</div>
+      <div class="stat-sub" id="s-week-sub">of 52</div>
+    </div>
+    <div class="stat-cell" data-tip="Your timezone's offset from Coordinated Universal Time">
+      <div class="stat-lbl">UTC Offset</div>
+      <div class="stat-val" id="s-offset">—</div>
+      <div class="stat-sub" id="s-dst">—</div>
+    </div>
+    <div class="stat-cell" data-tip-left data-tip="How far ahead or behind UTC you are">
+      <div class="stat-lbl">Local vs UTC</div>
+      <div class="stat-val" id="s-utc-diff">—</div>
+      <div class="stat-sub" id="s-epoch-day">—</div>
+    </div>
+  </div>
+
+  <!-- Unix + ISO strip -->
+  <div class="mono-strip wrap">
+    <div class="mono-cell" data-tip="Seconds since Jan 1 1970 — used by all computers">
+      <span class="mono-tag">Unix</span>
+      <span class="mono-val" id="unix-val">0</span>
+      <button class="copy-btn" onclick="copyVal('unix-val','unix')" data-tip="Copy Unix timestamp">Copy</button>
+    </div>
+    <div class="mono-cell" data-tip="International date/time standard (ISO 8601)">
+      <span class="mono-tag">ISO 8601</span>
+      <span class="mono-val" id="iso-val" style="color:var(--accent2);font-size:12px;">—</span>
+      <button class="copy-btn" onclick="copyVal('iso-val','iso')" data-tip="Copy ISO timestamp">Copy</button>
+    </div>
+    <div class="mono-cell" data-tip-left data-tip="Email/HTTP date format (RFC 2822)">
+      <span class="mono-tag">RFC 2822</span>
+      <span class="mono-val" id="rfc-val" style="color:var(--accent3);font-size:11px;">—</span>
+      <button class="copy-btn" onclick="copyVal('rfc-val','rfc')" data-tip="Copy RFC timestamp">Copy</button>
+    </div>
+  </div>
+
+  <!-- Sun/Moon strip -->
+  <div class="sun-strip wrap">
+    <div class="sun-cell" data-tip="Time the sun rises today at your location">
+      <div class="sun-label">🌅 Sunrise</div>
+      <div class="sun-val" id="sunrise-val">—</div>
+      <div class="sun-sub" id="sunrise-sub">—</div>
+    </div>
+    <div class="sun-cell" data-tip="Time the sun sets today at your location">
+      <div class="sun-label">🌇 Sunset</div>
+      <div class="sun-val" id="sunset-val">—</div>
+      <div class="sun-sub" id="sunset-sub">—</div>
+    </div>
+    <div class="sun-cell" data-tip="Total hours of daylight between sunrise and sunset">
+      <div class="sun-label">☀ Daylight</div>
+      <div class="sun-val" id="daylight-val">—</div>
+      <div class="sun-sub">hours of sun today</div>
+    </div>
+    <div class="moon-cell">
+      <div class="moon-icon" id="moon-icon">🌕</div>
+      <div class="moon-info">
+        <div class="sun-label">Moon phase</div>
+        <div class="sun-val" id="moon-phase" style="font-size:18px;">—</div>
+        <div class="sun-sub" id="moon-pct">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Next holidays -->
+  <div class="holiday-strip wrap">
+    <div class="holiday-cell">
+      <span class="hol-icon">📅</span>
+      <div>
+        <div class="hol-name" id="hol1-name">—</div>
+        <div class="hol-date" id="hol1-date">—</div>
+      </div>
+      <div style="margin-left:auto;text-align:right;">
+        <div class="hol-days" id="hol1-days">—</div>
+      </div>
+    </div>
+    <div class="holiday-cell">
+      <span class="hol-icon">🎉</span>
+      <div>
+        <div class="hol-name" id="hol2-name">—</div>
+        <div class="hol-date" id="hol2-date">—</div>
+      </div>
+      <div style="margin-left:auto;text-align:right;">
+        <div class="hol-days" id="hol2-days">—</div>
+      </div>
+    </div>
+    <div class="holiday-cell">
+      <span class="hol-icon">✨</span>
+      <div>
+        <div class="hol-name" id="hol3-name">—</div>
+        <div class="hol-date" id="hol3-date">—</div>
+      </div>
+      <div style="margin-left:auto;text-align:right;">
+        <div class="hol-days" id="hol3-days">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timezone search -->
+  <div class="tz-search-wrap wrap">
+    <div class="sec-hdr" style="margin-bottom:10px;">
+      <span class="sec-title">Find Timezone</span><div class="sec-line"></div>
+    </div>
+    <div class="tz-input-row" style="position:relative;">
+      <input type="text" id="tz-search" placeholder="Search city or timezone…" autocomplete="off">
+      <div class="tz-results" id="tz-results"></div>
+    </div>
+    <div id="tz-result-card" style="margin-top:1px;display:none;background:var(--surface);border:1px solid var(--accent);border-top:none;padding:18px 20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;" id="tzrc-name">—</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--accent);letter-spacing:1px;" id="tzrc-time">—</div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;" id="tzrc-date">—</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--accent2);letter-spacing:1px;" id="tzrc-offset">—</div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:4px;" id="tzrc-diff">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- World clocks -->
+  <div class="world-wrap wrap" style="margin-top:24px;">
+    <div class="sec-hdr">
+      <span class="sec-title">World Clocks</span><div class="sec-line"></div>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--muted);">
+        <span style="color:var(--green);">■</span> Open &nbsp;
+        <span style="color:var(--amber);">■</span> Soon &nbsp;
+        <span style="color:var(--red);">■</span> Closed
+      </span>
+    </div>
+    <div class="clocks-grid" id="clocks-grid"></div>
+  </div>
+
+</div><!-- /view-clock -->
+
+<!-- ═══════════════════ STOPWATCH VIEW ════════════════ -->
+<div class="view" id="view-stopwatch">
+  <div class="sw-wrap">
+    <div class="sw-display">
+      <span id="sw-h">00</span><span class="colon" style="animation:none;opacity:1">:</span><span id="sw-m">00</span><span class="colon" style="animation:none;opacity:1">:</span><span id="sw-s">00</span><span class="sw-ms">.<span id="sw-ms">00</span></span>
+    </div>
+    <div class="sw-controls">
+      <button class="sw-btn primary" id="sw-start-btn" onclick="swToggle()">Start</button>
+      <button class="sw-btn" id="sw-lap-btn" onclick="swLap()" disabled>Lap</button>
+      <button class="sw-btn danger" id="sw-reset-btn" onclick="swReset()">Reset</button>
+    </div>
+    <div class="laps-table" id="laps-table" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TIMER VIEW ════════════════════ -->
+<div class="view" id="view-timer">
+  <div class="timer-wrap">
+    <div class="timer-inputs" id="timer-inputs">
+      <div class="timer-input-group">
+        <input class="timer-num" id="t-h" type="text" value="00" maxlength="2" onclick="this.select()">
+        <span class="timer-unit">Hours</span>
+      </div>
+      <div class="timer-sep">:</div>
+      <div class="timer-input-group">
+        <input class="timer-num" id="t-m" type="text" value="05" maxlength="2" onclick="this.select()">
+        <span class="timer-unit">Minutes</span>
+      </div>
+      <div class="timer-sep">:</div>
+      <div class="timer-input-group">
+        <input class="timer-num" id="t-s" type="text" value="00" maxlength="2" onclick="this.select()">
+        <span class="timer-unit">Seconds</span>
+      </div>
+    </div>
+
+    <div class="timer-progress-ring" id="timer-ring">
+      <svg class="timer-ring-svg" viewBox="0 0 200 200" width="200" height="200">
+        <circle class="timer-ring-bg" cx="100" cy="100" r="90"/>
+        <circle class="timer-ring-fill" id="timer-ring-fill" cx="100" cy="100" r="90"
+          stroke-dasharray="565" stroke-dashoffset="0"/>
+      </svg>
+      <div class="timer-ring-text" id="timer-ring-text">00:00</div>
+    </div>
+
+    <div class="sw-controls">
+      <button class="sw-btn primary" id="timer-start-btn" onclick="timerToggle()">Start</button>
+      <button class="sw-btn danger" onclick="timerReset()">Reset</button>
+    </div>
+
+    <div class="presets">
+      <button class="preset-btn" onclick="setTimer(0,1,0)">1 min</button>
+      <button class="preset-btn" onclick="setTimer(0,5,0)">5 min</button>
+      <button class="preset-btn" onclick="setTimer(0,10,0)">10 min</button>
+      <button class="preset-btn" onclick="setTimer(0,25,0)">Pomodoro</button>
+      <button class="preset-btn" onclick="setTimer(0,45,0)">45 min</button>
+      <button class="preset-btn" onclick="setTimer(1,0,0)">1 hour</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CALENDAR VIEW ════════════════ -->
+<div class="view" id="view-calendar">
+  <div class="cal-wrap">
+    <div class="cal-header">
+      <div class="cal-nav">
+        <button class="cal-nav-btn" onclick="calNav(-1)">‹</button>
+        <button class="cal-nav-btn" onclick="calNav(1)">›</button>
+        <button class="cal-nav-btn" onclick="calToday()" style="width:auto;padding:0 10px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;">Today</button>
+      </div>
+      <div class="cal-month-title" id="cal-month-title">—</div>
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;" id="cal-year-title">—</div>
+    </div>
+    <div class="cal-grid" id="cal-grid"></div>
+    <div class="cal-side" id="cal-side"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CONVERTER VIEW ═══════════════ -->
+<div class="view" id="view-converter">
+  <div class="conv-page">
+
+    <!-- Header row -->
+    <div class="conv-page-header">
+      <div>
+        <h2 class="conv-page-title">Timezone Converter</h2>
+        <p class="conv-page-sub">Compare times across multiple zones — live and interactive</p>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="conv-share-btn" onclick="convShare()" title="Share this view as a link">
+          <span>⬆</span> Share Link
+        </button>
+      </div>
+    </div>
+
+    <!-- Time input scrubber -->
+    <div class="conv-scrubber-row">
+      <div class="conv-scrubber-label">CONVERT TIME</div>
+      <div class="conv-scrubber-inputs">
+        <input type="time" id="conv-master-time" value="12:00" oninput="convUpdate()" class="conv-master-input">
+        <div class="conv-date-btns">
+          <button class="conv-date-btn" onclick="convSetToNow()">Now</button>
+          <input type="date" id="conv-master-date" oninput="convUpdate()" class="conv-master-input" style="font-size:12px;padding:8px 10px;">
+        </div>
+      </div>
+      <div class="conv-offset-legend">
+        <span class="col-legend"><span class="col-dot" style="background:var(--green)"></span>Same day</span>
+        <span class="col-legend"><span class="col-dot" style="background:var(--amber)"></span>+1 day</span>
+        <span class="col-legend"><span class="col-dot" style="background:var(--accent3)"></span>-1 day</span>
+      </div>
+    </div>
+
+    <!-- Zone search add bar -->
+    <div class="conv-add-bar">
+      <span class="conv-add-icon">+</span>
+      <input type="text" id="conv-zone-search" class="conv-zone-search-input"
+        placeholder="Search city or timezone to add…" autocomplete="off"
+        oninput="convSearchInput(this.value)" onkeydown="convSearchKey(event)">
+      <div class="conv-zone-results" id="conv-zone-results"></div>
+    </div>
+
+    <!-- Share toast -->
+    <div class="conv-share-toast" id="conv-share-toast">🔗 Link copied to clipboard!</div>
+
+    <!-- Zone cards -->
+    <div class="conv-zones" id="conv-zones"></div>
+
+    <!-- UTC offset bar -->
+    <div class="conv-offset-section">
+      <div class="conv-section-label">UTC OFFSET COMPARISON</div>
+      <div class="conv-offset-bar-wrap" id="conv-offset-bar"></div>
+    </div>
+
+    <!-- 24h grid view -->
+    <div class="conv-grid-section">
+      <div class="conv-section-label">24-HOUR OVERLAP VIEW</div>
+      <div class="conv-grid-wrap" id="conv-grid-wrap"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════ ALARM VIEW ════════════════════ -->
+<div class="view" id="view-alarm">
+  <div class="alarm-wrap">
+    <div class="sec-hdr"><span class="sec-title">Alarms</span><div class="sec-line"></div></div>
+    <div class="alarm-add">
+      <input type="time" id="alarm-time-input" value="08:00">
+      <input type="text" class="alarm-label-input" id="alarm-label-input" placeholder="Label (optional)">
+      <button class="alarm-add-btn" onclick="addAlarm()">+ Add Alarm</button>
+    </div>
+    <div class="alarms-list" id="alarms-list">
+      <div style="padding:24px;text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:2px;">NO ALARMS SET</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-l">© 2026 now.time — Exact time, every timezone</p>
+  <div class="footer-links">
+    <a href="#" onclick="switchView('clock'); return false;">World Clock</a>
+    <a href="#" onclick="switchView('converter'); return false;">Timezone Converter</a>
+    <a href="#" onclick="switchView('stopwatch'); return false;">Stopwatch</a>
+    <a href="#" onclick="switchView('timer'); return false;">Timer</a>
+    <a href="#" onclick="switchView('calendar'); return false;">Calendar</a>
+    <a href="#" onclick="switchView('alarm'); return false;">Alarm</a>
+  </div>
+</footer>
+
+  </main><!-- /main-content -->
+
+  <!-- RIGHT SIDEBAR: Live stats, fun facts, tips -->
+  <aside class="sidebar-right" id="sidebar-right">
+    <div class="sb-section">
+      <div class="sb-label">Live Stats</div>
+      <div class="sb-fact-label">Unix Timestamp</div>
+      <div class="sb-fact"><span class="sb-fact-val" id="sb-unix">—</span></div>
+      <div class="sb-fact-label">UTC Time</div>
+      <div class="sb-fact"><span class="sb-fact-val" id="sb-utc">—</span></div>
+      <div class="sb-fact-label">Your Offset</div>
+      <div class="sb-fact"><span class="sb-fact-val" id="sb-offset">—</span></div>
+      <div class="sb-fact-label">Week / Day</div>
+      <div class="sb-fact"><span class="sb-fact-val" id="sb-weekday">—</span></div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-label">Sun & Moon</div>
+      <div class="sb-fact-label">Sunrise</div>
+      <div class="sb-fact"><span class="sb-fact-val" id="sb-sunrise">—</span></div>
+      <div class="sb-fact-label">Sunset</div>
+      <div class="sb-fact"><span class="sb-fact-val" id="sb-sunset">—</span></div>
+      <div class="sb-fact-label">Daylight</div>
+      <div class="sb-fact"><span class="sb-fact-val" id="sb-daylight">—</span></div>
+      <div class="sb-fact-label">Moon</div>
+      <div class="sb-fact"><span class="sb-fact-val" id="sb-moon">—</span></div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-label">Tips</div>
+      <div id="sb-tips"></div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-label">Did you know?</div>
+      <div class="sb-fact" id="sb-fact-text" style="line-height:1.7;font-size:10px;color:var(--muted);"></div>
+    </div>
+  </aside>
+
+</div><!-- /app-layout -->
+
+<!-- ═══ MOBILE BOTTOM NAV ═══ -->
+<nav class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-inner">
+    <button class="mob-nav-btn active" onclick="switchView('clock',null);mobSetActive(this)">
+      <span class="mob-nav-icon">🕐</span>
+      <span class="mob-nav-label">Clock</span>
+    </button>
+    <button class="mob-nav-btn" onclick="switchView('stopwatch',null);mobSetActive(this)">
+      <span class="mob-nav-icon">⏱</span>
+      <span class="mob-nav-label">Stopwatch</span>
+    </button>
+    <button class="mob-nav-btn" onclick="switchView('timer',null);mobSetActive(this)">
+      <span class="mob-nav-icon">⏳</span>
+      <span class="mob-nav-label">Timer</span>
+    </button>
+    <button class="mob-nav-btn" onclick="switchView('converter',null);mobSetActive(this)">
+      <span class="mob-nav-icon">🌐</span>
+      <span class="mob-nav-label">Convert</span>
+    </button>
+    <button class="mob-nav-btn" onclick="switchView('alarm',null);mobSetActive(this)">
+      <span class="mob-nav-icon">🔔</span>
+      <span class="mob-nav-label">Alarm</span>
+    </button>
+    <button class="mob-nav-btn" onclick="toggleThemePanel()">
+      <span class="mob-nav-icon">⬡</span>
+      <span class="mob-nav-label">Theme</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hidden SEO text — visible to crawlers, not intrusive to users -->
+<div style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;" aria-hidden="true">
+  <h1>Current Time — World Clock and Timezone Converter</h1>
+  <p>now.time shows the exact current time in every timezone around the world. Check what time it is in New York, London, Tokyo, Sydney, Dubai, Mumbai, Paris, Los Angeles and hundreds more cities instantly.</p>
+  <h2>Free Timezone Converter</h2>
+  <p>Convert time between any two timezones instantly. Plan international meetings, schedule calls across time zones, compare UTC offsets and view a 24-hour overlap grid.</p>
+  <h2>Online Stopwatch and Countdown Timer</h2>
+  <p>Free online stopwatch with lap timing and a countdown timer with presets for Pomodoro, 5 minutes, 10 minutes and more.</p>
+  <h2>Sunrise and Sunset Times</h2>
+  <p>View today's sunrise time, sunset time, total daylight hours and current moon phase for your location.</p>
+  <p>Current Unix timestamp. ISO 8601 date format. RFC 2822 timestamp. UTC offset. Week number. Day of year.</p>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════
+let is24h = JSON.parse(localStorage.getItem('is24h') || 'false');
+let selectedTz = null;
+let worldClocks = JSON.parse(localStorage.getItem('worldClocks') || 'null') || [
+  {city:'New York',   tz:'America/New_York'},
+  {city:'London',     tz:'Europe/London'},
+  {city:'Paris',      tz:'Europe/Paris'},
+  {city:'Dubai',      tz:'Asia/Dubai'},
+  {city:'Mumbai',     tz:'Asia/Kolkata'},
+  {city:'Tokyo',      tz:'Asia/Tokyo'},
+  {city:'Sydney',     tz:'Australia/Sydney'},
+  {city:'Los Angeles',tz:'America/Los_Angeles'},
+];
+let alarms = JSON.parse(localStorage.getItem('alarms') || '[]');
+
+// Sync h24 button
+document.getElementById('h24-btn').style.color = is24h ? 'var(--accent)' : '';
+
+// ═══════════════════════════════════════════════════
+//  CURSOR
+// ═══════════════════════════════════════════════════
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.addEventListener('mouseenter', () => cursor.style.opacity = '1');
+document.addEventListener('mouseleave', () => cursor.style.opacity = '0');
+document.querySelectorAll('button,a,input,select,.clock-card,.cal-day').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+// ═══════════════════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════════════════
+const pad = n => String(n).padStart(2,'0');
+const pad3 = n => String(n).padStart(3,'0');
+
+function getWeek(d) {
+  const date = new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
+  date.setUTCDate(date.getUTCDate()+4-(date.getUTCDay()||7));
+  const y = new Date(Date.UTC(date.getUTCFullYear(),0,1));
+  return Math.ceil((((date-y)/86400000)+1)/7);
+}
+function getDoy(d) {
+  // Use integer math: count days from Jan 1 of that year
+  const start = new Date(d.getFullYear(), 0, 1);
+  return Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - start) / 86400000) + 1;
+}
+function isLeap(y) { return (y%4===0&&y%100!==0)||y%400===0; }
+function daysInYear(y) { return isLeap(y)?366:365; }
+
+function getOffset(tz) {
+  const now = new Date();
+  const local = new Date(now.toLocaleString('en-US',{timeZone:tz}));
+  const utc   = new Date(now.toLocaleString('en-US',{timeZone:'UTC'}));
+  const diff  = (local-utc)/60000;
+  const h = Math.floor(Math.abs(diff)/60), m = Math.abs(diff)%60;
+  return `UTC${diff>=0?'+':'-'}${pad(h)}:${pad(m)}`;
+}
+
+function formatInTz(tz, use24) {
+  const now = new Date();
+  return now.toLocaleTimeString('en-US',{
+    timeZone:tz,
+    hour:'2-digit', minute:'2-digit', second:'2-digit',
+    hour12:!use24
+  });
+}
+
+function copyVal(id, type) {
+  const val = document.getElementById(id).textContent;
+  navigator.clipboard?.writeText(val).then(() => {
+    const btns = document.querySelectorAll('.copy-btn');
+    btns.forEach(b => { if(b.getAttribute('onclick')?.includes(type)) { b.textContent='✓ Copied'; setTimeout(()=>b.textContent='Copy',1600); }});
+    if(typeof gtag !== 'undefined') trackEvent('copy_timestamp', 'engagement', type);
+  });
+}
+
+// ═══════════════════════════════════════════════════
+//  THEME
+// ═══════════════════════════════════════════════════
+function toggle24h() {
+  is24h = !is24h;
+  document.getElementById('h24-btn').style.color = is24h ? 'var(--accent)' : '';
+  localStorage.setItem('is24h', is24h);
+  updateSun(); // re-render sunrise/sunset in correct format
+}
+
+function toggleKbd() {
+  document.getElementById('kbd-hint').classList.toggle('show');
+}
+
+// ═══════════════════════════════════════════════════
+//  VIEW SWITCHING
+// ═══════════════════════════════════════════════════
+function switchView(name, btn) {
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('view-'+name).classList.add('active');
+  if(btn) btn.classList.add('active');
+  // GA4: track tab switches
+  if(typeof gtag !== 'undefined') trackEvent('tab_switch', 'navigation', name);
+}
+
+// ═══════════════════════════════════════════════════
+//  KEYBOARD SHORTCUTS
+// ═══════════════════════════════════════════════════
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  const k = e.key.toLowerCase();
+  if (k === 'c') copyVal('unix-val','unix');
+  if (k === 't') toggle24h();
+  if (k === 'l') { const ids=THEMES.map(t=>t.id); const i=ids.indexOf(currentTheme); applyTheme(ids[(i+1)%ids.length]); }
+  if (k === '?') toggleKbd();
+  if (k === '1') { switchView('clock'); document.querySelectorAll('.nav-btn')[0].classList.add('active'); }
+  if (k === '2') { switchView('stopwatch'); document.querySelectorAll('.nav-btn')[1].classList.add('active'); }
+  if (k === '3') { switchView('timer'); document.querySelectorAll('.nav-btn')[2].classList.add('active'); }
+  if (k === '4') { switchView('calendar'); document.querySelectorAll('.nav-btn')[3].classList.add('active'); }
+  if (k === '5') { switchView('converter'); document.querySelectorAll('.nav-btn')[4].classList.add('active'); }
+});
+
+// ═══════════════════════════════════════════════════
+//  ANALOG CLOCK
+// ═══════════════════════════════════════════════════
+function updateAnalog(h, m, s) {
+  const hDeg = (h % 12) * 30 + m * 0.5;
+  const mDeg = m * 6 + s * 0.1;
+  const sDeg = s * 6;
+  document.getElementById('hand-hour').style.transform = `rotate(${hDeg}deg)`;
+  document.getElementById('hand-min').style.transform  = `rotate(${mDeg}deg)`;
+  document.getElementById('hand-sec').style.transform  = `rotate(${sDeg}deg)`;
+}
+
+// ═══════════════════════════════════════════════════
+//  SUN / MOON
+// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
+//  SUN / MOON  — robust NOAA-based algorithm
+// ═══════════════════════════════════════════════════
+
+/* Returns sunrise & sunset as decimal hours in LOCAL time,
+   works correctly regardless of whether geolocation is used.
+   Uses the NOAA solar calculator algorithm (accurate ±1min). */
+function calcSun(lat, lon, date) {
+  const rad = Math.PI / 180;
+  const deg = 180 / Math.PI;
+
+  // Julian day
+  const JD = date.getTime() / 86400000 + 2440587.5;
+  const n  = JD - 2451545.0;
+
+  // Mean longitude & anomaly (degrees)
+  const L = (280.46 + 0.9856474 * n) % 360;
+  const g = (357.528 + 0.9856003 * n) % 360;
+
+  // Ecliptic longitude
+  const lambda = L + 1.915 * Math.sin(g * rad) + 0.02 * Math.sin(2 * g * rad);
+
+  // Obliquity & declination
+  const epsilon = 23.439 - 0.0000004 * n;
+  const sinDec  = Math.sin(epsilon * rad) * Math.sin(lambda * rad);
+  const decl    = Math.asin(sinDec) * deg;
+
+  // Right ascension
+  const RA = Math.atan2(
+    Math.cos(epsilon * rad) * Math.sin(lambda * rad),
+    Math.cos(lambda * rad)
+  ) * deg;
+
+  // Equation of time (minutes)
+  const LL  = (L - RA + 180) % 360 - 180; // noon correction
+  const EqT = -LL * 4; // approx eq of time in minutes
+
+  // Hour angle for sunrise/sunset (sun centre at horizon −0.833°)
+  const cosH = (Math.cos(90.833 * rad) - Math.sin(lat * rad) * Math.sin(decl * rad))
+             / (Math.cos(lat * rad) * Math.cos(decl * rad));
+
+  // Polar cases
+  if (cosH >  1) return { sunrise: null, sunset: null, polar: 'night' };
+  if (cosH < -1) return { sunrise: null, sunset: null, polar: 'day'   };
+
+  const H = Math.acos(cosH) * deg; // degrees
+
+  // UTC time of event (hours)
+  // Solar noon UTC = 12 − EqT/60 − lon/15
+  const solarNoonUTC = 12 - EqT / 60 - lon / 15;
+  const sunriseUTC   = solarNoonUTC - H / 15;
+  const sunsetUTC    = solarNoonUTC + H / 15;
+
+  // Convert UTC → local wall-clock hours using actual browser TZ offset
+  const tzOffsetHours = -date.getTimezoneOffset() / 60;
+  const sunrise = ((sunriseUTC + tzOffsetHours) % 24 + 24) % 24;
+  const sunset  = ((sunsetUTC  + tzOffsetHours) % 24 + 24) % 24;
+
+  return { sunrise, sunset, polar: null };
+}
+
+function moonPhase(date) {
+  const known = new Date(2000,0,6);
+  const diff  = (date - known) / (1000*60*60*24);
+  const cycle = 29.53058867;
+  const phase = ((diff % cycle) + cycle) % cycle;
+  const pct   = phase / cycle;
+  const phases = [
+    {name:'New Moon',       icon:'🌑', range:[0,     0.033]},
+    {name:'Waxing Crescent',icon:'🌒', range:[0.033, 0.25 ]},
+    {name:'First Quarter',  icon:'🌓', range:[0.25,  0.283]},
+    {name:'Waxing Gibbous', icon:'🌔', range:[0.283, 0.5  ]},
+    {name:'Full Moon',      icon:'🌕', range:[0.5,   0.533]},
+    {name:'Waning Gibbous', icon:'🌖', range:[0.533, 0.75 ]},
+    {name:'Last Quarter',   icon:'🌗', range:[0.75,  0.783]},
+    {name:'Waning Crescent',icon:'🌘', range:[0.783, 1    ]},
+  ];
+  const p = phases.find(x => pct >= x.range[0] && pct < x.range[1]) || phases[0];
+  return { ...p, pct: Math.round(pct * 100) };
+}
+
+/* Fallback coords derived from the browser's IANA timezone string.
+   Covers every timezone so we always have a reasonable lat/lon
+   even when geolocation is denied. */
+const TZ_COORDS = {
+  'Pacific/Honolulu':      [21.31,  -157.86],
+  'America/Anchorage':     [61.22,  -149.90],
+  'America/Los_Angeles':   [34.05,  -118.24],
+  'America/Denver':        [39.74,  -104.99],
+  'America/Chicago':       [41.85,   -87.65],
+  'America/New_York':      [40.71,   -74.01],
+  'America/Halifax':       [44.65,   -63.60],
+  'America/St_Johns':      [47.56,   -52.71],
+  'America/Sao_Paulo':     [-23.55,  -46.63],
+  'America/Buenos_Aires':  [-34.60,  -58.38],
+  'America/Mexico_City':   [19.43,   -99.13],
+  'America/Bogota':        [4.71,    -74.07],
+  'America/Lima':          [-12.04,  -77.03],
+  'America/Toronto':       [43.65,   -79.38],
+  'America/Vancouver':     [49.25,  -123.12],
+  'Europe/London':         [51.51,    -0.13],
+  'Europe/Dublin':         [53.33,    -6.25],
+  'Europe/Lisbon':         [38.72,    -9.14],
+  'Europe/Madrid':         [40.42,    -3.70],
+  'Europe/Paris':          [48.85,     2.35],
+  'Europe/Berlin':         [52.52,    13.41],
+  'Europe/Rome':           [41.90,    12.50],
+  'Europe/Amsterdam':      [52.37,     4.90],
+  'Europe/Brussels':       [50.85,     4.35],
+  'Europe/Vienna':         [48.21,    16.37],
+  'Europe/Warsaw':         [52.23,    21.01],
+  'Europe/Stockholm':      [59.33,    18.07],
+  'Europe/Oslo':           [59.91,    10.75],
+  'Europe/Copenhagen':     [55.68,    12.57],
+  'Europe/Helsinki':       [60.17,    24.94],
+  'Europe/Athens':         [37.98,    23.73],
+  'Europe/Bucharest':      [44.43,    26.10],
+  'Europe/Budapest':       [47.50,    19.04],
+  'Europe/Prague':         [50.08,    14.44],
+  'Europe/Kiev':           [50.45,    30.52],
+  'Europe/Moscow':         [55.75,    37.62],
+  'Africa/Cairo':          [30.04,    31.24],
+  'Africa/Johannesburg':   [-26.20,   28.04],
+  'Africa/Lagos':          [6.45,      3.39],
+  'Africa/Nairobi':        [-1.29,    36.82],
+  'Africa/Casablanca':     [33.59,    -7.62],
+  'Asia/Dubai':            [25.20,    55.27],
+  'Asia/Riyadh':           [24.69,    46.72],
+  'Asia/Karachi':          [24.86,    67.01],
+  'Asia/Kolkata':          [28.64,    77.22],
+  'Asia/Colombo':          [6.93,     79.86],
+  'Asia/Dhaka':            [23.72,    90.41],
+  'Asia/Yangon':           [16.87,    96.19],
+  'Asia/Bangkok':          [13.75,   100.52],
+  'Asia/Jakarta':          [-6.21,   106.85],
+  'Asia/Singapore':        [1.35,    103.82],
+  'Asia/Kuala_Lumpur':     [3.14,    101.69],
+  'Asia/Manila':           [14.60,   120.98],
+  'Asia/Hong_Kong':        [22.32,   114.17],
+  'Asia/Taipei':           [25.05,   121.53],
+  'Asia/Shanghai':         [31.23,   121.47],
+  'Asia/Tokyo':            [35.68,   139.69],
+  'Asia/Seoul':            [37.57,   126.98],
+  'Asia/Vladivostok':      [43.12,   131.89],
+  'Asia/Tehran':           [35.69,    51.42],
+  'Asia/Jerusalem':        [31.77,    35.22],
+  'Asia/Istanbul':         [41.01,    28.95],
+  'Asia/Beirut':           [33.89,    35.50],
+  'Asia/Kabul':            [34.53,    69.17],
+  'Asia/Tashkent':         [41.30,    69.27],
+  'Asia/Almaty':           [43.25,    76.95],
+  'Asia/Novosibirsk':      [54.99,    82.90],
+  'Asia/Yekaterinburg':    [56.84,    60.61],
+  'Australia/Perth':       [-31.95,  115.86],
+  'Australia/Adelaide':    [-34.93,  138.60],
+  'Australia/Darwin':      [-12.46,  130.84],
+  'Australia/Brisbane':    [-27.47,  153.02],
+  'Australia/Sydney':      [-33.87,  151.21],
+  'Australia/Melbourne':   [-37.81,  144.96],
+  'Pacific/Auckland':      [-36.87,  174.77],
+  'Pacific/Fiji':          [-18.14,  178.44],
+};
+
+/* Legacy / alias timezone name mappings → canonical name in TZ_COORDS */
+const TZ_ALIASES = {
+  // India — browsers may report any of these
+  'Asia/Calcutta':         'Asia/Kolkata',
+  'Asia/Kolkata':          'Asia/Kolkata',
+  'India/India':           'Asia/Kolkata',
+  // Other common legacy names
+  'Asia/Saigon':           'Asia/Bangkok',
+  'Asia/Rangoon':          'Asia/Yangon',
+  'Asia/Katmandu':         'Asia/Kolkata',   // close enough (+5:45 vs +5:30)
+  'Asia/Dacca':            'Asia/Dhaka',
+  'Asia/Ujung_Pandang':    'Asia/Jakarta',
+  'Asia/Macao':            'Asia/Shanghai',
+  'Asia/Chongqing':        'Asia/Shanghai',
+  'Asia/Harbin':           'Asia/Shanghai',
+  'Asia/Kashgar':          'Asia/Shanghai',
+  'Asia/Urumqi':           'Asia/Shanghai',
+  'Asia/Ulan_Bator':       'Asia/Shanghai',
+  'Asia/Thimphu':          'Asia/Dhaka',
+  'Asia/Muscat':           'Asia/Dubai',
+  'Asia/Bahrain':          'Asia/Riyadh',
+  'Asia/Kuwait':           'Asia/Riyadh',
+  'Asia/Aden':             'Asia/Riyadh',
+  'Asia/Phnom_Penh':       'Asia/Bangkok',
+  'Asia/Vientiane':        'Asia/Bangkok',
+  'Asia/Brunei':           'Asia/Singapore',
+  'Asia/Kuching':          'Asia/Singapore',
+  'Asia/Pontianak':        'Asia/Singapore',
+  'Asia/Makassar':         'Asia/Singapore',
+  'Asia/Dili':             'Asia/Tokyo',
+  'Asia/Pyongyang':        'Asia/Seoul',
+  'Asia/Macau':            'Asia/Hong_Kong',
+  'Asia/Tel_Aviv':         'Asia/Jerusalem',
+  'Asia/Nicosia':          'Asia/Beirut',
+  'Asia/Tbilisi':          'Asia/Dubai',
+  'Asia/Yerevan':          'Asia/Dubai',
+  'Asia/Baku':             'Asia/Dubai',
+  'Asia/Ashgabat':         'Asia/Tashkent',
+  'Asia/Ashkhabad':        'Asia/Tashkent',
+  'Asia/Bishkek':          'Asia/Tashkent',
+  'Asia/Dushanbe':         'Asia/Tashkent',
+  'Asia/Samarkand':        'Asia/Tashkent',
+  'Asia/Irkutsk':          'Asia/Shanghai',
+  'Asia/Krasnoyarsk':      'Asia/Novosibirsk',
+  'Asia/Omsk':             'Asia/Novosibirsk',
+  'Asia/Yakutsk':          'Asia/Tokyo',
+  'Asia/Magadan':          'Asia/Vladivostok',
+  'Asia/Kamchatka':        'Asia/Vladivostok',
+  'Asia/Anadyr':           'Asia/Vladivostok',
+  'Europe/Kyiv':           'Europe/Kiev',
+  'Europe/Uzhgorod':       'Europe/Kiev',
+  'Europe/Zaporozhye':     'Europe/Kiev',
+  'Europe/Minsk':          'Europe/Moscow',
+  'Europe/Kaliningrad':    'Europe/Warsaw',
+  'Europe/Samara':         'Europe/Moscow',
+  'Europe/Simferopol':     'Europe/Moscow',
+  'Europe/Volgograd':      'Europe/Moscow',
+  'Europe/Zurich':         'Europe/Berlin',
+  'Europe/Luxembourg':     'Europe/Paris',
+  'Europe/Monaco':         'Europe/Paris',
+  'Europe/Andorra':        'Europe/Madrid',
+  'Europe/Gibraltar':      'Europe/Madrid',
+  'Europe/Malta':          'Europe/Rome',
+  'Europe/San_Marino':     'Europe/Rome',
+  'Europe/Vatican':        'Europe/Rome',
+  'Europe/Tirane':         'Europe/Rome',
+  'Europe/Podgorica':      'Europe/Belgrade',
+  'Europe/Belgrade':       'Europe/Rome',
+  'Europe/Ljubljana':      'Europe/Rome',
+  'Europe/Sarajevo':       'Europe/Rome',
+  'Europe/Skopje':         'Europe/Rome',
+  'Europe/Zagreb':         'Europe/Rome',
+  'Europe/Sofia':          'Europe/Athens',
+  'Europe/Tallinn':        'Europe/Helsinki',
+  'Europe/Riga':           'Europe/Helsinki',
+  'Europe/Vilnius':        'Europe/Helsinki',
+  'Europe/Mariehamn':      'Europe/Helsinki',
+  'Europe/Nicosia':        'Asia/Beirut',
+  'Europe/Chisinau':       'Europe/Bucharest',
+  'Europe/Tiraspol':       'Europe/Bucharest',
+  'Europe/Ulyanovsk':      'Europe/Moscow',
+  'Atlantic/Reykjavik':    'Europe/London',
+  'Atlantic/Faroe':        'Europe/London',
+  'Atlantic/Canary':       'Europe/London',
+  'Africa/Abidjan':        'Africa/Lagos',
+  'Africa/Accra':          'Africa/Lagos',
+  'Africa/Bamako':         'Africa/Lagos',
+  'Africa/Banjul':         'Africa/Lagos',
+  'Africa/Conakry':        'Africa/Lagos',
+  'Africa/Dakar':          'Africa/Lagos',
+  'Africa/Freetown':       'Africa/Lagos',
+  'Africa/Lome':           'Africa/Lagos',
+  'Africa/Monrovia':       'Africa/Lagos',
+  'Africa/Nouakchott':     'Africa/Lagos',
+  'Africa/Ouagadougou':    'Africa/Lagos',
+  'Africa/Sao_Tome':       'Africa/Lagos',
+  'Africa/Tripoli':        'Africa/Cairo',
+  'Africa/Tunis':          'Africa/Cairo',
+  'Africa/Algiers':        'Africa/Cairo',
+  'Africa/Khartoum':       'Africa/Nairobi',
+  'Africa/Addis_Ababa':    'Africa/Nairobi',
+  'Africa/Asmara':         'Africa/Nairobi',
+  'Africa/Dar_es_Salaam':  'Africa/Nairobi',
+  'Africa/Djibouti':       'Africa/Nairobi',
+  'Africa/Kampala':        'Africa/Nairobi',
+  'Africa/Mogadishu':      'Africa/Nairobi',
+  'Africa/Blantyre':       'Africa/Johannesburg',
+  'Africa/Bujumbura':      'Africa/Johannesburg',
+  'Africa/Gaborone':       'Africa/Johannesburg',
+  'Africa/Harare':         'Africa/Johannesburg',
+  'Africa/Kigali':         'Africa/Johannesburg',
+  'Africa/Lubumbashi':     'Africa/Johannesburg',
+  'Africa/Lusaka':         'Africa/Johannesburg',
+  'Africa/Maputo':         'Africa/Johannesburg',
+  'Africa/Maseru':         'Africa/Johannesburg',
+  'Africa/Mbabane':        'Africa/Johannesburg',
+  'Africa/Windhoek':       'Africa/Johannesburg',
+  'Australia/Lord_Howe':   'Australia/Sydney',
+  'Australia/Hobart':      'Australia/Sydney',
+  'Australia/Currie':      'Australia/Sydney',
+  'Australia/Canberra':    'Australia/Sydney',
+  'Australia/ACT':         'Australia/Sydney',
+  'Australia/NSW':         'Australia/Sydney',
+  'Australia/Victoria':    'Australia/Melbourne',
+  'Australia/Queensland':  'Australia/Brisbane',
+  'Australia/Lindeman':    'Australia/Brisbane',
+  'Australia/South':       'Australia/Adelaide',
+  'Australia/North':       'Australia/Darwin',
+  'Australia/West':        'Australia/Perth',
+  'Australia/Broken_Hill': 'Australia/Adelaide',
+  'Australia/Eucla':       'Australia/Perth',
+  'Australia/LHI':         'Australia/Sydney',
+  'Pacific/Port_Moresby':  'Australia/Brisbane',
+  'Pacific/Guam':          'Asia/Tokyo',
+  'Pacific/Saipan':        'Asia/Tokyo',
+  'Pacific/Pohnpei':       'Asia/Tokyo',
+  'Pacific/Truk':          'Asia/Tokyo',
+  'Pacific/Palau':         'Asia/Manila',
+  'Pacific/Tongatapu':     'Pacific/Auckland',
+  'Pacific/Apia':          'Pacific/Auckland',
+  'Pacific/Fakaofo':       'Pacific/Auckland',
+  'US/Eastern':            'America/New_York',
+  'US/Central':            'America/Chicago',
+  'US/Mountain':           'America/Denver',
+  'US/Pacific':            'America/Los_Angeles',
+  'US/Hawaii':             'Pacific/Honolulu',
+  'US/Alaska':             'America/Anchorage',
+  'Canada/Eastern':        'America/Toronto',
+  'Canada/Central':        'America/Chicago',
+  'Canada/Pacific':        'America/Vancouver',
+  'Brazil/East':           'America/Sao_Paulo',
+  'Brazil/West':           'America/Bogota',
+  'Mexico/General':        'America/Mexico_City',
+  'GMT':                   'Europe/London',
+  'UTC':                   'Europe/London',
+};
+
+function getCoordsFromTz() {
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  // 1. Exact match in main table
+  if (TZ_COORDS[tz]) return TZ_COORDS[tz];
+
+  // 2. Alias lookup → then exact match in main table
+  const canonical = TZ_ALIASES[tz];
+  if (canonical && TZ_COORDS[canonical]) return TZ_COORDS[canonical];
+
+  // 3. Case-insensitive exact match (some browsers)
+  const tzLower = tz.toLowerCase();
+  for (const [k, v] of Object.entries(TZ_COORDS)) {
+    if (k.toLowerCase() === tzLower) return v;
+  }
+
+  // 4. Match by UTC offset — find entry whose longitude matches offset best
+  //    Use actual timezone offset in hours (handles fractional offsets like +5:30)
+  const offsetH = -new Date().getTimezoneOffset() / 60; // e.g. 5.5 for IST
+  let bestKey = null, bestDiff = Infinity;
+  for (const [k, [lat, lon]] of Object.entries(TZ_COORDS)) {
+    // Convert longitude to approximate UTC offset
+    const approxOffset = lon / 15;
+    const diff = Math.abs(approxOffset - offsetH);
+    if (diff < bestDiff) { bestDiff = diff; bestKey = k; }
+  }
+  return TZ_COORDS[bestKey];
+}
+
+let userLat = null, userLon = null, geoSource = 'tz';
+
+function initGeolocation() {
+  // First, immediately set coords from TZ fallback so sun shows right away
+  const tzCoords = getCoordsFromTz();
+  userLat = tzCoords[0];
+  userLon = tzCoords[1];
+  geoSource = 'tz';
+  updateSun();
+
+  // Then try to get real GPS — if granted, upgrade seamlessly
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        userLat = pos.coords.latitude;
+        userLon = pos.coords.longitude;
+        geoSource = 'gps';
+        updateSun(); // refresh with precise location
+      },
+      () => {
+        // Denied or unavailable — already showing TZ-based estimate, nothing to do
+        geoSource = 'tz';
+      },
+      { timeout: 8000, maximumAge: 300000 }
+    );
+  }
+}
+
+function fmtHr(hr) {
+  if (hr === null || hr === undefined) return '—';
+  hr = ((hr % 24) + 24) % 24;
+  const h = Math.floor(hr);
+  let m = Math.round((hr - h) * 60);
+  // Handle rounding overflow
+  const hh = m >= 60 ? h + 1 : h;
+  const mm = m >= 60 ? 0 : m;
+  if (is24h) return `${String(hh % 24).padStart(2,'0')}:${String(mm).padStart(2,'0')}`;
+  const ampm = hh % 24 >= 12 ? 'PM' : 'AM';
+  const dh = hh % 12 || 12;
+  return `${dh}:${String(mm).padStart(2,'0')} ${ampm}`;
+}
+
+function updateSun() {
+  const now    = new Date();
+  const sun    = calcSun(userLat, userLon, now);
+  const nowHr  = now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600;
+
+  if (sun.polar === 'day') {
+    document.getElementById('sunrise-val').textContent = 'Midnight sun';
+    document.getElementById('sunset-val').textContent  = 'No sunset';
+    document.getElementById('daylight-val').textContent = '24h';
+    document.getElementById('sunrise-sub').textContent = '';
+    document.getElementById('sunset-sub').textContent  = '';
+  } else if (sun.polar === 'night') {
+    document.getElementById('sunrise-val').textContent = 'Polar night';
+    document.getElementById('sunset-val').textContent  = 'No sunrise';
+    document.getElementById('daylight-val').textContent = '0h';
+    document.getElementById('sunrise-sub').textContent = '';
+    document.getElementById('sunset-sub').textContent  = '';
+  } else {
+    document.getElementById('sunrise-val').textContent = fmtHr(sun.sunrise);
+    document.getElementById('sunset-val').textContent  = fmtHr(sun.sunset);
+    const dl = sun.sunset - sun.sunrise;
+    document.getElementById('daylight-val').textContent = Math.max(0, dl).toFixed(1) + 'h';
+
+    // Subtext: time until / since — handle wrap-around midnight correctly
+    const minsToSunrise = Math.round(((sun.sunrise - nowHr + 24) % 24) * 60);
+    const minsToSunset  = Math.round(((sun.sunset  - nowHr + 24) % 24) * 60);
+    // "Already risen" if sun rose less than ~12h ago and hasn't set yet
+    const sunrisePassedToday = nowHr >= sun.sunrise;
+    const sunsetPassedToday  = nowHr >= sun.sunset;
+    document.getElementById('sunrise-sub').textContent =
+      sunrisePassedToday ? 'Already risen' : `in ${minsToSunrise}min`;
+    document.getElementById('sunset-sub').textContent =
+      sunsetPassedToday  ? 'Already set'   : `in ${minsToSunset}min`;
+  }
+
+  // Location badge
+  const tzName = Intl.DateTimeFormat().resolvedOptions().timeZone.replace(/_/g,' ');
+  document.getElementById('tz-label').textContent = geoSource === 'gps'
+    ? `${tzName} · 📍 GPS`
+    : `${tzName} · 📌 approx`;
+
+  // Source label on sunrise/sunset cells
+  const srcNote = geoSource === 'gps' ? '' : ' (approx)';
+  document.getElementById('sunrise-sub2') && (document.getElementById('sunrise-sub2').textContent = srcNote);
+
+  // Moon
+  const moon = moonPhase(now);
+  document.getElementById('moon-icon').textContent  = moon.icon;
+  document.getElementById('moon-phase').textContent = moon.name;
+  document.getElementById('moon-pct').textContent   = `${moon.pct}% of cycle`;
+}
+
+// Kick off — shows TZ estimate immediately, upgrades to GPS if permitted
+initGeolocation();
+
+// ═══════════════════════════════════════════════════
+//  HOLIDAYS (US)
+// ═══════════════════════════════════════════════════
+function getHolidays(year) {
+  return [
+    { name:"New Year's Day",      date:new Date(year,0,1) },
+    { name:"Valentine's Day",     date:new Date(year,1,14) },
+    { name:"St. Patrick's Day",   date:new Date(year,2,17) },
+    { name:"Easter",              date:easterDate(year) },
+    { name:"Mother's Day",        date:nthWeekday(year,4,0,2) },
+    { name:"Memorial Day",        date:lastWeekday(year,4,1) },
+    { name:"Independence Day",    date:new Date(year,6,4) },
+    { name:"Labor Day",           date:nthWeekday(year,8,1,1) },
+    { name:"Halloween",           date:new Date(year,9,31) },
+    { name:"Thanksgiving",        date:nthWeekday(year,10,4,4) },
+    { name:"Christmas Day",       date:new Date(year,11,25) },
+    { name:"New Year's Eve",      date:new Date(year,11,31) },
+  ];
+}
+function easterDate(y) {
+  const f = Math.floor, a=y%19, b=f(y/100), c=y%100, d=f(b/4), e=b%4, g=f((8*b+13)/25), h=(19*a+b-d-g+15)%30, i=f(c/4), k=c%4, l=(32+2*e+2*i-h-k)%7, m=f((a+11*h+19*l)/433), n=f((h+l-7*m+90)/25), p=(h+l-7*m+33*n+19)%32;
+  return new Date(y,n-1,p);
+}
+function nthWeekday(y,mo,dow,n) {
+  const d=new Date(y,mo,1); let count=0;
+  while(true){ if(d.getDay()===dow)count++; if(count===n)return new Date(d); d.setDate(d.getDate()+1); }
+}
+function lastWeekday(y,mo,dow) {
+  const d=new Date(y,mo+1,0);
+  while(d.getDay()!==dow)d.setDate(d.getDate()-1);
+  return d;
+}
+function updateHolidays() {
+  const now = new Date(); now.setHours(0,0,0,0);
+  const all = [...getHolidays(now.getFullYear()), ...getHolidays(now.getFullYear()+1)];
+  const upcoming = all.filter(h => h.date >= now).sort((a,b)=>a.date-b.date).slice(0,3);
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  upcoming.forEach((h,i) => {
+    const days = Math.round((h.date-now)/86400000);
+    document.getElementById(`hol${i+1}-name`).textContent = h.name;
+    document.getElementById(`hol${i+1}-date`).textContent = `${months[h.date.getMonth()]} ${h.date.getDate()}, ${h.date.getFullYear()}`;
+    document.getElementById(`hol${i+1}-days`).textContent = days===0?'Today':days===1?'Tomorrow':`${days} days`;
+  });
+}
+
+// ═══════════════════════════════════════════════════
+//  MAIN TICK
+// ═══════════════════════════════════════════════════
+function tick() {
+  const now = new Date();
+  const h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
+  updateAnalog(h, m, s);
+
+  // Digital display
+  let dh = h; const ampm = h >= 12 ? 'PM' : 'AM';
+  if (!is24h) dh = h%12||12;
+  document.getElementById('dh').textContent = pad(dh);
+  document.getElementById('dm').textContent = pad(m);
+  document.getElementById('ds').textContent = pad(s);
+  document.getElementById('ampm-tag').style.display = is24h ? 'none' : 'block';
+  document.getElementById('ampm-tag').textContent = ampm;
+
+  // Date
+  const DAYS  = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const MONTHS= ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('d-weekday').textContent = DAYS[now.getDay()];
+  document.getElementById('d-full').textContent = `${MONTHS[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+  const wk  = getWeek(now);
+  const doy = getDoy(now);
+  const diy = daysInYear(now.getFullYear());
+  document.getElementById('d-week').textContent = wk;
+  document.getElementById('d-doy').textContent  = doy;
+  document.getElementById('d-diy').textContent  = diy;
+  // Don't overwrite tz-label here — updateSun owns it with GPS/TZ source info
+
+  // Year bar
+  const pct = (doy/diy*100);
+  document.getElementById('yr-bar').style.width = pct+'%';
+  document.getElementById('yr-pct-label').textContent = pct.toFixed(2)+'%';
+
+  // Stats
+  document.getElementById('s-doy').textContent  = doy;
+  document.getElementById('s-doy-pct').textContent = `${((doy/diy)*100).toFixed(1)}% of year`;
+  document.getElementById('s-week').textContent = wk;
+
+  const offMin = -now.getTimezoneOffset();
+  const oh = Math.floor(Math.abs(offMin)/60), om = Math.abs(offMin)%60;
+  document.getElementById('s-offset').textContent = `UTC${offMin>=0?'+':'-'}${pad(oh)}:${pad(om)}`;
+
+  // DST
+  const jan = new Date(now.getFullYear(),0,1).getTimezoneOffset();
+  const jul = new Date(now.getFullYear(),6,1).getTimezoneOffset();
+  const dst = now.getTimezoneOffset() < Math.max(jan,jul);
+  document.getElementById('s-dst').textContent = `DST: ${dst?'Active':'Inactive'}`;
+
+  // Epoch day
+  const epochDay = Math.floor(now.getTime()/(86400*1000));
+  document.getElementById('s-utc-diff').textContent = `${offMin>=0?'+':'-'}${pad(oh)}h${om?pad(om)+'m':''}`;
+  document.getElementById('s-epoch-day').textContent = `Epoch day ${epochDay.toLocaleString()}`;
+
+  // Mono strip
+  document.getElementById('unix-val').textContent = Math.floor(now.getTime()/1000);
+  document.getElementById('iso-val').textContent  = now.toISOString().slice(0,19)+'Z';
+  document.getElementById('rfc-val').textContent  = now.toUTCString();
+
+  // World clocks
+  updateWorldClocks(now);
+
+  // TZ result card
+  if (selectedTz) updateTzCard(selectedTz, now);
+
+  // Alarms
+  checkAlarms(now);
+}
+
+// ═══════════════════════════════════════════════════
+//  WORLD CLOCKS
+// ═══════════════════════════════════════════════════
+function renderWorldClocks() {
+  const grid = document.getElementById('clocks-grid');
+  grid.innerHTML = '';
+  worldClocks.forEach((item,i) => {
+    const div = document.createElement('div');
+    div.className = 'clock-card';
+    div.id = 'wc-'+i;
+    div.innerHTML = `
+      <div class="clock-card-header">
+        <div class="cc-city">${item.city}</div>
+        <div class="cc-status" id="wcs-${i}">—</div>
+      </div>
+      <div class="cc-time" id="wct-${i}">--:--:--</div>
+      <div class="cc-bottom">
+        <div class="cc-date" id="wcd-${i}">—</div>
+        <div class="cc-offset">${getOffset(item.tz)}</div>
+      </div>
+      <button class="cc-remove" onclick="removeCity(${i})" title="Remove">✕</button>`;
+    grid.appendChild(div);
+  });
+  // Add button
+  const add = document.createElement('div');
+  add.className = 'add-city-card';
+  add.innerHTML = `<span>+</span><span>Add City</span>`;
+  add.onclick = () => { document.getElementById('tz-search').focus(); document.getElementById('tz-search').scrollIntoView({behavior:'smooth'}); };
+  grid.appendChild(add);
+}
+
+function updateWorldClocks(now) {
+  const MNAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  worldClocks.forEach((item,i) => {
+    const card = document.getElementById('wc-'+i);
+    const timeEl = document.getElementById('wct-'+i);
+    const dateEl = document.getElementById('wcd-'+i);
+    const statEl = document.getElementById('wcs-'+i);
+    if (!card || !timeEl) return;
+
+    const tzDate = new Date(now.toLocaleString('en-US',{timeZone:item.tz}));
+    let wh = tzDate.getHours(), wm = tzDate.getMinutes(), ws = tzDate.getSeconds();
+    const wAmpm = wh>=12?'PM':'AM';
+    if(!is24h) wh = wh%12||12;
+    timeEl.textContent = `${pad(wh)}:${pad(wm)}:${pad(ws)}${is24h?'':' '+wAmpm}`;
+    dateEl.textContent = `${MNAMES[tzDate.getMonth()]} ${tzDate.getDate()}`;
+
+    // Business hours 9-17 Mon-Fri
+    const bizH = new Date(now.toLocaleString('en-US',{timeZone:item.tz})).getHours();
+    const bizD = new Date(now.toLocaleString('en-US',{timeZone:item.tz})).getDay();
+    const isWeekday = bizD>=1&&bizD<=5;
+    card.classList.remove('biz-open','biz-soon','biz-closed');
+    if (isWeekday && bizH>=9 && bizH<17) {
+      card.classList.add('biz-open'); statEl.textContent='OPEN';
+    } else if (isWeekday && ((bizH>=8&&bizH<9)||(bizH>=17&&bizH<18))) {
+      card.classList.add('biz-soon'); statEl.textContent='SOON';
+    } else {
+      card.classList.add('biz-closed'); statEl.textContent='CLOSED';
+    }
+  });
+}
+
+function removeCity(i) {
+  worldClocks.splice(i,1);
+  localStorage.setItem('worldClocks', JSON.stringify(worldClocks));
+  renderWorldClocks();
+}
+
+// ═══════════════════════════════════════════════════
+//  TZ SEARCH
+// ═══════════════════════════════════════════════════
+const ALL_TZ = Intl.supportedValuesOf ? Intl.supportedValuesOf('timeZone') : ['America/New_York','Europe/London','Asia/Tokyo'];
+const tzSearch = document.getElementById('tz-search');
+const tzResults = document.getElementById('tz-results');
+
+tzSearch.addEventListener('input', () => {
+  const q = tzSearch.value.trim().toLowerCase();
+  if (!q) { tzResults.classList.remove('open'); return; }
+  const matches = ALL_TZ.filter(tz => tz.toLowerCase().replace(/_/g,' ').includes(q)).slice(0,12);
+  tzResults.innerHTML = matches.map(tz =>
+    `<div class="tz-item" onclick="selectTz('${tz}')">
+      <span class="tz-item-name">${tz.replace(/_/g,' ')}</span>
+      <span class="tz-item-off">${getOffset(tz)}</span>
+    </div>`
+  ).join('');
+  tzResults.classList.toggle('open', matches.length>0);
+});
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.tz-search-wrap')) tzResults.classList.remove('open');
+});
+
+function selectTz(tz) {
+  selectedTz = tz;
+  tzSearch.value = tz.replace(/_/g,' ');
+  tzResults.classList.remove('open');
+  document.getElementById('tz-result-card').style.display = 'block';
+  updateTzCard(tz, new Date());
+
+  // Ask to add to world clocks
+  if (!worldClocks.find(c=>c.tz===tz)) {
+    const city = tz.split('/').pop().replace(/_/g,' ');
+    worldClocks.push({city, tz});
+    localStorage.setItem('worldClocks', JSON.stringify(worldClocks));
+    renderWorldClocks();
+  }
+}
+
+function updateTzCard(tz, now) {
+  const MNAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const DNAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const tzDate = new Date(now.toLocaleString('en-US',{timeZone:tz}));
+  let h = tzDate.getHours(), m = tzDate.getMinutes(), s = tzDate.getSeconds();
+  const ampm = h>=12?'PM':'AM';
+  if (!is24h) h = h%12||12;
+  document.getElementById('tzrc-name').textContent = tz.replace(/_/g,' ');
+  document.getElementById('tzrc-time').textContent = `${pad(h)}:${pad(m)}:${pad(s)}${is24h?'':' '+ampm}`;
+  document.getElementById('tzrc-date').textContent = `${DNAMES[tzDate.getDay()]}, ${MNAMES[tzDate.getMonth()]} ${tzDate.getDate()}, ${tzDate.getFullYear()}`;
+  document.getElementById('tzrc-offset').textContent = getOffset(tz);
+
+  // Correctly compute difference in total minutes between `tz` and local
+  const localOffMins  = -now.getTimezoneOffset();                    // local UTC offset in mins
+  const targetOffMins = getTimezoneOffsetMins(tz, now);              // target UTC offset in mins
+  const diffMins = targetOffMins - localOffMins;
+
+  if (diffMins === 0) {
+    document.getElementById('tzrc-diff').textContent = 'Same as your time';
+  } else {
+    const sign     = diffMins > 0 ? '+' : '-';
+    const absMins  = Math.abs(diffMins);
+    const dh       = Math.floor(absMins / 60);
+    const dm       = absMins % 60;
+    const label    = dh > 0 ? `${dh}h${dm ? ' '+dm+'m' : ''}` : `${dm}m`;
+    const dir      = diffMins > 0 ? 'ahead' : 'behind';
+    document.getElementById('tzrc-diff').textContent = `${sign}${label} ${dir}`;
+  }
+}
+
+// ═══════════════════════════════════════════════════
+//  STOPWATCH
+// ═══════════════════════════════════════════════════
+let swStart = null, swElapsed = 0, swRunning = false, swInterval = null;
+let swLaps = [], swLapStart = 0;
+
+function swToggle() {
+  swRunning = !swRunning;
+  if (swRunning) {
+    swStart = Date.now() - swElapsed;
+    // Only reset lapStart when starting fresh (not resuming)
+    if (swElapsed === 0) swLapStart = Date.now();
+    swInterval = setInterval(swTick, 10);
+    document.getElementById('sw-start-btn').textContent = 'Pause';
+    document.getElementById('sw-start-btn').classList.remove('primary');
+    document.getElementById('sw-start-btn').classList.add('danger');
+    document.getElementById('sw-lap-btn').disabled = false;
+  } else {
+    clearInterval(swInterval);
+    document.getElementById('sw-start-btn').textContent = 'Resume';
+    document.getElementById('sw-start-btn').classList.remove('danger');
+    document.getElementById('sw-start-btn').classList.add('primary');
+  }
+}
+
+function swTick() {
+  swElapsed = Date.now() - swStart;
+  const t = swElapsed;
+  const ms = Math.floor((t%1000)/10);
+  const s  = Math.floor(t/1000)%60;
+  const m  = Math.floor(t/60000)%60;
+  const h  = Math.floor(t/3600000);
+  document.getElementById('sw-h').textContent  = pad(h);
+  document.getElementById('sw-m').textContent  = pad(m);
+  document.getElementById('sw-s').textContent  = pad(s);
+  document.getElementById('sw-ms').textContent = pad(ms);
+}
+
+function swLap() {
+  const lapTime = Date.now() - swLapStart;
+  swLapStart = Date.now();
+  swLaps.unshift({ n: swLaps.length+1, total: swElapsed, lap: lapTime });
+  renderLaps();
+}
+
+function renderLaps() {
+  const t = document.getElementById('laps-table');
+  t.style.display = 'block';
+  if (!swLaps.length) { t.style.display='none'; return; }
+  const lapTimes = swLaps.map(l=>l.lap);
+  const best = Math.min(...lapTimes), worst = Math.max(...lapTimes);
+  t.innerHTML = swLaps.map(l => {
+    const cls = l.lap===best&&swLaps.length>1?'lap-best':l.lap===worst&&swLaps.length>1?'lap-worst':'';
+    return `<div class="lap-row ${cls}">
+      <span class="lap-num">LAP ${pad(l.n)}</span>
+      <span class="lap-time">${fmtMs(l.lap)}</span>
+      <span class="lap-delta">${fmtMs(l.total)}</span>
+    </div>`;
+  }).join('');
+}
+
+function fmtMs(ms) {
+  const s = Math.floor(ms/1000)%60, m = Math.floor(ms/60000)%60, h = Math.floor(ms/3600000);
+  const centis = Math.floor((ms%1000)/10);
+  return `${pad(h)}:${pad(m)}:${pad(s)}.${pad(centis)}`;
+}
+
+function swReset() {
+  clearInterval(swInterval);
+  swRunning=false; swElapsed=0; swStart=null; swLaps=[];
+  document.getElementById('sw-h').textContent='00';
+  document.getElementById('sw-m').textContent='00';
+  document.getElementById('sw-s').textContent='00';
+  document.getElementById('sw-ms').textContent='00';
+  document.getElementById('sw-start-btn').textContent='Start';
+  document.getElementById('sw-start-btn').className='sw-btn primary';
+  document.getElementById('sw-lap-btn').disabled=true;
+  document.getElementById('laps-table').style.display='none';
+  document.getElementById('laps-table').innerHTML='';
+}
+
+// ═══════════════════════════════════════════════════
+//  TIMER
+// ═══════════════════════════════════════════════════
+let timerTotal = 0, timerRemaining = 0, timerInterval = null, timerRunning = false;
+const CIRCUMFERENCE = 2 * Math.PI * 90; // r=90
+
+function setTimer(h,m,s) {
+  timerReset();
+  document.getElementById('t-h').value = pad(h);
+  document.getElementById('t-m').value = pad(m);
+  document.getElementById('t-s').value = pad(s);
+}
+
+function timerToggle() {
+  if (!timerRunning) {
+    if (timerRemaining === 0) {
+      const h = parseInt(document.getElementById('t-h').value)||0;
+      const m = parseInt(document.getElementById('t-m').value)||0;
+      const s = parseInt(document.getElementById('t-s').value)||0;
+      timerTotal = (h*3600+m*60+s)*1000;
+      timerRemaining = timerTotal;
+      if (!timerTotal) return;
+    }
+    document.getElementById('timer-inputs').style.display = 'none';
+    document.getElementById('timer-ring').classList.add('show');
+    timerRunning = true;
+    document.getElementById('timer-start-btn').textContent = 'Pause';
+    timerInterval = setInterval(timerTick, 100);
+  } else {
+    timerRunning = false;
+    clearInterval(timerInterval);
+    document.getElementById('timer-start-btn').textContent = 'Resume';
+  }
+}
+
+function timerTick() {
+  timerRemaining -= 100;
+  if (timerRemaining <= 0) {
+    timerRemaining = 0;
+    timerRunning = false;
+    clearInterval(timerInterval);
+    timerDone();
+  }
+  updateTimerDisplay();
+}
+
+function updateTimerDisplay() {
+  const rem = Math.ceil(timerRemaining/1000);
+  const h = Math.floor(rem/3600), m = Math.floor((rem%3600)/60), s = rem%60;
+  const txt = h > 0 ? `${pad(h)}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
+  document.getElementById('timer-ring-text').textContent = txt;
+  const pct = timerTotal > 0 ? timerRemaining/timerTotal : 0;
+  const offset = CIRCUMFERENCE * (1-pct);
+  document.getElementById('timer-ring-fill').style.strokeDashoffset = offset;
+  document.getElementById('timer-ring-fill').style.strokeDasharray = CIRCUMFERENCE;
+  if (rem <= 10) {
+    document.getElementById('timer-ring-fill').style.stroke = 'var(--red)';
+    document.getElementById('timer-ring-text').style.color = 'var(--red)';
+  }
+}
+
+function timerDone() {
+  document.getElementById('timer-ring-text').textContent = 'DONE';
+  document.getElementById('timer-ring-fill').style.stroke = 'var(--green)';
+  document.getElementById('timer-ring-text').style.color = 'var(--green)';
+  document.getElementById('timer-start-btn').textContent = 'Start';
+  // Browser notification
+  if (Notification.permission === 'granted') {
+    new Notification('⏱ Timer Done!', {body:'Your timer has finished.'});
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission().then(p => {
+      if (p==='granted') new Notification('⏱ Timer Done!',{body:'Your timer has finished.'});
+    });
+  }
+}
+
+function timerReset() {
+  clearInterval(timerInterval);
+  timerRunning = false; timerRemaining = 0; timerTotal = 0;
+  document.getElementById('timer-inputs').style.display = 'flex';
+  document.getElementById('timer-ring').classList.remove('show');
+  document.getElementById('timer-start-btn').textContent = 'Start';
+  document.getElementById('timer-ring-fill').style.stroke = 'var(--accent)';
+  document.getElementById('timer-ring-text').style.color = 'var(--text)';
+  document.getElementById('timer-ring-fill').style.strokeDashoffset = 0;
+}
+
+// ═══════════════════════════════════════════════════
+//  CALENDAR
+// ═══════════════════════════════════════════════════
+let calYear = new Date().getFullYear(), calMonth = new Date().getMonth();
+const MON = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const MSHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function renderCalendar() {
+  document.getElementById('cal-month-title').textContent = MON[calMonth];
+  document.getElementById('cal-year-title').textContent  = calYear;
+  const grid = document.getElementById('cal-grid');
+  grid.innerHTML = '';
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'cal-day-name'; el.textContent = d;
+    grid.appendChild(el);
+  });
+  const first = new Date(calYear,calMonth,1).getDay();
+  const total = new Date(calYear,calMonth+1,0).getDate();
+  const today = new Date();
+  const holidays = getHolidays(calYear);
+  for (let i=0;i<first;i++) {
+    // Days from the previous month: count back from day 0 of current month
+    const prevDay = new Date(calYear, calMonth, 0 - (first - 1 - i));
+    const el = document.createElement('div');
+    el.className = 'cal-day other-month';
+    el.innerHTML = `<span class="cal-day-num">${prevDay.getDate()}</span>`;
+    grid.appendChild(el);
+  }
+  for (let d=1;d<=total;d++) {
+    const el = document.createElement('div');
+    const isToday = d===today.getDate()&&calMonth===today.getMonth()&&calYear===today.getFullYear();
+    el.className = 'cal-day' + (isToday?' today':'');
+    const hol = holidays.find(h=>h.date.getMonth()===calMonth&&h.date.getDate()===d);
+    el.innerHTML = `<span class="cal-day-num">${d}</span>${hol?`<span class="cal-day-event">${hol.name}</span>`:''}`;
+    grid.appendChild(el);
+  }
+  const remaining = 42 - first - total;
+  for (let i=1;i<=remaining;i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day other-month';
+    el.innerHTML = `<span class="cal-day-num">${i}</span>`;
+    grid.appendChild(el);
+  }
+  // Side info
+  const side = document.getElementById('cal-side');
+  const diy = daysInYear(calYear);
+  const wks = getWeek(new Date(calYear,calMonth,1));
+  side.innerHTML = `
+    <div class="cal-info-card">
+      <div class="cal-info-title">Month Info</div>
+      <div class="cal-info-item"><span class="cal-info-key">Days in month</span><span class="cal-info-val">${total}</span></div>
+      <div class="cal-info-item"><span class="cal-info-key">Starts on</span><span class="cal-info-val">${['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][new Date(calYear,calMonth,1).getDay()]}</span></div>
+      <div class="cal-info-item"><span class="cal-info-key">Week number</span><span class="cal-info-val">${wks}–${wks+3}</span></div>
+      <div class="cal-info-item"><span class="cal-info-key">Leap year</span><span class="cal-info-val">${isLeap(calYear)?'Yes':'No'}</span></div>
+    </div>
+    <div class="cal-info-card">
+      <div class="cal-info-title">Holidays This Month</div>
+      ${holidays.filter(h=>h.date.getMonth()===calMonth).length
+        ? holidays.filter(h=>h.date.getMonth()===calMonth).map(h=>`
+          <div class="cal-info-item">
+            <span class="cal-info-key">${h.name}</span>
+            <span class="cal-info-val">${MSHORT[h.date.getMonth()]} ${h.date.getDate()}</span>
+          </div>`).join('')
+        : '<div style="font-family:DM Mono,monospace;font-size:11px;color:var(--muted);padding:8px 0;">None</div>'
+      }
+    </div>`;
+}
+
+function calNav(dir) { calMonth+=dir; if(calMonth>11){calMonth=0;calYear++;} if(calMonth<0){calMonth=11;calYear--;} renderCalendar(); }
+function calToday() { calYear=new Date().getFullYear(); calMonth=new Date().getMonth(); renderCalendar(); }
+
+// ═══════════════════════════════════════════════════
+//  TIMEZONE CONVERTER  (multi-zone, drag, search, share)
+// ═══════════════════════════════════════════════════
+
+function getTimezoneOffsetMins(tz, date) {
+  const utcStr    = date.toLocaleString('en-US', { timeZone: 'UTC' });
+  const tzStr     = date.toLocaleString('en-US', { timeZone: tz });
+  const utcParsed = new Date(utcStr);
+  const tzParsed  = new Date(tzStr);
+  return Math.round((tzParsed - utcParsed) / 60000);
+}
+
+function fmtOffset(mins) {
+  const sign = mins >= 0 ? '+' : '-';
+  const abs  = Math.abs(mins);
+  return `UTC${sign}${pad(Math.floor(abs/60))}:${pad(abs%60)}`;
+}
+
+// ── State ────────────────────────────────────────────
+const _localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+// Load from URL params first, then localStorage, then defaults
+function convLoadZones() {
+  const params = new URLSearchParams(window.location.hash.replace('#','?').replace('/?','?'));
+  const urlZones = params.get('zones');
+  if (urlZones) {
+    const decoded = urlZones.split(',').map(z => z.replace(/\|/g,' ').replace(/ /g,'_'));
+    const valid   = decoded.filter(z => ALL_TZ.includes(z));
+    if (valid.length) return valid;
+  }
+  const saved = JSON.parse(localStorage.getItem('convZones') || 'null');
+  if (saved && saved.length) return saved;
+  return [_localTz, 'America/New_York', 'Europe/London', 'Asia/Tokyo'];
+}
+
+let convZones    = convLoadZones();
+let convLiveMode = true;
+let convDragIdx  = null;
+let convSearchFocusIdx = -1;
+
+// Ensure local is in the list
+if (!convZones.includes(_localTz)) convZones.unshift(_localTz);
+
+function saveConvZones() {
+  localStorage.setItem('convZones', JSON.stringify(convZones));
+}
+
+// ── Time helpers ─────────────────────────────────────
+function convGetUTCMs() {
+  if (convLiveMode) return Date.now();
+  const dateEl = document.getElementById('conv-master-date');
+  const timeEl = document.getElementById('conv-master-time');
+  const dv = dateEl?.value || new Date().toLocaleDateString('en-CA');
+  const tv = timeEl?.value || '12:00';
+  const [h, m]       = tv.split(':').map(Number);
+  const [yr, mo, dy] = dv.split('-').map(Number);
+  return new Date(yr, mo-1, dy, h, m, 0).getTime();
+}
+
+function convSetToNow() {
+  convLiveMode = true;
+  const now = new Date();
+  const dateEl = document.getElementById('conv-master-date');
+  const timeEl = document.getElementById('conv-master-time');
+  if (dateEl) dateEl.value = now.toLocaleDateString('en-CA');
+  if (timeEl) timeEl.value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  convRender();
+}
+
+function convUpdate() {
+  convLiveMode = false;
+  convRender();
+}
+
+// ── Search ───────────────────────────────────────────
+function convSearchInput(q) {
+  const resultsEl = document.getElementById('conv-zone-results');
+  convSearchFocusIdx = -1;
+  if (!q.trim()) { resultsEl.classList.remove('open'); return; }
+
+  const matches = ALL_TZ
+    .filter(tz => tz.toLowerCase().replace(/_/g,' ').includes(q.toLowerCase().trim()))
+    .slice(0, 14);
+
+  if (!matches.length) { resultsEl.classList.remove('open'); return; }
+
+  const now = new Date();
+  resultsEl.innerHTML = matches.map((tz, i) => {
+    const alreadyAdded = convZones.includes(tz);
+    const offsetMins   = getTimezoneOffsetMins(tz, now);
+    const tzDate       = new Date(now.toLocaleString('en-US', { timeZone: tz }));
+    const timeDisp     = tzDate.toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', hour12: !is24h
+    });
+    return `<div class="conv-zone-result-item${alreadyAdded ? ' already-added' : ''}"
+      data-tz="${tz}" data-idx="${i}"
+      onclick="convAddFromSearch('${tz}')">
+      <span class="czri-name">${tz.replace(/_/g,' ')}</span>
+      <span class="czri-meta">
+        <span class="czri-offset">${fmtOffset(offsetMins)}</span>
+        <span style="color:var(--muted);font-size:11px;">${timeDisp}</span>
+        ${alreadyAdded ? '<span class="czri-added">added</span>' : ''}
+      </span>
+    </div>`;
+  }).join('');
+  resultsEl.classList.add('open');
+}
+
+function convSearchKey(e) {
+  const resultsEl = document.getElementById('conv-zone-results');
+  const items     = resultsEl.querySelectorAll('.conv-zone-result-item:not(.already-added)');
+  if (!items.length) return;
+
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    convSearchFocusIdx = Math.min(convSearchFocusIdx + 1, items.length - 1);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    convSearchFocusIdx = Math.max(convSearchFocusIdx - 1, 0);
+  } else if (e.key === 'Enter' && convSearchFocusIdx >= 0) {
+    e.preventDefault();
+    const tz = items[convSearchFocusIdx].dataset.tz;
+    if (tz) convAddFromSearch(tz);
+    return;
+  } else if (e.key === 'Escape') {
+    resultsEl.classList.remove('open');
+    return;
+  }
+
+  items.forEach((item, i) => item.classList.toggle('focused', i === convSearchFocusIdx));
+  if (convSearchFocusIdx >= 0) items[convSearchFocusIdx].scrollIntoView({ block: 'nearest' });
+}
+
+function convAddFromSearch(tz) {
+  if (!convZones.includes(tz)) {
+    convZones.push(tz);
+    saveConvZones();
+    convRender();
+  }
+  const input = document.getElementById('conv-zone-search');
+  const results = document.getElementById('conv-zone-results');
+  if (input)   { input.value = ''; }
+  if (results) { results.classList.remove('open'); }
+  convSearchFocusIdx = -1;
+}
+
+// Close search on outside click
+document.addEventListener('click', e => {
+  if (!e.target.closest('.conv-add-bar')) {
+    document.getElementById('conv-zone-results')?.classList.remove('open');
+  }
+});
+
+// ── Remove / change zone ─────────────────────────────
+function convRemoveZone(idx) {
+  if (convZones.length <= 1) return;
+  convZones.splice(idx, 1);
+  saveConvZones();
+  convRender();
+}
+
+function convChangeZone(idx, newTz) {
+  convZones[idx] = newTz;
+  saveConvZones();
+  convRender();
+}
+
+// ── Share link ───────────────────────────────────────
+function convShare() {
+  const timeEl = document.getElementById('conv-master-time');
+  const dateEl = document.getElementById('conv-master-date');
+  const t = timeEl?.value || '';
+  const d = dateEl?.value || '';
+  const zonesParam = convZones.join(',');
+
+  // Build a hash-based URL (no server needed)
+  const base   = window.location.href.split('#')[0];
+  const params = new URLSearchParams();
+  params.set('zones', zonesParam);
+  if (!convLiveMode && t) params.set('time', t);
+  if (!convLiveMode && d) params.set('date', d);
+  params.set('view', 'converter');
+  const shareUrl = `${base}#${params.toString()}`;
+
+  navigator.clipboard.writeText(shareUrl).then(() => {
+    const toast = document.getElementById('conv-share-toast');
+    if (toast) {
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+    if(typeof gtag !== 'undefined') trackEvent('share_link', 'engagement', convZones.join(','));
+  }).catch(() => {
+    // Fallback: show the URL in a prompt
+    prompt('Copy this link:', shareUrl);
+  });
+}
+
+// Handle shared URL on load
+function convHandleUrlParams() {
+  const params = new URLSearchParams(window.location.hash.slice(1));
+  const view = params.get('view');
+  if (view === 'converter') {
+    // Switch to converter tab
+    setTimeout(() => {
+      const btn = document.querySelector('.nav-btn[onclick*="converter"]');
+      if (btn) { switchView('converter'); btn.classList.add('active'); document.querySelectorAll('.nav-btn').forEach(b=>{ if(b!==btn) b.classList.remove('active'); }); }
+    }, 100);
+    const t = params.get('time'), d = params.get('date');
+    if (t) {
+      convLiveMode = false;
+      const timeEl = document.getElementById('conv-master-time');
+      const dateEl = document.getElementById('conv-master-date');
+      if (timeEl) timeEl.value = t;
+      if (dateEl && d) dateEl.value = d;
+    }
+  }
+}
+
+// ── Drag-and-drop reorder ────────────────────────────
+let dragSrcIdx = null;
+
+function convSetupDrag(card, idx) {
+  const handle = card.querySelector('.czc-drag-handle');
+  if (!handle) return;
+
+  // Make only the card draggable when handle is grabbed
+  handle.addEventListener('mousedown', () => { card.draggable = true; });
+  handle.addEventListener('touchstart', () => { card.draggable = true; }, { passive: true });
+
+  card.addEventListener('dragstart', e => {
+    dragSrcIdx = idx;
+    card.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', idx);
+  });
+
+  card.addEventListener('dragend', () => {
+    card.draggable = false;
+    card.classList.remove('dragging');
+    document.querySelectorAll('.conv-zone-card').forEach(c => c.classList.remove('drag-over'));
+    dragSrcIdx = null;
+  });
+
+  card.addEventListener('dragover', e => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    document.querySelectorAll('.conv-zone-card').forEach(c => c.classList.remove('drag-over'));
+    card.classList.add('drag-over');
+  });
+
+  card.addEventListener('dragleave', () => {
+    card.classList.remove('drag-over');
+  });
+
+  card.addEventListener('drop', e => {
+    e.preventDefault();
+    card.classList.remove('drag-over');
+    const destIdx = idx;
+    if (dragSrcIdx === null || dragSrcIdx === destIdx) return;
+
+    // Reorder the array
+    const moved = convZones.splice(dragSrcIdx, 1)[0];
+    convZones.splice(destIdx, 0, moved);
+    saveConvZones();
+    convRender();
+  });
+}
+
+// ── Render ───────────────────────────────────────────
+const DAYS_SHORT   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function convRender() {
+  const utcMs   = convGetUTCMs();
+  const refDate = new Date(utcMs);
+  const localTz = _localTz;
+  const localDateStr = refDate.toLocaleDateString('en-CA', { timeZone: localTz });
+
+  // ── Zone cards ──────────────────────────────────────
+  const zonesEl = document.getElementById('conv-zones');
+  if (!zonesEl) return;
+  zonesEl.innerHTML = '';
+
+  convZones.forEach((tz, idx) => {
+    const isLocal    = tz === localTz;
+    const offsetMins = getTimezoneOffsetMins(tz, refDate);
+    const tzDate     = new Date(refDate.toLocaleString('en-US', { timeZone: tz }));
+    const h = tzDate.getHours(), m = tzDate.getMinutes(), s = tzDate.getSeconds();
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const dh   = is24h ? h : (h % 12 || 12);
+    const timeStr = `${pad(dh)}:${pad(m)}:${pad(s)}`;
+
+    // Day diff vs local zone
+    const tzDateStr = refDate.toLocaleDateString('en-CA', { timeZone: tz });
+    const [ly,lmo,ld] = localDateStr.split('-').map(Number);
+    const [ty,tmo,td] = tzDateStr.split('-').map(Number);
+    const dayDiff = Math.round((Date.UTC(ty,tmo-1,td) - Date.UTC(ly,lmo-1,ld)) / 86400000);
+    const dayBadgeClass = dayDiff === 0 ? 'same' : dayDiff > 0 ? 'plus1' : 'min1';
+    const dayBadgeText  = dayDiff === 0 ? '' : dayDiff > 0 ? '+1 day' : '-1 day';
+    const dateDisp = `${DAYS_SHORT[tzDate.getDay()]}, ${MONTHS_SHORT[tzDate.getMonth()]} ${tzDate.getDate()}`;
+
+    const card = document.createElement('div');
+    card.className = `conv-zone-card${isLocal ? ' is-local' : ''}`;
+    card.dataset.idx = idx;
+    card.innerHTML = `
+      <div class="czc-left">
+        <select class="czc-select" onchange="convChangeZone(${idx}, this.value)">
+          ${ALL_TZ.map(t => `<option value="${t}"${t===tz?' selected':''}>${t.replace(/_/g,' ')}</option>`).join('')}
+        </select>
+        <div class="czc-tz-name">${tz.replace(/_/g,' ')}${isLocal ? ' · <span style="color:var(--accent);font-size:9px;letter-spacing:2px;">YOU</span>' : ''}</div>
+        <div class="czc-offset-tag">${fmtOffset(offsetMins)}</div>
+      </div>
+      <div class="czc-mid">
+        <div class="czc-time">${timeStr}</div>
+        ${!is24h ? `<div class="czc-ampm">${ampm}</div>` : ''}
+        ${dayBadgeText ? `<div class="czc-date-badge ${dayBadgeClass}">${dayBadgeText}</div>` : ''}
+        <div class="czc-day-date">${dateDisp}</div>
+      </div>
+      <div class="czc-right">
+        <span class="czc-drag-handle" title="Drag to reorder">⠿</span>
+        ${!isLocal ? `<button class="czc-remove" onclick="convRemoveZone(${idx})" title="Remove zone">✕</button>` : ''}
+      </div>`;
+
+    convSetupDrag(card, idx);
+    zonesEl.appendChild(card);
+  });
+
+  // ── UTC offset bar ──────────────────────────────────
+  const barWrap = document.getElementById('conv-offset-bar');
+  if (barWrap) {
+    barWrap.innerHTML = '';
+    const allOffsets = convZones.map(tz => getTimezoneOffsetMins(tz, refDate));
+    const minOff = Math.min(...allOffsets) - 60;
+    const maxOff = Math.max(...allOffsets) + 60;
+    const range  = maxOff - minOff || 1;
+    const colors = ['var(--accent)','var(--accent2)','var(--accent3)','var(--green)','var(--amber)'];
+
+    convZones.forEach((tz, idx) => {
+      const off      = allOffsets[idx];
+      const pctStart = ((off - minOff) / range) * 100;
+      const barW     = Math.max(6, 80 / convZones.length);
+      const color    = colors[idx % colors.length];
+      const utcPct   = ((-minOff) / range) * 100;
+
+      const row = document.createElement('div');
+      row.className = 'conv-offset-row';
+      row.innerHTML = `
+        <div class="conv-offset-city">${tz.split('/').pop().replace(/_/g,' ')}</div>
+        <div class="conv-offset-track">
+          <div class="conv-offset-fill" style="left:${pctStart.toFixed(1)}%;width:${barW.toFixed(1)}%;background:${color}">${fmtOffset(off)}</div>
+          <div class="conv-offset-utc-line" style="left:${utcPct.toFixed(1)}%"></div>
+        </div>
+        <div class="conv-offset-val">${fmtOffset(off)}</div>`;
+      barWrap.appendChild(row);
+    });
+  }
+
+  // ── 24h overlap grid ────────────────────────────────
+  const gridWrap = document.getElementById('conv-grid-wrap');
+  if (gridWrap) {
+    const refTzDate = new Date(refDate.toLocaleString('en-US', { timeZone: convZones[0] }));
+    const selHour   = refTzDate.getHours();
+    const colors    = ['var(--accent)','var(--accent2)','var(--accent3)','var(--green)','var(--amber)'];
+
+    let html = '<table class="conv-grid-table"><thead><tr><th class="grid-city">Zone</th>';
+    for (let h = 0; h < 24; h++) {
+      const label = is24h ? pad(h) : (h===0?'12a':h<12?h+'a':h===12?'12p':(h-12)+'p');
+      html += `<th>${label}</th>`;
+    }
+    html += '</tr></thead><tbody>';
+
+    const baseOffMins = getTimezoneOffsetMins(convZones[0], refDate);
+
+    convZones.forEach((tz, idx) => {
+      const color      = colors[idx % colors.length];
+      const offMins    = getTimezoneOffsetMins(tz, refDate);
+      const diffMins   = offMins - baseOffMins;
+
+      html += `<tr><td class="grid-city" style="border-left:3px solid ${color}">${tz.split('/').pop().replace(/_/g,' ')}</td>`;
+      for (let h = 0; h < 24; h++) {
+        const tzHour  = (((h * 60 + diffMins) % 1440) + 1440) % 1440 / 60 | 0;
+        const isWork  = tzHour >= 9 && tzHour < 18;
+        const isSleep = tzHour < 7 || tzHour >= 22;
+        const isSel   = h === selHour;
+        const cls     = isSel ? 'selected-hour' : isWork ? 'work-hour' : isSleep ? 'sleep-hour' : '';
+        const label   = is24h ? pad(tzHour) : (tzHour===0?'12a':tzHour<12?tzHour+'a':tzHour===12?'12p':(tzHour-12)+'p');
+        html += `<td class="${cls}">${label}</td>`;
+      }
+      html += '</tr>';
+    });
+
+    html += '</tbody></table>';
+    gridWrap.innerHTML = html;
+  }
+}
+
+function convLiveTick() {
+  if (convLiveMode) {
+    const now = new Date();
+    const timeEl = document.getElementById('conv-master-time');
+    const dateEl = document.getElementById('conv-master-date');
+    if (timeEl) timeEl.value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    if (dateEl && !dateEl.value) dateEl.value = now.toLocaleDateString('en-CA');
+    convRender();
+  }
+}
+
+// Stubs for old function names referenced in init
+function populateConvSelects() { convInit(); }
+function convertTz() {}
+function swapConv() {}
+
+function convInit() {
+  const now = new Date();
+  const dateEl = document.getElementById('conv-master-date');
+  const timeEl = document.getElementById('conv-master-time');
+  if (dateEl) dateEl.value = now.toLocaleDateString('en-CA');
+  if (timeEl) timeEl.value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  convHandleUrlParams();
+  convRender();
+  setInterval(convLiveTick, 1000);
+}
+
+// ═══════════════════════════════════════════════════
+//  ALARMS
+// ═══════════════════════════════════════════════════
+function renderAlarms() {
+  const list = document.getElementById('alarms-list');
+  if (!alarms.length) {
+    list.innerHTML = '<div style="padding:24px;text-align:center;font-family:\'DM Mono\',monospace;font-size:11px;color:var(--muted);letter-spacing:2px;">NO ALARMS SET</div>';
+    return;
+  }
+  list.innerHTML = alarms.map((a,i) => `
+    <div class="alarm-item">
+      <div class="alarm-item-time">${a.time}</div>
+      <div class="alarm-item-info">
+        <div class="alarm-item-label">${a.label||'Alarm'}</div>
+        <div class="alarm-item-countdown" id="alarm-cd-${i}">—</div>
+      </div>
+      <label class="alarm-toggle">
+        <input type="checkbox" ${a.enabled?'checked':''} onchange="toggleAlarm(${i},this.checked)">
+        <span class="alarm-slider"></span>
+      </label>
+      <button class="alarm-del-btn" onclick="deleteAlarm(${i})">✕</button>
+    </div>`).join('');
+}
+
+function addAlarm() {
+  const timeVal = document.getElementById('alarm-time-input').value;
+  const label   = document.getElementById('alarm-label-input').value;
+  if (!timeVal) return;
+  alarms.push({time:timeVal,label,enabled:true});
+  localStorage.setItem('alarms',JSON.stringify(alarms));
+  renderAlarms();
+  document.getElementById('alarm-label-input').value = '';
+}
+
+function toggleAlarm(i,v) {
+  alarms[i].enabled = v;
+  localStorage.setItem('alarms',JSON.stringify(alarms));
+}
+
+function deleteAlarm(i) {
+  alarms.splice(i,1);
+  localStorage.setItem('alarms',JSON.stringify(alarms));
+  renderAlarms();
+}
+
+let firedAlarm = null;
+let lastAlarmMinute = -1;
+
+function checkAlarms(now) {
+  const hm      = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  const nowMins = now.getHours() * 60 + now.getMinutes();
+
+  // Update countdowns every tick
+  alarms.forEach((a, i) => {
+    const el = document.getElementById(`alarm-cd-${i}`);
+    if (!el) return;
+    const [ah, am] = a.time.split(':').map(Number);
+    const alarmMins = ah * 60 + am;
+    let diff = alarmMins - nowMins;
+    if (diff < 0) diff += 1440;
+    const dh = Math.floor(diff / 60), dm = diff % 60;
+    el.textContent = !a.enabled ? 'Disabled'
+      : diff === 0 ? 'Ringing…'
+      : `in ${dh > 0 ? dh + 'h ' : ''}${dm}min`;
+  });
+
+  // Fire alarm — use minute-level deduplication instead of seconds===0
+  // so background tabs don't miss the trigger
+  if (nowMins === lastAlarmMinute) return;
+  lastAlarmMinute = nowMins;
+
+  alarms.forEach(a => {
+    if (a.enabled && a.time === hm && firedAlarm !== hm) {
+      firedAlarm = hm;
+      document.getElementById('alarm-fired-time').textContent  = a.time;
+      document.getElementById('alarm-fired-label').textContent = a.label || 'Alarm';
+      document.getElementById('alarm-fired-overlay').classList.add('show');
+      if (Notification.permission === 'granted') {
+        new Notification('⏰ Alarm!', { body: a.label || 'Your alarm is ringing!' });
+      }
+    }
+  });
+}
+
+function dismissAlarm() {
+  document.getElementById('alarm-fired-overlay').classList.remove('show');
+  setTimeout(() => firedAlarm=null, 60000);
+}
+
+// ═══════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════
+renderWorldClocks();
+renderCalendar();
+convInit();
+renderAlarms();
+updateHolidays();
+tick();
+setInterval(tick, 1000);
+setInterval(updateSun, 60000);
+
+// ═══════════════════════════════════════════════════
+//  SIDEBAR + MOBILE NAV
+// ═══════════════════════════════════════════════════
+
+// Mobile nav active state
+function mobSetActive(btn) {
+  document.querySelectorAll('.mob-nav-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}
+
+// Sidebar nav active state
+function sbSetActive(el) {
+  document.querySelectorAll('.sb-nav-item').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+}
+
+// Keep sidebar nav in sync when header nav is clicked
+const _origSwitchView = switchView;
+// patch switchView to also sync sidebar nav
+(function() {
+  const orig = window.switchView;
+  window.switchView = function(name, btn) {
+    orig(name, btn);
+    // Sync sidebar nav items
+    document.querySelectorAll('.sb-nav-item').forEach(item => {
+      item.classList.toggle('active', item.textContent.trim().toLowerCase().startsWith(name.toLowerCase().slice(0,4)));
+    });
+  };
+})();
+
+// Sidebar world clocks — show top 4 from worldClocks list
+function updateSidebarClocks() {
+  const el = document.getElementById('sb-world-clocks');
+  if (!el) return;
+  const now = new Date();
+  const items = worldClocks.slice(0, 5);
+  if (!items.length) {
+    el.innerHTML = '<div class="sb-fact" style="color:var(--muted);font-size:10px;">Add clocks in the Clock tab</div>';
+    return;
+  }
+  el.innerHTML = items.map(item => {
+    const tzDate = new Date(now.toLocaleString('en-US', { timeZone: item.tz }));
+    const h = tzDate.getHours(), m = tzDate.getMinutes();
+    const dh = is24h ? h : (h % 12 || 12);
+    const ampm = is24h ? '' : (h >= 12 ? ' PM' : ' AM');
+    const offMins = getTimezoneOffsetMins(item.tz, now);
+    return `<div class="sb-clock-item" onclick="switchView('clock',null)" title="${item.tz}">
+      <div class="sb-city">${item.city}</div>
+      <div class="sb-time">${pad(dh)}:${pad(m)}${ampm}</div>
+      <div class="sb-offset">${fmtOffset(offMins)}</div>
+    </div>`;
+  }).join('');
+}
+
+// Sidebar live stats — synced from main tick
+function updateSidebarStats() {
+  const now = new Date();
+  const setSB = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+
+  setSB('sb-unix', Math.floor(now.getTime() / 1000).toLocaleString());
+  setSB('sb-utc', now.toUTCString().split(' ').slice(4,5)[0] + ' UTC');
+  const offMin = -now.getTimezoneOffset();
+  const oh = Math.floor(Math.abs(offMin)/60), om = Math.abs(offMin)%60;
+  setSB('sb-offset', `UTC${offMin>=0?'+':'-'}${pad(oh)}:${pad(om)}`);
+  setSB('sb-weekday', `Wk ${getWeek(now)} · Day ${getDoy(now)}`);
+
+  // Sun/Moon from main state
+  const srEl = document.getElementById('sunrise-val');
+  const ssEl = document.getElementById('sunset-val');
+  const dlEl = document.getElementById('daylight-val');
+  const mpEl = document.getElementById('moon-phase');
+  if (srEl) setSB('sb-sunrise', srEl.textContent);
+  if (ssEl) setSB('sb-sunset',  ssEl.textContent);
+  if (dlEl) setSB('sb-daylight', dlEl.textContent);
+  if (mpEl) setSB('sb-moon', mpEl.textContent);
+}
+
+// Sidebar tips — contextual based on current view
+const SB_TIPS = {
+  clock: [
+    '💡 Click a world clock card to jump to the Converter',
+    '💡 Press <kbd>L</kbd> to cycle through all themes',
+    '💡 Copy your Unix timestamp for use in code',
+    '💡 Sunrise times use GPS if you allow location',
+  ],
+  stopwatch: [
+    '💡 Press Space to start / pause',
+    '💡 Best lap shown in green, worst in red',
+    '💡 Lap times persist until you Reset',
+  ],
+  timer: [
+    '💡 Pomodoro = 25 min focused work + 5 min break',
+    '💡 The ring fills as time runs out',
+    '💡 Click the number to type a custom time',
+  ],
+  calendar: [
+    '💡 Navigate with ‹ › buttons or arrow keys',
+    '💡 Holidays are shown on the calendar grid',
+    '💡 Week numbers follow ISO 8601 standard',
+  ],
+  converter: [
+    '💡 Drag ⠿ handles to reorder zones',
+    '💡 Green cells = business hours in that zone',
+    '💡 Share Link encodes zones into a URL',
+    '💡 Hit "Now" to jump back to live time',
+  ],
+  alarm: [
+    '💡 Allow notifications for alarm sounds',
+    '💡 Toggle alarms on/off without deleting',
+    '💡 Label your alarms to remember what they\'re for',
+  ],
+};
+
+let currentSbView = 'clock';
+function updateSidebarTips(view) {
+  currentSbView = view || currentSbView;
+  const el = document.getElementById('sb-tips');
+  if (!el) return;
+  const tips = SB_TIPS[currentSbView] || SB_TIPS.clock;
+  el.innerHTML = tips.map(t =>
+    `<div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);padding:5px 0;border-bottom:1px solid var(--dim);line-height:1.5;">${t}</div>`
+  ).join('');
+}
+
+// Rotate "did you know" facts every 30s
+const TIME_FACTS = [
+  'The Unix epoch started at 00:00:00 UTC on 1 January 1970.',
+  'There are 39 distinct UTC offsets in use around the world today.',
+  'Nepal has the world\'s most unusual offset: UTC+05:45.',
+  'The international date line roughly follows 180° longitude.',
+  'Daylight saving time is observed in about 70 countries.',
+  'Atomic clocks lose only 1 second every 300 million years.',
+  'The longest day of the year is the summer solstice (~June 21).',
+  'UTC replaced GMT as the world time standard in 1972.',
+  'The second is defined as 9,192,631,770 caesium atom oscillations.',
+  'China uses a single timezone (UTC+8) despite spanning 5 geographic zones.',
+  'The ISS crosses 16 sunrises and sunsets every 24 hours.',
+  'A leap second was last added to UTC on Dec 31, 2016.',
+];
+let factIdx = Math.floor(Math.random() * TIME_FACTS.length);
+function rotateFact() {
+  const el = document.getElementById('sb-fact-text');
+  if (!el) return;
+  el.textContent = TIME_FACTS[factIdx % TIME_FACTS.length];
+  factIdx++;
+}
+
+// Patch switchView to update tips
+(function() {
+  const orig = window.switchView;
+  window.switchView = function(name, btn) {
+    orig(name, btn);
+    updateSidebarTips(name);
+  };
+})();
+
+// Sidebar tick — every second
+function sidebarTick() {
+  updateSidebarClocks();
+  updateSidebarStats();
+}
+
+// Init sidebar
+updateSidebarTips('clock');
+rotateFact();
+setInterval(rotateFact, 30000);
+setInterval(sidebarTick, 1000);
+sidebarTick();
+
+</script>
+<!-- Theme Panel Overlay -->
+<div class="theme-panel-overlay" id="theme-overlay" onclick="closeThemePanel()"></div>
+
+<!-- Theme Panel -->
+<div class="theme-panel" id="theme-panel">
+  <div class="theme-panel-header">
+    <span class="theme-panel-title">Appearance</span>
+    <button class="theme-panel-close" onclick="closeThemePanel()">✕</button>
+  </div>
+  <div class="theme-panel-body">
+
+    <div>
+      <div class="tp-section-label">Theme</div>
+      <div class="theme-cards" id="theme-cards"></div>
+    </div>
+
+    <div>
+      <div class="tp-section-label">Accent Color</div>
+      <div class="accent-row" id="accent-row"></div>
+    </div>
+
+    <div>
+      <div class="tp-section-label">Time Format</div>
+      <div style="display:flex;gap:8px;">
+        <button class="sw-btn" id="fmt-12" onclick="setFmt(false)" style="flex:1;padding:10px;">12-hour</button>
+        <button class="sw-btn" id="fmt-24" onclick="setFmt(true)" style="flex:1;padding:10px;">24-hour</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+//  THEME SYSTEM
+// ═══════════════════════════════════════════════════
+const THEMES = [
+  { id:'dark',   name:'Midnight',  bg:'#0a0a0f', surface:'#111118', accent:'#c8f060', text:'#e8e8f0', border:'#1e1e2e' },
+  { id:'light',  name:'Daylight',  bg:'#f8f9fa', surface:'#ffffff', accent:'#1a73e8', text:'#202124', border:'#dadce0' },
+  { id:'sepia',  name:'Sepia',     bg:'#f5f0e8', surface:'#faf7f2', accent:'#b5591a', text:'#2c2416', border:'#d4c8b0' },
+  { id:'slate',  name:'Slate',     bg:'#0d1117', surface:'#161b22', accent:'#58a6ff', text:'#e6edf3', border:'#30363d' },
+  { id:'navy',   name:'Navy',      bg:'#0a0e1a', surface:'#0f1629', accent:'#7eb8f7', text:'#d4e0f7', border:'#1e2d50' },
+  { id:'rose',   name:'Rose',      bg:'#1a0e10', surface:'#221318', accent:'#f9a8c8', text:'#f5e6ea', border:'#3d2030' },
+  { id:'forest', name:'Forest',    bg:'#0a1208', surface:'#0f1a0e', accent:'#8fdc5e', text:'#e0f0dc', border:'#1e3020' },
+  { id:'dusk',   name:'Dusk',      bg:'#0e0b18', surface:'#150f22', accent:'#b89ef8', text:'#e8e0f8', border:'#2e2050' },
+  { id:'mono',   name:'Mono',      bg:'#111111', surface:'#1a1a1a', accent:'#ffffff', text:'#f0f0f0', border:'#333333' },
+];
+
+const ACCENT_PALETTE = [
+  { color:'#c8f060', name:'Lime' },
+  { color:'#60c8f0', name:'Sky' },
+  { color:'#f060a8', name:'Pink' },
+  { color:'#fbbf24', name:'Amber' },
+  { color:'#a78bfa', name:'Violet' },
+  { color:'#34d399', name:'Mint' },
+  { color:'#f97316', name:'Orange' },
+  { color:'#e879f9', name:'Fuchsia' },
+  { color:'#1a73e8', name:'Blue' },
+  { color:'#ffffff', name:'White' },
+];
+
+let currentTheme = localStorage.getItem('theme') || 'dark';
+let customAccent = localStorage.getItem('customAccent') || '';
+
+function applyTheme(id) {
+  currentTheme = id;
+  document.documentElement.setAttribute('data-theme', id);
+  localStorage.setItem('theme', id);
+  if (customAccent) {
+    document.documentElement.style.setProperty('--accent', customAccent);
+  }
+  // Update active card
+  document.querySelectorAll('.theme-card').forEach(c => {
+    c.classList.toggle('active', c.dataset.theme === id);
+  });
+}
+
+function applyAccent(color, save=true) {
+  customAccent = color;
+  document.documentElement.style.setProperty('--accent', color);
+  if (save) localStorage.setItem('customAccent', color);
+  document.querySelectorAll('.tp-swatch').forEach(s => {
+    s.classList.toggle('active', s.dataset.color === color);
+  });
+}
+
+function buildThemePanel() {
+  // Theme cards
+  const grid = document.getElementById('theme-cards');
+  THEMES.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'theme-card' + (t.id===currentTheme?' active':'');
+    card.dataset.theme = t.id;
+    card.title = t.name;
+    card.innerHTML = `
+      <div class="tc-preview" style="background:${t.bg}">
+        <div class="tc-header" style="background:${t.surface};border-bottom:1px solid ${t.border}">
+          <div class="tc-dot" style="background:${t.accent}"></div>
+          <div class="tc-dot" style="background:${t.border}"></div>
+          <div class="tc-dot" style="background:${t.border}"></div>
+        </div>
+        <div class="tc-body">
+          <div class="tc-time" style="color:${t.text}">${new Date().getHours()}:${String(new Date().getMinutes()).padStart(2,'0')}</div>
+        </div>
+        <div class="tc-name" style="background:${t.surface};color:${t.accent};border-color:${t.border}">${t.name}</div>
+      </div>`;
+    card.onclick = () => applyTheme(t.id);
+    grid.appendChild(card);
+  });
+
+  // Accent swatches
+  const row = document.getElementById('accent-row');
+  ACCENT_PALETTE.forEach(a => {
+    const sw = document.createElement('div');
+    sw.className = 'tp-swatch' + (a.color===customAccent?' active':'');
+    sw.style.background = a.color;
+    sw.dataset.color = a.color;
+    sw.title = a.name;
+    sw.onclick = () => applyAccent(a.color);
+    row.appendChild(sw);
+  });
+}
+
+function setFmt(use24) {
+  is24h = use24;
+  localStorage.setItem('is24h', is24h);
+  document.getElementById('h24-btn').style.color = is24h ? 'var(--accent)' : '';
+  document.getElementById('fmt-12').classList.toggle('primary', !use24);
+  document.getElementById('fmt-24').classList.toggle('primary', use24);
+  updateSun(); // re-render sunrise/sunset in correct format
+}
+
+function toggleThemePanel() {
+  document.getElementById('theme-panel').classList.toggle('open');
+  document.getElementById('theme-overlay').classList.toggle('open');
+}
+function closeThemePanel() {
+  document.getElementById('theme-panel').classList.remove('open');
+  document.getElementById('theme-overlay').classList.remove('open');
+}
+
+// Init theme on load
+applyTheme(currentTheme);
+if (customAccent) applyAccent(customAccent, false);
+buildThemePanel();
+// Sync format buttons
+document.getElementById('fmt-12').classList.toggle('primary', !is24h);
+document.getElementById('fmt-24').classList.toggle('primary', is24h);
+</script>
+
+</body>

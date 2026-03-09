@@ -1022,9 +1022,9 @@ nav { display: flex; gap: 4px; }
 }
 .cal-header {
   display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 20px; flex-wrap: wrap; gap: 12px;
 }
-.cal-nav { display:flex; gap:8px; }
+.cal-nav { display:flex; gap:6px; }
 .cal-nav-btn {
   background:var(--surface); border:1px solid var(--border); color:var(--muted);
   width:32px; height:32px; cursor:pointer; font-size:14px;
@@ -1035,6 +1035,28 @@ nav { display: flex; gap: 4px; }
   font-family:'Bebas Neue',sans-serif; font-size:32px;
   letter-spacing:2px; color:var(--text);
 }
+.cal-year-display {
+  font-family:'DM Mono',monospace; font-size:14px; color:var(--muted); letter-spacing:2px;
+}
+.cal-jump-row {
+  display:flex; gap:8px; align-items:center; flex-wrap:wrap;
+}
+.cal-jump-select, .cal-jump-year-input {
+  background:var(--surface); border:1px solid var(--border);
+  color:var(--text); font-family:'DM Mono',monospace; font-size:11px;
+  padding:6px 10px; outline:none; cursor:pointer; letter-spacing:1px;
+}
+.cal-jump-year-input { width:76px; }
+.cal-add-event-btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border:none; color:var(--bg);
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:2px; text-transform:uppercase;
+  padding:7px 16px; cursor:pointer; font-weight:600;
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--accent) 35%, transparent);
+  transition:opacity 0.2s; white-space:nowrap;
+}
+.cal-add-event-btn:hover { opacity:0.85; }
 .cal-grid {
   display: grid; grid-template-columns: repeat(7,1fr);
   gap: 1px; background: var(--border);
@@ -1047,25 +1069,46 @@ nav { display: flex; gap: 4px; }
   text-align:center;
 }
 .cal-day {
-  background: var(--surface); padding: 12px 10px;
-  min-height: 70px; cursor: pointer;
+  background: var(--surface); padding: 8px 8px 6px;
+  min-height: 80px; cursor: pointer;
   transition: background 0.15s; position: relative;
+  overflow: hidden;
 }
 .cal-day:hover { background: var(--surface2); }
-.cal-day.other-month { opacity: 0.3; }
+.cal-day.other-month { opacity: 0.3; cursor:default; }
 .cal-day.today { background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
-.cal-day.today .cal-day-num { color: var(--accent); }
-.cal-day.selected { background: color-mix(in srgb, var(--accent2) 12%, var(--surface)); }
+.cal-day.today .cal-day-num { color: var(--accent); font-weight:bold; }
+.cal-day.has-events::after {
+  content:''; position:absolute; bottom:4px; right:4px;
+  width:6px; height:6px; border-radius:50%;
+  background: var(--accent);
+}
 .cal-day-num {
   font-family:'DM Mono',monospace; font-size:13px; color:var(--text);
   display:block; margin-bottom:4px;
 }
 .cal-day-event {
   font-size:9px; font-family:'DM Mono',monospace;
-  letter-spacing:1px; color:var(--accent2);
+  letter-spacing:0.5px; color:var(--accent2);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-  display:block; margin-top:2px;
+  display:block; margin-top:2px; padding:1px 4px;
+  background: color-mix(in srgb, var(--accent2) 12%, transparent);
 }
+.cal-day-event.cat-birthday { color:#f472b6; background:color-mix(in srgb, #f472b6 12%, transparent); }
+.cal-day-event.cat-meeting  { color:#60a5fa; background:color-mix(in srgb, #60a5fa 12%, transparent); }
+.cal-day-event.cat-gym      { color:#34d399; background:color-mix(in srgb, #34d399 12%, transparent); }
+.cal-day-event.cat-yoga     { color:#a78bfa; background:color-mix(in srgb, #a78bfa 12%, transparent); }
+.cal-day-event.cat-class    { color:#fb923c; background:color-mix(in srgb, #fb923c 12%, transparent); }
+.cal-day-event.cat-travel   { color:#38bdf8; background:color-mix(in srgb, #38bdf8 12%, transparent); }
+.cal-day-event.cat-holiday  { color:#facc15; background:color-mix(in srgb, #facc15 12%, transparent); }
+.cal-day-event.cat-important{ color:#f87171; background:color-mix(in srgb, #f87171 12%, transparent); }
+.cal-day-event.cat-reminder { color:#c084fc; background:color-mix(in srgb, #c084fc 12%, transparent); }
+
+.cal-more-badge {
+  font-size:9px; font-family:'DM Mono',monospace;
+  color:var(--muted); margin-top:2px; padding:1px 4px;
+}
+
 .cal-side {
   margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
 }
@@ -1081,6 +1124,122 @@ nav { display: flex; gap: 4px; }
 .cal-info-item:last-child { border-bottom:none; }
 .cal-info-key { color:var(--muted); }
 .cal-info-val { color:var(--text); }
+
+/* ─── EVENT MODAL ─── */
+.cal-modal-overlay {
+  position:fixed; inset:0; z-index:3000;
+  background:rgba(0,0,0,0.7); backdrop-filter:blur(8px);
+  display:none; align-items:center; justify-content:center;
+}
+.cal-modal-overlay.open { display:flex; }
+.cal-modal {
+  background:var(--surface); border:1px solid var(--border);
+  width:100%; max-width:520px; max-height:90vh; overflow-y:auto;
+  box-shadow:0 24px 60px rgba(0,0,0,0.6);
+  position:relative;
+  border-top:3px solid var(--accent);
+  animation: slideUp 0.2s ease;
+}
+@keyframes slideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
+.cal-modal-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 20px; border-bottom:1px solid var(--border);
+}
+.cal-modal-title {
+  font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:2px; color:var(--text);
+}
+.cal-modal-close {
+  background:none; border:1px solid var(--border); color:var(--muted);
+  width:30px; height:30px; cursor:pointer; font-size:14px;
+  display:flex; align-items:center; justify-content:center; transition:all 0.2s;
+}
+.cal-modal-close:hover { border-color:var(--red); color:var(--red); }
+.cal-modal-body { padding:20px; display:flex; flex-direction:column; gap:14px; }
+.cal-field { display:flex; flex-direction:column; gap:6px; }
+.cal-field-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.cal-label {
+  font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px;
+  text-transform:uppercase; color:var(--muted);
+}
+.cal-input {
+  background:var(--bg); border:1px solid var(--border);
+  color:var(--text); font-family:'DM Sans',sans-serif;
+  font-size:14px; padding:10px 12px; outline:none;
+  transition:border-color 0.2s; width:100%; box-sizing:border-box;
+  color-scheme: light dark;
+}
+.cal-input:focus { border-color:var(--accent); }
+.cal-textarea { resize:vertical; min-height:60px; font-family:'DM Sans',sans-serif; }
+.cal-modal-footer {
+  display:flex; gap:10px; align-items:center;
+  padding:16px 20px; border-top:1px solid var(--border);
+}
+.cal-modal-save {
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border:none; color:var(--bg);
+  font-family:'DM Mono',monospace; font-size:11px; letter-spacing:2px;
+  text-transform:uppercase; padding:10px 22px; cursor:pointer; font-weight:600;
+  margin-left:auto; transition:opacity 0.2s;
+}
+.cal-modal-save:hover { opacity:0.85; }
+.cal-modal-cancel {
+  background:var(--surface2); border:1px solid var(--border);
+  color:var(--muted); font-family:'DM Mono',monospace; font-size:11px;
+  letter-spacing:1px; padding:10px 18px; cursor:pointer; transition:all 0.2s;
+}
+.cal-modal-cancel:hover { border-color:var(--muted); color:var(--text); }
+.cal-modal-delete {
+  background:none; border:1px solid var(--red);
+  color:var(--red); font-family:'DM Mono',monospace; font-size:11px;
+  letter-spacing:1px; padding:10px 16px; cursor:pointer; transition:all 0.2s;
+}
+.cal-modal-delete:hover { background:color-mix(in srgb, var(--red) 12%, transparent); }
+
+/* ─── DAY POPUP ─── */
+.cal-day-popup {
+  position:fixed; z-index:2500;
+  background:var(--surface); border:1px solid var(--border);
+  width:320px; max-height:420px; overflow-y:auto;
+  box-shadow:0 16px 40px rgba(0,0,0,0.5);
+  display:none; flex-direction:column;
+  border-top:3px solid var(--accent2);
+  animation: slideUp 0.15s ease;
+}
+.cal-day-popup.open { display:flex; }
+.cal-day-popup-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 14px; border-bottom:1px solid var(--border);
+  position:sticky; top:0; background:var(--surface);
+}
+.cal-day-popup-date {
+  font-family:'Bebas Neue',sans-serif; font-size:20px;
+  letter-spacing:2px; color:var(--text);
+}
+.cal-day-popup-list { padding:10px; display:flex; flex-direction:column; gap:8px; }
+.cal-popup-event {
+  background:var(--surface2); border:1px solid var(--border);
+  padding:10px 12px; cursor:pointer; transition:all 0.15s;
+  border-left:3px solid var(--accent);
+  display:flex; align-items:flex-start; justify-content:space-between; gap:8px;
+}
+.cal-popup-event:hover { border-color:var(--accent); background:var(--dim); }
+.cal-popup-event-info { flex:1; min-width:0; }
+.cal-popup-event-title {
+  font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text);
+  margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.cal-popup-event-meta {
+  font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); letter-spacing:1px;
+}
+.cal-popup-event-del {
+  background:none; border:none; color:var(--muted); font-size:14px;
+  cursor:pointer; padding:0 4px; transition:color 0.2s; flex-shrink:0;
+}
+.cal-popup-event-del:hover { color:var(--red); }
+.cal-popup-empty {
+  text-align:center; padding:20px;
+  font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:1px;
+}
 
 /* ─── TZ CONVERTER (NEW) ─────────────── */
 .conv-page {
@@ -2483,18 +2642,130 @@ footer {
 <!-- ═══════════════════ CALENDAR VIEW ════════════════ -->
 <div class="view" id="view-calendar">
   <div class="cal-wrap">
+
+    <!-- Header with rich nav -->
     <div class="cal-header">
       <div class="cal-nav">
+        <button class="cal-nav-btn" onclick="calJump(-12)" title="Previous year">«</button>
         <button class="cal-nav-btn" onclick="calNav(-1)">‹</button>
         <button class="cal-nav-btn" onclick="calNav(1)">›</button>
-        <button class="cal-nav-btn" onclick="calToday()" style="width:auto;padding:0 10px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;">Today</button>
+        <button class="cal-nav-btn" onclick="calJump(12)" title="Next year">»</button>
+        <button class="cal-nav-btn" onclick="calToday()" style="width:auto;padding:0 12px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;">Today</button>
       </div>
-      <div class="cal-month-title" id="cal-month-title">—</div>
-      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;" id="cal-year-title">—</div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="cal-month-title" id="cal-month-title">—</div>
+        <div class="cal-year-display" id="cal-year-title">—</div>
+      </div>
+      <!-- Quick jump -->
+      <div class="cal-jump-row">
+        <select id="cal-jump-month" class="cal-jump-select" onchange="calJumpTo()">
+          <option value="0">January</option><option value="1">February</option>
+          <option value="2">March</option><option value="3">April</option>
+          <option value="4">May</option><option value="5">June</option>
+          <option value="6">July</option><option value="7">August</option>
+          <option value="8">September</option><option value="9">October</option>
+          <option value="10">November</option><option value="11">December</option>
+        </select>
+        <input type="number" id="cal-jump-year" class="cal-jump-year-input" value="2026" min="1900" max="2100" onchange="calJumpTo()">
+        <button class="cal-nav-btn" onclick="calJump(-36)" style="width:auto;padding:0 8px;font-size:10px;">-3y</button>
+        <button class="cal-nav-btn" onclick="calJump(36)" style="width:auto;padding:0 8px;font-size:10px;">+3y</button>
+        <button class="cal-add-event-btn" onclick="calOpenAddEvent(null)">+ Add Event</button>
+      </div>
     </div>
+
     <div class="cal-grid" id="cal-grid"></div>
     <div class="cal-side" id="cal-side"></div>
   </div>
+</div>
+
+<!-- Event Add/Edit Modal -->
+<div class="cal-modal-overlay" id="cal-modal-overlay" onclick="calCloseModal(event)">
+  <div class="cal-modal" id="cal-modal">
+    <div class="cal-modal-header">
+      <div class="cal-modal-title" id="cal-modal-title">Add Event</div>
+      <button class="cal-modal-close" onclick="calCloseModalDirect()">✕</button>
+    </div>
+    <div class="cal-modal-body">
+      <input type="hidden" id="cal-event-id">
+      <div class="cal-field">
+        <label class="cal-label">Event Title *</label>
+        <input type="text" id="cal-ev-title" class="cal-input" placeholder="e.g. Birthday, Meeting, Gym…">
+      </div>
+      <div class="cal-field-row">
+        <div class="cal-field">
+          <label class="cal-label">Date *</label>
+          <input type="date" id="cal-ev-date" class="cal-input">
+        </div>
+        <div class="cal-field">
+          <label class="cal-label">Time (optional)</label>
+          <input type="time" id="cal-ev-time" class="cal-input">
+        </div>
+      </div>
+      <div class="cal-field-row">
+        <div class="cal-field">
+          <label class="cal-label">End Date (for blocks)</label>
+          <input type="date" id="cal-ev-end" class="cal-input">
+        </div>
+        <div class="cal-field">
+          <label class="cal-label">Category</label>
+          <select id="cal-ev-cat" class="cal-input">
+            <option value="general">📌 General</option>
+            <option value="birthday">🎂 Birthday</option>
+            <option value="meeting">💼 Meeting</option>
+            <option value="gym">💪 Gym / Fitness</option>
+            <option value="yoga">🧘 Yoga / Wellness</option>
+            <option value="class">🎵 Class / Lesson</option>
+            <option value="travel">✈️ Travel / Vacation</option>
+            <option value="holiday">🎉 Holiday / Festival</option>
+            <option value="reminder">🔔 Reminder</option>
+            <option value="important">⚠️ Important</option>
+          </select>
+        </div>
+      </div>
+      <div class="cal-field">
+        <label class="cal-label">Reminder</label>
+        <select id="cal-ev-reminder" class="cal-input">
+          <option value="">No reminder</option>
+          <option value="0">At event time</option>
+          <option value="5">5 minutes before</option>
+          <option value="15">15 minutes before</option>
+          <option value="30">30 minutes before</option>
+          <option value="60">1 hour before</option>
+          <option value="1440">1 day before</option>
+        </select>
+      </div>
+      <div class="cal-field">
+        <label class="cal-label">Notes</label>
+        <textarea id="cal-ev-notes" class="cal-input cal-textarea" placeholder="Any extra details…" rows="2"></textarea>
+      </div>
+      <div class="cal-field">
+        <label class="cal-label">Repeat</label>
+        <select id="cal-ev-repeat" class="cal-input">
+          <option value="none">No repeat</option>
+          <option value="weekly">Every week</option>
+          <option value="monthly">Every month</option>
+          <option value="yearly">Every year</option>
+        </select>
+      </div>
+    </div>
+    <div class="cal-modal-footer">
+      <button class="cal-modal-delete" id="cal-modal-delete-btn" onclick="calDeleteEvent()" style="display:none">🗑 Delete</button>
+      <button class="cal-modal-cancel" onclick="calCloseModalDirect()">Cancel</button>
+      <button class="cal-modal-save" onclick="calSaveEvent()">Save Event</button>
+    </div>
+  </div>
+</div>
+
+<!-- Day events popup -->
+<div class="cal-day-popup" id="cal-day-popup">
+  <div class="cal-day-popup-header">
+    <div class="cal-day-popup-date" id="cal-day-popup-date">—</div>
+    <div style="display:flex;gap:8px;">
+      <button class="cal-modal-save" style="padding:6px 14px;font-size:11px;" onclick="calOpenAddEvent(calPopupDate)">+ Add</button>
+      <button class="cal-modal-close" onclick="calCloseDayPopup()">✕</button>
+    </div>
+  </div>
+  <div class="cal-day-popup-list" id="cal-day-popup-list"></div>
 </div>
 
 <!-- ═══════════════════ CONVERTER VIEW ═══════════════ -->
@@ -3772,9 +4043,61 @@ let calYear = new Date().getFullYear(), calMonth = new Date().getMonth();
 const MON = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const MSHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
+// ── Calendar Events Store ──
+let calEvents = JSON.parse(localStorage.getItem('calEvents') || '[]');
+let calPopupDate = null;
+
+const CAT_ICONS = {
+  general:'📌', birthday:'🎂', meeting:'💼', gym:'💪',
+  yoga:'🧘', class:'🎵', travel:'✈️', holiday:'🎉',
+  reminder:'🔔', important:'⚠️'
+};
+const CAT_COLORS = {
+  general:'', birthday:'cat-birthday', meeting:'cat-meeting', gym:'cat-gym',
+  yoga:'cat-yoga', class:'cat-class', travel:'cat-travel', holiday:'cat-holiday',
+  reminder:'cat-reminder', important:'cat-important'
+};
+
+function saveCalEvents() {
+  localStorage.setItem('calEvents', JSON.stringify(calEvents));
+}
+
+// Returns events for a given date string YYYY-MM-DD (including repeats)
+function getEventsForDate(dateStr) {
+  const [yr, mo, dy] = dateStr.split('-').map(Number);
+  const target = new Date(yr, mo-1, dy);
+  return calEvents.filter(ev => {
+    const evDate = new Date(ev.date);
+    if (ev.date === dateStr) return true;
+    if (ev.repeat === 'yearly'  && evDate.getMonth()===mo-1 && evDate.getDate()===dy && evDate.getFullYear()<=yr) return true;
+    if (ev.repeat === 'monthly' && evDate.getDate()===dy && evDate <= target) return true;
+    if (ev.repeat === 'weekly') {
+      const diffDays = Math.round((target - evDate) / 86400000);
+      return diffDays >= 0 && diffDays % 7 === 0;
+    }
+    // Multi-day block
+    if (ev.endDate) {
+      const end = new Date(ev.endDate);
+      return target >= evDate && target <= end;
+    }
+    return false;
+  });
+}
+
+function dateKey(yr, mo, dy) {
+  return `${yr}-${String(mo+1).padStart(2,'0')}-${String(dy).padStart(2,'0')}`;
+}
+
 function renderCalendar() {
   document.getElementById('cal-month-title').textContent = MON[calMonth];
   document.getElementById('cal-year-title').textContent  = calYear;
+
+  // Sync jump selects
+  const jm = document.getElementById('cal-jump-month');
+  const jy = document.getElementById('cal-jump-year-input');
+  if (jm) jm.value = calMonth;
+  if (jy) jy.value = calYear;
+
   const grid = document.getElementById('cal-grid');
   grid.innerHTML = '';
   ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d => {
@@ -3782,26 +4105,51 @@ function renderCalendar() {
     el.className = 'cal-day-name'; el.textContent = d;
     grid.appendChild(el);
   });
+
   const first = new Date(calYear,calMonth,1).getDay();
   const total = new Date(calYear,calMonth+1,0).getDate();
   const today = new Date();
   const holidays = getHolidays(calYear);
+
+  // Prev month filler
   for (let i=0;i<first;i++) {
-    // Days from the previous month: count back from day 0 of current month
     const prevDay = new Date(calYear, calMonth, 0 - (first - 1 - i));
     const el = document.createElement('div');
     el.className = 'cal-day other-month';
     el.innerHTML = `<span class="cal-day-num">${prevDay.getDate()}</span>`;
     grid.appendChild(el);
   }
+
+  // Current month days
   for (let d=1;d<=total;d++) {
     const el = document.createElement('div');
     const isToday = d===today.getDate()&&calMonth===today.getMonth()&&calYear===today.getFullYear();
-    el.className = 'cal-day' + (isToday?' today':'');
+    const dk = dateKey(calYear, calMonth, d);
+    const dayEvs = getEventsForDate(dk);
     const hol = holidays.find(h=>h.date.getMonth()===calMonth&&h.date.getDate()===d);
-    el.innerHTML = `<span class="cal-day-num">${d}</span>${hol?`<span class="cal-day-event">${hol.name}</span>`:''}`;
+
+    let cls = 'cal-day' + (isToday?' today':'');
+    if (dayEvs.length > 0) cls += ' has-events';
+    el.className = cls;
+
+    let inner = `<span class="cal-day-num">${d}</span>`;
+    if (hol) inner += `<span class="cal-day-event cat-holiday">${CAT_ICONS.holiday} ${hol.name}</span>`;
+
+    const maxShow = hol ? 1 : 2;
+    dayEvs.slice(0, maxShow).forEach(ev => {
+      const catCls = CAT_COLORS[ev.category] || '';
+      inner += `<span class="cal-day-event ${catCls}">${CAT_ICONS[ev.category]||'📌'} ${ev.title}</span>`;
+    });
+    if (dayEvs.length > maxShow) {
+      inner += `<span class="cal-more-badge">+${dayEvs.length - maxShow} more</span>`;
+    }
+
+    el.innerHTML = inner;
+    el.addEventListener('click', () => calOpenDayPopup(dk, el));
     grid.appendChild(el);
   }
+
+  // Next month filler
   const remaining = 42 - first - total;
   for (let i=1;i<=remaining;i++) {
     const el = document.createElement('div');
@@ -3809,17 +4157,37 @@ function renderCalendar() {
     el.innerHTML = `<span class="cal-day-num">${i}</span>`;
     grid.appendChild(el);
   }
+
   // Side info
   const side = document.getElementById('cal-side');
   const diy = daysInYear(calYear);
   const wks = getWeek(new Date(calYear,calMonth,1));
+
+  // Upcoming events in month
+  const monthEvs = [];
+  for (let d=1;d<=total;d++) {
+    const dk = dateKey(calYear, calMonth, d);
+    getEventsForDate(dk).forEach(ev => monthEvs.push({...ev, _day:d}));
+  }
+
   side.innerHTML = `
     <div class="cal-info-card">
       <div class="cal-info-title">Month Info</div>
       <div class="cal-info-item"><span class="cal-info-key">Days in month</span><span class="cal-info-val">${total}</span></div>
-      <div class="cal-info-item"><span class="cal-info-key">Starts on</span><span class="cal-info-val">${['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][new Date(calYear,calMonth,1).getDay()]}</span></div>
-      <div class="cal-info-item"><span class="cal-info-key">Week number</span><span class="cal-info-val">${wks}–${wks+3}</span></div>
-      <div class="cal-info-item"><span class="cal-info-key">Leap year</span><span class="cal-info-val">${isLeap(calYear)?'Yes':'No'}</span></div>
+      <div class="cal-info-item"><span class="cal-info-key">Starts on</span><span class="cal-info-val">${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][new Date(calYear,calMonth,1).getDay()]}</span></div>
+      <div class="cal-info-item"><span class="cal-info-key">Week numbers</span><span class="cal-info-val">${wks}–${wks+3}</span></div>
+      <div class="cal-info-item"><span class="cal-info-key">Leap year</span><span class="cal-info-val">${isLeap(calYear)?'Yes ✓':'No'}</span></div>
+    </div>
+    <div class="cal-info-card">
+      <div class="cal-info-title">Events This Month</div>
+      ${monthEvs.length
+        ? monthEvs.slice(0,6).map(ev => `
+          <div class="cal-info-item" onclick="calOpenDayPopup('${dateKey(calYear,calMonth,ev._day)}',null)" style="cursor:pointer">
+            <span class="cal-info-key" style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${CAT_ICONS[ev.category]||'📌'} ${ev.title}</span>
+            <span class="cal-info-val">${MSHORT[calMonth]} ${ev._day}</span>
+          </div>`).join('') + (monthEvs.length>6 ? `<div style="font-size:10px;color:var(--muted);padding:8px 0;font-family:'DM Mono',monospace;">+${monthEvs.length-6} more events</div>` : '')
+        : '<div style="font-family:DM Mono,monospace;font-size:11px;color:var(--muted);padding:8px 0;">No events — click any day or use + Add Event</div>'
+      }
     </div>
     <div class="cal-info-card">
       <div class="cal-info-title">Holidays This Month</div>
@@ -3834,8 +4202,214 @@ function renderCalendar() {
     </div>`;
 }
 
-function calNav(dir) { calMonth+=dir; if(calMonth>11){calMonth=0;calYear++;} if(calMonth<0){calMonth=11;calYear--;} renderCalendar(); }
-function calToday() { calYear=new Date().getFullYear(); calMonth=new Date().getMonth(); renderCalendar(); }
+// ── Navigation ──
+function calNav(dir) {
+  calMonth+=dir;
+  if(calMonth>11){calMonth=0;calYear++;}
+  if(calMonth<0){calMonth=11;calYear--;}
+  renderCalendar();
+}
+function calJump(months) {
+  calMonth += months;
+  while(calMonth>11){calMonth-=12;calYear++;}
+  while(calMonth<0){calMonth+=12;calYear--;}
+  renderCalendar();
+}
+function calToday() {
+  calYear=new Date().getFullYear();
+  calMonth=new Date().getMonth();
+  renderCalendar();
+}
+function calJumpTo() {
+  const mo = parseInt(document.getElementById('cal-jump-month').value);
+  const yr = parseInt(document.getElementById('cal-jump-year-input').value);
+  if(yr>=1900&&yr<=2100){ calMonth=mo; calYear=yr; renderCalendar(); }
+}
+
+// ── Day Popup ──
+function calOpenDayPopup(dateStr, triggerEl) {
+  calPopupDate = dateStr;
+  const [yr, mo, dy] = dateStr.split('-').map(Number);
+  const popup = document.getElementById('cal-day-popup');
+  const dateDisp = new Date(yr, mo-1, dy);
+  document.getElementById('cal-day-popup-date').textContent =
+    `${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][dateDisp.getDay()]} ${MSHORT[mo-1]} ${dy}, ${yr}`;
+
+  const evs = getEventsForDate(dateStr);
+  const hols = getHolidays(yr).filter(h=>h.date.getMonth()===mo-1&&h.date.getDate()===dy);
+  const list = document.getElementById('cal-day-popup-list');
+
+  if (!evs.length && !hols.length) {
+    list.innerHTML = `<div class="cal-popup-empty">No events — click + Add to create one</div>`;
+  } else {
+    list.innerHTML = [
+      ...hols.map(h=>`<div class="cal-popup-event" style="border-left-color:#facc15;">
+        <div class="cal-popup-event-info">
+          <div class="cal-popup-event-title">🎉 ${h.name}</div>
+          <div class="cal-popup-event-meta">Public Holiday</div>
+        </div></div>`),
+      ...evs.map(ev=>`<div class="cal-popup-event" style="border-left-color:${catColor(ev.category)};cursor:pointer" onclick="calEditEvent('${ev.id}')">
+        <div class="cal-popup-event-info">
+          <div class="cal-popup-event-title">${CAT_ICONS[ev.category]||'📌'} ${ev.title}</div>
+          <div class="cal-popup-event-meta">${ev.time||'All day'} ${ev.repeat&&ev.repeat!=='none'?'· 🔁 '+ev.repeat:''} ${ev.reminder?'· 🔔':''}</div>
+          ${ev.notes?`<div class="cal-popup-event-meta" style="margin-top:2px;opacity:0.7">${ev.notes}</div>`:''}
+        </div>
+        <button class="cal-popup-event-del" onclick="event.stopPropagation();calDeleteEventById('${ev.id}')">✕</button>
+      </div>`)
+    ].join('');
+  }
+
+  // Position popup near click
+  popup.classList.add('open');
+  if (triggerEl) {
+    const rect = triggerEl.getBoundingClientRect();
+    const pw = 320, ph = 420;
+    let top = rect.bottom + 4;
+    let left = rect.left;
+    if (left + pw > window.innerWidth - 10) left = window.innerWidth - pw - 10;
+    if (top + ph > window.innerHeight - 10) top = rect.top - ph - 4;
+    popup.style.top = `${top}px`;
+    popup.style.left = `${left}px`;
+  } else {
+    popup.style.top = '50%'; popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%,-50%)';
+  }
+}
+
+function catColor(cat) {
+  const m = {birthday:'#f472b6',meeting:'#60a5fa',gym:'#34d399',yoga:'#a78bfa',
+    class:'#fb923c',travel:'#38bdf8',holiday:'#facc15',reminder:'#c084fc',important:'#f87171'};
+  return m[cat]||'var(--accent2)';
+}
+
+function calCloseDayPopup() {
+  const p = document.getElementById('cal-day-popup');
+  p.classList.remove('open');
+  p.style.transform = '';
+}
+
+// Close popup on outside click
+document.addEventListener('click', e => {
+  const popup = document.getElementById('cal-day-popup');
+  if (!popup) return;
+  if (!popup.contains(e.target) && !e.target.closest('.cal-day')) {
+    calCloseDayPopup();
+  }
+});
+
+// ── Add / Edit Modal ──
+function calOpenAddEvent(preDate) {
+  calCloseDayPopup();
+  document.getElementById('cal-modal-title').textContent = 'Add Event';
+  document.getElementById('cal-event-id').value = '';
+  document.getElementById('cal-ev-title').value = '';
+  document.getElementById('cal-ev-date').value = preDate || new Date().toLocaleDateString('en-CA');
+  document.getElementById('cal-ev-time').value = '';
+  document.getElementById('cal-ev-end').value = '';
+  document.getElementById('cal-ev-cat').value = 'general';
+  document.getElementById('cal-ev-reminder').value = '';
+  document.getElementById('cal-ev-notes').value = '';
+  document.getElementById('cal-ev-repeat').value = 'none';
+  document.getElementById('cal-modal-delete-btn').style.display = 'none';
+  document.getElementById('cal-modal-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('cal-ev-title').focus(), 100);
+}
+
+function calEditEvent(id) {
+  const ev = calEvents.find(e=>e.id===id);
+  if (!ev) return;
+  calCloseDayPopup();
+  document.getElementById('cal-modal-title').textContent = 'Edit Event';
+  document.getElementById('cal-event-id').value = ev.id;
+  document.getElementById('cal-ev-title').value = ev.title;
+  document.getElementById('cal-ev-date').value = ev.date;
+  document.getElementById('cal-ev-time').value = ev.time||'';
+  document.getElementById('cal-ev-end').value = ev.endDate||'';
+  document.getElementById('cal-ev-cat').value = ev.category||'general';
+  document.getElementById('cal-ev-reminder').value = ev.reminder||'';
+  document.getElementById('cal-ev-notes').value = ev.notes||'';
+  document.getElementById('cal-ev-repeat').value = ev.repeat||'none';
+  document.getElementById('cal-modal-delete-btn').style.display = 'block';
+  document.getElementById('cal-modal-overlay').classList.add('open');
+}
+
+function calSaveEvent() {
+  const title = document.getElementById('cal-ev-title').value.trim();
+  const date  = document.getElementById('cal-ev-date').value;
+  if (!title || !date) {
+    document.getElementById('cal-ev-title').style.borderColor = 'var(--red)';
+    return;
+  }
+  document.getElementById('cal-ev-title').style.borderColor = '';
+  const id = document.getElementById('cal-event-id').value;
+  const ev = {
+    id: id || `ev_${Date.now()}`,
+    title,
+    date,
+    time:      document.getElementById('cal-ev-time').value,
+    endDate:   document.getElementById('cal-ev-end').value,
+    category:  document.getElementById('cal-ev-cat').value,
+    reminder:  document.getElementById('cal-ev-reminder').value,
+    notes:     document.getElementById('cal-ev-notes').value,
+    repeat:    document.getElementById('cal-ev-repeat').value,
+  };
+  if (id) {
+    const idx = calEvents.findIndex(e=>e.id===id);
+    if (idx>=0) calEvents[idx]=ev;
+  } else {
+    calEvents.push(ev);
+  }
+  saveCalEvents();
+  calCloseModalDirect();
+  // Navigate to the event's month
+  const [yr,mo] = date.split('-').map(Number);
+  calYear=yr; calMonth=mo-1;
+  renderCalendar();
+  // Request notification permission
+  if (ev.reminder !== '' && Notification.permission==='default') Notification.requestPermission();
+  trackEvent && trackEvent('add_calendar_event', 'calendar', ev.category);
+}
+
+function calDeleteEvent() {
+  const id = document.getElementById('cal-event-id').value;
+  calDeleteEventById(id);
+  calCloseModalDirect();
+}
+
+function calDeleteEventById(id) {
+  calEvents = calEvents.filter(e=>e.id!==id);
+  saveCalEvents();
+  calCloseDayPopup();
+  renderCalendar();
+}
+
+function calCloseModal(e) {
+  if (e.target === document.getElementById('cal-modal-overlay')) calCloseModalDirect();
+}
+function calCloseModalDirect() {
+  document.getElementById('cal-modal-overlay').classList.remove('open');
+}
+
+// ── Event Reminders ──
+function checkCalEventReminders() {
+  const now = new Date();
+  const todayStr = now.toLocaleDateString('en-CA');
+  const nowMins  = now.getHours()*60 + now.getMinutes();
+  calEvents.forEach(ev => {
+    if (!ev.time || ev.reminder==='') return;
+    if (ev.date !== todayStr) return;
+    const [eh,em] = ev.time.split(':').map(Number);
+    const evMins = eh*60 + em;
+    const reminderMins = parseInt(ev.reminder)||0;
+    const triggerMins = evMins - reminderMins;
+    // Fire within a 1-minute window
+    if (nowMins === triggerMins && Notification.permission==='granted') {
+      const msg = reminderMins===0 ? `"${ev.title}" is now!` : `"${ev.title}" in ${reminderMins} min`;
+      new Notification(`${CAT_ICONS[ev.category]||'📌'} Event Reminder`, { body: msg });
+    }
+  });
+}
+setInterval(checkCalEventReminders, 60000);
 
 // ═══════════════════════════════════════════════════
 //  TIMEZONE CONVERTER  (multi-zone, drag, search, share)

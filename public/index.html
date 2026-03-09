@@ -14,7 +14,7 @@
 
 <!-- ═══════════ GOOGLE SEARCH CONSOLE VERIFICATION ═══════════ -->
 <!-- REPLACE the content value below with YOUR verification code from Search Console -->
-<meta name="google-site-verification" content="Rack829dvMqT_8gUHKpV73dMIWieXUW4WRfxER6YDg8" />
+<meta name="google-site-verification" content="PASTE_YOUR_VERIFICATION_CODE_HERE">
 
 <!-- ═══════════ OPEN GRAPH ═══════════ -->
 <meta property="og:type" content="website">
@@ -185,12 +185,12 @@
 
 <!-- ═══════════ GOOGLE ANALYTICS 4 ═══════════ -->
 <!-- Replace G-XXXXXXXXXX with your real GA4 Measurement ID from analytics.google.com -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-38TD3MXSDR"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-38TD3MXSDR', {
+  gtag('config', 'G-XXXXXXXXXX', {
     page_title: 'now.time — World Clock & Timezone Converter',
     page_location: window.location.href,
     send_page_view: true
@@ -210,20 +210,127 @@
 
 <style>
 :root {
-  --bg: #0a0a0f;
-  --surface: #111118;
-  --surface2: #16161f;
-  --border: #1e1e2e;
-  --accent: #c8f060;
-  --accent2: #60c8f0;
-  --accent3: #f060a8;
-  --text: #e8e8f0;
-  --muted: #5a5a78;
-  --dim: #2a2a3e;
-  --green: #4ade80;
-  --amber: #fbbf24;
-  --red: #f87171;
+  --bg: #080810;
+  --surface: #0f0f1a;
+  --surface2: #151525;
+  --border: #252540;
+  --accent: #7c3aed;
+  --accent2: #06b6d4;
+  --accent3: #f43f5e;
+  --text: #f0f0ff;
+  --muted: #6060a0;
+  --dim: #1a1a30;
+  --green: #10b981;
+  --amber: #f59e0b;
+  --red: #ef4444;
 }
+
+/* Vibrant gradient glow on bg */
+body::before {
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 10%, color-mix(in srgb, var(--accent) 12%, transparent) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 30% at 80% 80%, color-mix(in srgb, var(--accent2) 10%, transparent) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 25% at 60% 30%, color-mix(in srgb, var(--accent3) 6%, transparent) 0%, transparent 70%);
+}
+
+/* Logo gets gradient */
+.logo {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 28px !important;
+  letter-spacing: 2px !important;
+}
+.logo span { -webkit-text-fill-color: unset; color: unset; }
+
+/* Bigger base text */
+body { font-size: 16px; }
+
+/* Bigger stat values */
+.stat-val { font-size: 36px !important; }
+.stat-lbl { font-size: 11px !important; letter-spacing: 2px; }
+.stat-sub { font-size: 12px !important; }
+
+/* Bigger mono strip */
+.mono-val { font-size: 17px !important; }
+.mono-tag { font-size: 10px !important; }
+
+/* Bigger section labels */
+.sec-title { font-size: 11px !important; letter-spacing: 3px; }
+
+/* Bigger date row */
+.date-row { font-size: 14px !important; }
+
+/* Bigger nav buttons */
+.nav-btn { font-size: 11px !important; letter-spacing: 2px; padding: 8px 16px !important; }
+
+/* Active nav — gradient underline */
+.nav-btn.active {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 15%, transparent), color-mix(in srgb, var(--accent2) 8%, transparent)) !important;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* Bigger sun/moon values */
+.sun-val { font-size: 22px !important; }
+.sun-label { font-size: 11px !important; }
+.sun-sub { font-size: 12px !important; }
+
+/* Bigger clock card text */
+.cc-city { font-size: 13px !important; }
+.cc-time { font-size: 26px !important; }
+
+/* Stat cells get hover glow */
+.stat-cell:hover {
+  background: var(--surface2) !important;
+  box-shadow: inset 0 0 20px color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+/* Accent colored borders on hover for clock cards */
+.clock-card:hover {
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* Year bar gets gradient */
+.year-bar-fill {
+  background: linear-gradient(90deg, var(--accent), var(--accent2)) !important;
+}
+.year-bar-fill::after {
+  background: var(--accent2) !important;
+  box-shadow: 0 0 8px var(--accent2);
+}
+
+/* Bigger sw/timer display */
+.sw-display { font-size: clamp(60px, 12vw, 120px) !important; }
+.timer-ring-text { font-size: 32px !important; }
+
+/* Buttons get gradient */
+.sw-btn.primary, .alarm-add-btn, .conv-date-btn {
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent2) 60%, var(--accent))) !important;
+  border: none !important;
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 40%, transparent) !important;
+}
+.sw-btn.primary:hover, .alarm-add-btn:hover {
+  opacity: 0.9;
+  box-shadow: 0 6px 24px color-mix(in srgb, var(--accent) 55%, transparent) !important;
+}
+
+/* Sidebar accent text bigger */
+.sb-time { font-size: 22px !important; }
+.sb-city { font-size: 13px !important; }
+.sb-fact-val { font-size: 13px !important; }
+
+/* Holiday strip bigger */
+.hol-name { font-size: 14px !important; }
+.hol-days { font-size: 20px !important; }
+
+/* Footer bigger */
+.footer-l { font-size: 12px !important; }
+.footer-links a { font-size: 12px !important; }
 
 /* ── LIGHT: Clean white (Google / Apple inspired) ── */
 [data-theme="light"] {
@@ -1031,6 +1138,84 @@ nav { display: flex; gap: 4px; }
 .col-legend { display: flex; align-items: center; gap: 5px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
 .col-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
+/* ── TIME SLIDER ── */
+.conv-slider-time-display {
+  font-family: 'Bebas Neue', sans-serif; font-size: 40px;
+  color: var(--accent); letter-spacing: 3px; line-height: 1;
+  min-width: 100px;
+}
+.conv-slider-wrap {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.conv-slider-markers {
+  display: flex; justify-content: space-between;
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  color: var(--muted); letter-spacing: 0.5px;
+  padding: 0 2px;
+}
+.conv-slider-track-wrap {
+  position: relative; padding: 10px 0;
+}
+.conv-slider-bg-bands {
+  position: absolute; top: 10px; left: 0; right: 0; bottom: 10px;
+  pointer-events: none;
+}
+.csb-band {
+  position: absolute; top: 0; bottom: 0;
+}
+.csb-band.sleep { background: color-mix(in srgb, var(--accent3) 12%, transparent); }
+.csb-band.work  { background: color-mix(in srgb, var(--green) 10%, transparent); }
+
+/* Range input reset + style */
+.conv-time-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 6px; outline: none; cursor: pointer;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) var(--fill, 50%), var(--dim) var(--fill, 50%), var(--dim) 100%);
+  border-radius: 0; position: relative; z-index: 2;
+  transition: background 0.05s;
+}
+.conv-time-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--bg), 0 0 12px color-mix(in srgb, var(--accent) 60%, transparent);
+  cursor: grab; transition: transform 0.1s, box-shadow 0.1s;
+}
+.conv-time-slider::-webkit-slider-thumb:active {
+  cursor: grabbing; transform: scale(1.2);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 20px color-mix(in srgb, var(--accent) 80%, transparent);
+}
+.conv-time-slider::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%; border: none;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--bg), 0 0 12px color-mix(in srgb, var(--accent) 60%, transparent);
+  cursor: grab;
+}
+.conv-slider-thumb-label {
+  position: absolute; top: -28px;
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  background: var(--accent); color: var(--bg);
+  padding: 2px 7px; pointer-events: none; z-index: 3;
+  transform: translateX(-50%); white-space: nowrap;
+  transition: left 0.05s;
+  font-weight: 600; letter-spacing: 1px;
+}
+.conv-slider-thumb-label::after {
+  content: ''; position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent; border-top-color: var(--accent);
+}
+.conv-slider-legend {
+  display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
+  font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted);
+}
+.csb-swatch {
+  display: inline-block; width: 12px; height: 12px;
+  margin-right: 4px; vertical-align: middle;
+}
+.csb-swatch.sleep { background: color-mix(in srgb, var(--accent3) 40%, transparent); border: 1px solid var(--accent3); }
+.csb-swatch.work  { background: color-mix(in srgb, var(--green) 35%, transparent); border: 1px solid var(--green); }
+
 /* Zone cards */
 .conv-zones {
   display: flex; flex-direction: column; gap: 1px;
@@ -1800,12 +1985,173 @@ footer {
 
 
 
+/* ─── TASK TIMER ─────────────────────── */
+.tasks-wrap {
+  padding: 40px 32px; max-width: 860px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.task-add-row {
+  display: flex; flex-direction: column; gap: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 20px; margin-bottom: 24px;
+  position: relative;
+}
+.task-add-row::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+}
+.task-name-input {
+  background: var(--dim); border: 1px solid var(--border);
+  color: var(--text); font-family: 'DM Sans', sans-serif;
+  font-size: 18px; padding: 14px 16px; outline: none;
+  transition: border-color 0.2s; width: 100%; box-sizing: border-box;
+}
+.task-name-input:focus { border-color: var(--accent); }
+.task-name-input::placeholder { color: var(--muted); }
+
+.task-time-inputs {
+  display: flex; align-items: center; gap: 8px;
+}
+.task-time-num {
+  background: var(--dim); border: 1px solid var(--border);
+  color: var(--accent); font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px; width: 70px; text-align: center;
+  padding: 8px 4px; outline: none;
+  transition: border-color 0.2s;
+}
+.task-time-num:focus { border-color: var(--accent); }
+.task-sep {
+  font-family: 'DM Mono', monospace; font-size: 14px;
+  color: var(--muted); letter-spacing: 1px;
+}
+.task-presets {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.task-preset {
+  background: var(--dim); border: 1px solid var(--border);
+  color: var(--muted); font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 1px; padding: 7px 14px;
+  cursor: pointer; transition: all 0.2s;
+}
+.task-preset:hover { border-color: var(--accent); color: var(--accent); }
+
+.task-add-btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border: none; color: var(--bg);
+  font-family: 'DM Mono', monospace; font-size: 12px;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 14px 24px; cursor: pointer;
+  font-weight: 600; transition: opacity 0.2s;
+  align-self: flex-start;
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.task-add-btn:hover { opacity: 0.85; }
+
+/* Task list items */
+.tasks-list {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.tasks-empty {
+  text-align: center; padding: 60px 20px;
+  background: var(--surface); border: 1px solid var(--border);
+}
+.task-item {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 0; overflow: hidden;
+  transition: all 0.2s; position: relative;
+}
+.task-item.running { border-color: var(--accent); }
+.task-item.running::before {
+  content: '';
+  position: absolute; top: 0; left: 0; width: 4px; bottom: 0;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+}
+.task-item.done { border-color: var(--green); opacity: 0.7; }
+.task-item.done::before {
+  content: '';
+  position: absolute; top: 0; left: 0; width: 4px; bottom: 0;
+  background: var(--green);
+}
+.task-item-inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center; gap: 16px;
+  padding: 16px 20px 16px 24px;
+}
+.task-item-info { display: flex; flex-direction: column; gap: 4px; }
+.task-item-name {
+  font-family: 'DM Sans', sans-serif; font-size: 16px;
+  color: var(--text); font-weight: 500;
+}
+.task-item-meta {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  color: var(--muted); letter-spacing: 1px;
+}
+.task-item-timer {
+  font-family: 'Bebas Neue', sans-serif; font-size: 36px;
+  color: var(--accent); letter-spacing: 2px; min-width: 120px;
+  text-align: center; transition: color 0.3s;
+}
+.task-item.done .task-item-timer { color: var(--green); }
+.task-item-timer.urgent { color: var(--red) !important; animation: pulse 0.5s infinite; }
+
+.task-progress {
+  height: 3px; background: var(--dim);
+  position: relative; overflow: hidden;
+}
+.task-progress-fill {
+  height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width 1s linear;
+}
+.task-item.done .task-progress-fill { background: var(--green); }
+
+.task-controls { display: flex; gap: 8px; align-items: center; }
+.task-ctrl-btn {
+  background: var(--dim); border: 1px solid var(--border);
+  color: var(--muted); font-size: 14px;
+  width: 34px; height: 34px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.task-ctrl-btn:hover { border-color: var(--accent); color: var(--accent); }
+.task-ctrl-btn.start { border-color: var(--accent); color: var(--accent); }
+.task-ctrl-btn.remove:hover { border-color: var(--red); color: var(--red); }
+
+/* Task fired overlay */
+.task-fired {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(8,8,16,0.92); backdrop-filter: blur(10px);
+  display: none; flex-direction: column; align-items: center; justify-content: center;
+  animation: fadeIn 0.3s;
+}
+.task-fired.show { display: flex; }
+.task-fired-icon {
+  font-size: 64px; margin-bottom: 16px;
+  animation: bounce 0.6s infinite alternate;
+}
+@keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-12px); } }
+.task-fired-label {
+  font-family: 'Bebas Neue', sans-serif; font-size: 52px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  letter-spacing: 3px;
+}
+.task-fired-name {
+  font-family: 'DM Sans', sans-serif; font-size: 22px;
+  color: var(--text); margin-top: 8px; text-align: center;
+  max-width: 400px;
+}
+
+@media(max-width:760px) {
+  .tasks-wrap { padding: 20px 16px; }
+  .task-item-inner { grid-template-columns: 1fr auto; }
+  .task-item-timer { font-size: 28px; min-width: 90px; }
+}
+
 ::-webkit-scrollbar-track { background:transparent; }
 ::-webkit-scrollbar-thumb { background:var(--dim); }
 </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6716247063561440"
-   crossorigin="anonymous"></script>
-  <meta name="google-adsense-account" content="ca-pub-6716247063561440">
 </head>
 <body>
 
@@ -1835,6 +2181,7 @@ footer {
       <button class="nav-btn active" onclick="switchView('clock',this)" data-tip="Current time & world clocks" data-tip-down>Clock</button>
       <button class="nav-btn" onclick="switchView('stopwatch',this)" data-tip="Stopwatch with lap timing" data-tip-down>Stopwatch</button>
       <button class="nav-btn" onclick="switchView('timer',this)" data-tip="Countdown timer" data-tip-down>Timer</button>
+      <button class="nav-btn" onclick="switchView('tasks',this)" data-tip="Task timers with notifications" data-tip-down>Tasks</button>
       <button class="nav-btn" onclick="switchView('calendar',this)" data-tip="Calendar & holidays" data-tip-down>Calendar</button>
       <button class="nav-btn" onclick="switchView('converter',this)" data-tip="Compare multiple timezones" data-tip-down>Converter</button>
       <button class="nav-btn" onclick="switchView('alarm',this)" data-tip="Set alarms" data-tip-down>Alarm</button>
@@ -1858,6 +2205,7 @@ footer {
         <div class="sb-nav-item active" onclick="switchView('clock',null);sbSetActive(this)" data-tip-right data-tip="Clock view"><span class="sb-nav-icon">🕐</span>Clock</div>
         <div class="sb-nav-item" onclick="switchView('stopwatch',null);sbSetActive(this)" data-tip-right data-tip="Stopwatch"><span class="sb-nav-icon">⏱</span>Stopwatch</div>
         <div class="sb-nav-item" onclick="switchView('timer',null);sbSetActive(this)" data-tip-right data-tip="Countdown timer"><span class="sb-nav-icon">⏳</span>Timer</div>
+        <div class="sb-nav-item" onclick="switchView('tasks',null);sbSetActive(this)" data-tip-right data-tip="Task timers"><span class="sb-nav-icon">✅</span>Tasks</div>
         <div class="sb-nav-item" onclick="switchView('calendar',null);sbSetActive(this)" data-tip-right data-tip="Calendar"><span class="sb-nav-icon">📅</span>Calendar</div>
         <div class="sb-nav-item" onclick="switchView('converter',null);sbSetActive(this)" data-tip-right data-tip="Timezone converter"><span class="sb-nav-icon">🌐</span>Converter</div>
         <div class="sb-nav-item" onclick="switchView('alarm',null);sbSetActive(this)" data-tip-right data-tip="Alarms"><span class="sb-nav-icon">🔔</span>Alarm</div>
@@ -2166,21 +2514,53 @@ footer {
       </div>
     </div>
 
-    <!-- Time input scrubber -->
-    <div class="conv-scrubber-row">
-      <div class="conv-scrubber-label">CONVERT TIME</div>
-      <div class="conv-scrubber-inputs">
-        <input type="time" id="conv-master-time" value="12:00" oninput="convUpdate()" class="conv-master-input">
-        <div class="conv-date-btns">
-          <button class="conv-date-btn" onclick="convSetToNow()">Now</button>
-          <input type="date" id="conv-master-date" oninput="convUpdate()" class="conv-master-input" style="font-size:12px;padding:8px 10px;">
+    <!-- Time slider scrubber -->
+    <div class="conv-scrubber-row" style="flex-direction:column;gap:14px;align-items:stretch;">
+
+      <!-- Top row: time display + date + Now button -->
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+        <div class="conv-scrubber-label">CONVERT TIME</div>
+        <div class="conv-slider-time-display" id="conv-slider-display">12:00</div>
+        <input type="date" id="conv-master-date" oninput="convUpdate()" class="conv-master-input" style="font-size:12px;padding:8px 10px;">
+        <button class="conv-date-btn" onclick="convSetToNow()" style="border-color:var(--accent);color:var(--accent);">⟳ Now</button>
+        <input type="time" id="conv-master-time" value="12:00" oninput="convSliderSyncFromTime()" class="conv-master-input" style="font-size:13px;">
+        <div class="conv-offset-legend" style="margin-left:auto;">
+          <span class="col-legend"><span class="col-dot" style="background:var(--green)"></span>Same day</span>
+          <span class="col-legend"><span class="col-dot" style="background:var(--amber)"></span>+1 day</span>
+          <span class="col-legend"><span class="col-dot" style="background:var(--accent3)"></span>-1 day</span>
         </div>
       </div>
-      <div class="conv-offset-legend">
-        <span class="col-legend"><span class="col-dot" style="background:var(--green)"></span>Same day</span>
-        <span class="col-legend"><span class="col-dot" style="background:var(--amber)"></span>+1 day</span>
-        <span class="col-legend"><span class="col-dot" style="background:var(--accent3)"></span>-1 day</span>
+
+      <!-- Slider row -->
+      <div class="conv-slider-wrap">
+        <!-- Hour markers -->
+        <div class="conv-slider-markers">
+          <span>12a</span><span>3a</span><span>6a</span><span>9a</span>
+          <span>12p</span><span>3p</span><span>6p</span><span>9p</span><span>12a</span>
+        </div>
+        <!-- The range slider -->
+        <div class="conv-slider-track-wrap">
+          <div class="conv-slider-bg-bands">
+            <!-- Sleep band 0-6 -->
+            <div class="csb-band sleep" style="left:0%;width:25%"></div>
+            <!-- Work band 9-17 -->
+            <div class="csb-band work" style="left:37.5%;width:33.3%"></div>
+            <!-- Sleep band 22-24 -->
+            <div class="csb-band sleep" style="left:91.7%;width:8.3%"></div>
+          </div>
+          <input type="range" id="conv-time-slider" class="conv-time-slider"
+            min="0" max="1439" step="1" value="720"
+            oninput="convSliderMove(this.value)" onchange="convSliderMove(this.value)">
+          <div class="conv-slider-thumb-label" id="conv-slider-thumb-label">12:00</div>
+        </div>
+        <!-- Legend -->
+        <div class="conv-slider-legend">
+          <span><span class="csb-swatch sleep"></span>Sleep hours</span>
+          <span><span class="csb-swatch work"></span>Work hours (9–5)</span>
+          <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">Drag slider → see all zones update live</span>
+        </div>
       </div>
+
     </div>
 
     <!-- Zone search add bar -->
@@ -2211,6 +2591,57 @@ footer {
     </div>
 
   </div>
+</div>
+
+<!-- ═══════════════════ TASKS VIEW ════════════════════ -->
+<div class="view" id="view-tasks">
+  <div class="tasks-wrap">
+
+    <div class="sec-hdr">
+      <span class="sec-title">Task Timers</span>
+      <div class="sec-line"></div>
+      <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">Set a task + timer → get notified when done</span>
+    </div>
+
+    <!-- Add task row -->
+    <div class="task-add-row">
+      <input type="text" id="task-name-input" class="task-name-input" placeholder="What are you working on?">
+      <div class="task-time-inputs">
+        <input type="number" id="task-h" class="task-time-num" value="0" min="0" max="23" placeholder="0">
+        <span class="task-sep">h</span>
+        <input type="number" id="task-m" class="task-time-num" value="25" min="0" max="59" placeholder="25">
+        <span class="task-sep">m</span>
+        <input type="number" id="task-s" class="task-time-num" value="0" min="0" max="59" placeholder="0">
+        <span class="task-sep">s</span>
+      </div>
+      <div class="task-presets">
+        <button class="task-preset" onclick="setTaskTime(0,5,0)">5m</button>
+        <button class="task-preset" onclick="setTaskTime(0,15,0)">15m</button>
+        <button class="task-preset" onclick="setTaskTime(0,25,0)">🍅 25m</button>
+        <button class="task-preset" onclick="setTaskTime(0,45,0)">45m</button>
+        <button class="task-preset" onclick="setTaskTime(1,0,0)">1h</button>
+      </div>
+      <button class="task-add-btn" onclick="addTask()">+ Add Task</button>
+    </div>
+
+    <!-- Tasks list -->
+    <div class="tasks-list" id="tasks-list">
+      <div class="tasks-empty" id="tasks-empty">
+        <div style="font-size:40px;margin-bottom:12px;">✅</div>
+        <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:2px;">NO TASKS YET</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted);margin-top:6px;">Add a task above to get started</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Task completed overlay -->
+<div class="task-fired" id="task-fired-overlay">
+  <div class="task-fired-icon">⏰</div>
+  <div class="task-fired-label" id="task-fired-label">Task Complete!</div>
+  <div class="task-fired-name" id="task-fired-name">Task name</div>
+  <button class="alarm-dismiss" onclick="dismissTask()" style="margin-top:20px;">Dismiss</button>
 </div>
 
 <!-- ═══════════════════ ALARM VIEW ════════════════════ -->
@@ -3472,6 +3903,7 @@ function convSetToNow() {
   const timeEl = document.getElementById('conv-master-time');
   if (dateEl) dateEl.value = now.toLocaleDateString('en-CA');
   if (timeEl) timeEl.value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  convSyncSliderToTime();
   convRender();
 }
 
@@ -3809,6 +4241,7 @@ function convLiveTick() {
     const dateEl = document.getElementById('conv-master-date');
     if (timeEl) timeEl.value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
     if (dateEl && !dateEl.value) dateEl.value = now.toLocaleDateString('en-CA');
+    convSyncSliderToTime();
     convRender();
   }
 }
@@ -3818,12 +4251,84 @@ function populateConvSelects() { convInit(); }
 function convertTz() {}
 function swapConv() {}
 
+// ── SLIDER SYNC ──────────────────────────────────────
+function convSliderMove(val) {
+  val = parseInt(val);
+  const h = Math.floor(val / 60);
+  const m = val % 60;
+  const timeStr = `${pad(h)}:${pad(m)}`;
+
+  // Update time input
+  const timeEl = document.getElementById('conv-master-time');
+  if (timeEl) timeEl.value = timeStr;
+
+  // Update big display
+  const disp = document.getElementById('conv-slider-display');
+  if (disp) {
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const h12  = h % 12 || 12;
+    disp.textContent = is24h ? timeStr : `${pad(h12)}:${pad(m)} ${ampm}`;
+  }
+
+  // Update floating thumb label
+  const label = document.getElementById('conv-slider-thumb-label');
+  if (label) {
+    const pct = (val / 1439) * 100;
+    label.style.left = `${pct}%`;
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const h12  = h % 12 || 12;
+    label.textContent = is24h ? timeStr : `${pad(h12)}:${pad(m)} ${ampm}`;
+  }
+
+  // Update fill gradient
+  const slider = document.getElementById('conv-time-slider');
+  if (slider) {
+    const pct = (val / 1439) * 100;
+    slider.style.setProperty('--fill', `${pct}%`);
+  }
+
+  convLiveMode = false;
+  convRender();
+}
+
+function convSliderSyncFromTime() {
+  const timeEl = document.getElementById('conv-master-time');
+  if (!timeEl || !timeEl.value) return;
+  const [h, m] = timeEl.value.split(':').map(Number);
+  const mins = h * 60 + m;
+  const slider = document.getElementById('conv-time-slider');
+  if (slider) slider.value = mins;
+  convSliderMove(mins);
+}
+
+function convSyncSliderToTime() {
+  const timeEl = document.getElementById('conv-master-time');
+  if (!timeEl) return;
+  const [h, m] = (timeEl.value || '12:00').split(':').map(Number);
+  const mins = h * 60 + m;
+  const slider = document.getElementById('conv-time-slider');
+  if (slider) {
+    slider.value = mins;
+    const pct = (mins / 1439) * 100;
+    slider.style.setProperty('--fill', `${pct}%`);
+  }
+  const label = document.getElementById('conv-slider-thumb-label');
+  if (label) {
+    const pct = (mins / 1439) * 100;
+    label.style.left = `${pct}%`;
+    label.textContent = timeEl.value;
+  }
+  const disp = document.getElementById('conv-slider-display');
+  if (disp) disp.textContent = timeEl.value;
+}
+
 function convInit() {
   const now = new Date();
   const dateEl = document.getElementById('conv-master-date');
   const timeEl = document.getElementById('conv-master-time');
   if (dateEl) dateEl.value = now.toLocaleDateString('en-CA');
   if (timeEl) timeEl.value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  convSyncSliderToTime();
   convHandleUrlParams();
   convRender();
   setInterval(convLiveTick, 1000);
@@ -3906,6 +4411,7 @@ function checkAlarms(now) {
       document.getElementById('alarm-fired-time').textContent  = a.time;
       document.getElementById('alarm-fired-label').textContent = a.label || 'Alarm';
       document.getElementById('alarm-fired-overlay').classList.add('show');
+      playAlarmSound();
       if (Notification.permission === 'granted') {
         new Notification('⏰ Alarm!', { body: a.label || 'Your alarm is ringing!' });
       }
@@ -3915,8 +4421,261 @@ function checkAlarms(now) {
 
 function dismissAlarm() {
   document.getElementById('alarm-fired-overlay').classList.remove('show');
+  stopAlarmSound();
   setTimeout(() => firedAlarm=null, 60000);
 }
+
+// ═══════════════════════════════════════════════════
+//  ALARM SOUND (Web Audio API)
+// ═══════════════════════════════════════════════════
+let alarmAudioCtx = null;
+let alarmSoundNodes = [];
+
+function playAlarmSound() {
+  stopAlarmSound();
+  try {
+    alarmAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function beepCycle() {
+      if (!alarmAudioCtx) return;
+      const freqs = [880, 1100, 880, 1100];
+      freqs.forEach((freq, i) => {
+        const osc  = alarmAudioCtx.createOscillator();
+        const gain = alarmAudioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(alarmAudioCtx.destination);
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, alarmAudioCtx.currentTime + i * 0.18);
+        gain.gain.setValueAtTime(0, alarmAudioCtx.currentTime + i * 0.18);
+        gain.gain.linearRampToValueAtTime(0.7, alarmAudioCtx.currentTime + i * 0.18 + 0.02);
+        gain.gain.linearRampToValueAtTime(0, alarmAudioCtx.currentTime + i * 0.18 + 0.16);
+        osc.start(alarmAudioCtx.currentTime + i * 0.18);
+        osc.stop(alarmAudioCtx.currentTime + i * 0.18 + 0.18);
+        alarmSoundNodes.push(osc);
+      });
+    }
+    beepCycle();
+    // Repeat every 1.2 seconds
+    const iv = setInterval(() => { if (!alarmAudioCtx) { clearInterval(iv); return; } beepCycle(); }, 1200);
+    alarmSoundNodes.push({ stop: () => clearInterval(iv) });
+  } catch(e) { console.warn('Audio not supported:', e); }
+}
+
+function stopAlarmSound() {
+  if (alarmAudioCtx) {
+    try { alarmAudioCtx.close(); } catch(e) {}
+    alarmAudioCtx = null;
+  }
+  alarmSoundNodes = [];
+}
+
+// ═══════════════════════════════════════════════════
+//  TASK TIMERS
+// ═══════════════════════════════════════════════════
+let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+let taskAudioCtx = null;
+
+function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(tasks.map(t => ({
+    name: t.name, totalSecs: t.totalSecs, remainSecs: t.remainSecs,
+    running: false, done: t.done
+  }))));
+}
+
+function setTaskTime(h, m, s) {
+  document.getElementById('task-h').value = h;
+  document.getElementById('task-m').value = m;
+  document.getElementById('task-s').value = s;
+}
+
+function addTask() {
+  const name = document.getElementById('task-name-input').value.trim() || 'Untitled Task';
+  const h = parseInt(document.getElementById('task-h').value) || 0;
+  const m = parseInt(document.getElementById('task-m').value) || 0;
+  const s = parseInt(document.getElementById('task-s').value) || 0;
+  const totalSecs = h * 3600 + m * 60 + s;
+  if (totalSecs <= 0) return;
+  tasks.push({ name, totalSecs, remainSecs: totalSecs, running: false, done: false });
+  saveTasks();
+  renderTasks();
+  document.getElementById('task-name-input').value = '';
+  // Request notification permission
+  if (Notification.permission === 'default') Notification.requestPermission();
+  trackEvent && trackEvent('add_task', 'tasks', name);
+}
+
+function toggleTask(idx) {
+  const t = tasks[idx];
+  if (t.done) return;
+  t.running = !t.running;
+  renderTasks();
+}
+
+function resetTask(idx) {
+  const t = tasks[idx];
+  t.running = false;
+  t.remainSecs = t.totalSecs;
+  t.done = false;
+  saveTasks();
+  renderTasks();
+}
+
+function removeTask(idx) {
+  tasks.splice(idx, 1);
+  saveTasks();
+  renderTasks();
+}
+
+function fmtTaskTime(secs) {
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  const s = secs % 60;
+  if (h > 0) return `${pad(h)}:${pad(m)}:${pad(s)}`;
+  return `${pad(m)}:${pad(s)}`;
+}
+
+function fmtTaskDuration(secs) {
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  const s = secs % 60;
+  if (h > 0) return `${h}h ${m}m`;
+  if (m > 0) return `${m}m ${s > 0 ? s+'s' : ''}`.trim();
+  return `${s}s`;
+}
+
+function renderTasks() {
+  const list = document.getElementById('tasks-list');
+  const empty = document.getElementById('tasks-empty');
+  if (!list) return;
+  if (!tasks.length) {
+    list.innerHTML = '';
+    list.appendChild(empty || (() => {
+      const d = document.createElement('div');
+      d.className = 'tasks-empty';
+      d.innerHTML = '<div style="font-size:40px;margin-bottom:12px;">✅</div><div style="font-family:\'DM Mono\',monospace;font-size:12px;color:var(--muted);letter-spacing:2px;">NO TASKS YET</div><div style="font-family:\'DM Sans\',sans-serif;font-size:13px;color:var(--muted);margin-top:6px;">Add a task above to get started</div>';
+      return d;
+    })());
+    return;
+  }
+  list.innerHTML = tasks.map((t, i) => {
+    const pct = t.totalSecs > 0 ? Math.max(0, (1 - t.remainSecs / t.totalSecs)) * 100 : 0;
+    const urgent = !t.done && t.remainSecs <= 10 && t.remainSecs > 0;
+    return `
+    <div class="task-item ${t.running ? 'running' : ''} ${t.done ? 'done' : ''}">
+      <div class="task-item-inner">
+        <div class="task-item-info">
+          <div class="task-item-name">${t.name}</div>
+          <div class="task-item-meta">${t.done ? '✅ COMPLETED' : t.running ? '▶ RUNNING' : '⏸ PAUSED'} · ${fmtTaskDuration(t.totalSecs)}</div>
+        </div>
+        <div class="task-item-timer ${urgent ? 'urgent' : ''}" id="task-timer-${i}">${t.done ? '00:00' : fmtTaskTime(t.remainSecs)}</div>
+        <div class="task-controls">
+          ${!t.done ? `<button class="task-ctrl-btn start" onclick="toggleTask(${i})" title="${t.running ? 'Pause' : 'Start'}">${t.running ? '⏸' : '▶'}</button>` : ''}
+          <button class="task-ctrl-btn" onclick="resetTask(${i})" title="Reset">↺</button>
+          <button class="task-ctrl-btn remove" onclick="removeTask(${i})" title="Delete">✕</button>
+        </div>
+      </div>
+      <div class="task-progress"><div class="task-progress-fill" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join('');
+}
+
+function tickTasks() {
+  let changed = false;
+  tasks.forEach((t, i) => {
+    if (!t.running || t.done) return;
+    t.remainSecs = Math.max(0, t.remainSecs - 1);
+    changed = true;
+    // Update timer display without full re-render
+    const el = document.getElementById(`task-timer-${i}`);
+    if (el) {
+      el.textContent = fmtTaskTime(t.remainSecs);
+      if (t.remainSecs <= 10) el.classList.add('urgent');
+    }
+    if (t.remainSecs === 0) {
+      t.running = false;
+      t.done = true;
+      fireTask(t);
+      renderTasks();
+    }
+  });
+  if (changed) saveTasks();
+}
+
+function fireTask(t) {
+  // Show overlay
+  document.getElementById('task-fired-name').textContent = t.name;
+  document.getElementById('task-fired-overlay').classList.add('show');
+  // Play sound
+  playTaskSound();
+  // Desktop notification
+  if (Notification.permission === 'granted') {
+    new Notification('✅ Task Complete!', {
+      body: `"${t.name}" timer has ended!`,
+      icon: '/icons/icon-192.png'
+    });
+  }
+  trackEvent && trackEvent('task_complete', 'tasks', t.name);
+}
+
+function dismissTask() {
+  document.getElementById('task-fired-overlay').classList.remove('show');
+  stopTaskSound();
+}
+
+function playTaskSound() {
+  try {
+    taskAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const notes = [523, 659, 784, 1047]; // C5 E5 G5 C6 — ascending chord
+    notes.forEach((freq, i) => {
+      const osc  = taskAudioCtx.createOscillator();
+      const gain = taskAudioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(taskAudioCtx.destination);
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0, taskAudioCtx.currentTime + i * 0.15);
+      gain.gain.linearRampToValueAtTime(0.5, taskAudioCtx.currentTime + i * 0.15 + 0.05);
+      gain.gain.linearRampToValueAtTime(0, taskAudioCtx.currentTime + i * 0.15 + 0.4);
+      osc.start(taskAudioCtx.currentTime + i * 0.15);
+      osc.stop(taskAudioCtx.currentTime + i * 0.15 + 0.5);
+    });
+    // Repeat once
+    setTimeout(() => {
+      if (!taskAudioCtx) return;
+      notes.forEach((freq, i) => {
+        const osc  = taskAudioCtx.createOscillator();
+        const gain = taskAudioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(taskAudioCtx.destination);
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0, taskAudioCtx.currentTime + i * 0.15);
+        gain.gain.linearRampToValueAtTime(0.5, taskAudioCtx.currentTime + i * 0.15 + 0.05);
+        gain.gain.linearRampToValueAtTime(0, taskAudioCtx.currentTime + i * 0.15 + 0.4);
+        osc.start(taskAudioCtx.currentTime + i * 0.15);
+        osc.stop(taskAudioCtx.currentTime + i * 0.15 + 0.5);
+      });
+    }, 900);
+  } catch(e) { console.warn('Audio error:', e); }
+}
+
+function stopTaskSound() {
+  if (taskAudioCtx) {
+    try { taskAudioCtx.close(); } catch(e) {}
+    taskAudioCtx = null;
+  }
+}
+
+// Hook tickTasks into main tick
+const _origTick = window.tick;
+(function() {
+  const orig = window.tick;
+  window.tick = function() {
+    orig && orig();
+    tickTasks();
+  };
+})();
+
+renderTasks();
 
 // ═══════════════════════════════════════════════════
 //  INIT

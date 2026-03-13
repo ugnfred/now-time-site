@@ -14,6 +14,14 @@ function sbSetActive(el) {
   if (el) el.classList.add('active');
 }
 
+// Keep mobile nav in sync when any view changes (header keys/sidebar/footer)
+document.addEventListener('app:viewchange', e => {
+  const name = e.detail?.name || 'clock';
+  document.querySelectorAll('.mob-nav-btn[data-view]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.view === name);
+  });
+});
+
 // Keep sidebar nav in sync when header nav is clicked
 // Keep sidebar nav in sync via viewchange events
 document.addEventListener('app:viewchange', e => {

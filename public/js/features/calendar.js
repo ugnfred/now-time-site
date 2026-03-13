@@ -56,7 +56,7 @@ function renderCalendar() {
 
   // Sync jump selects
   const jm = document.getElementById('cal-jump-month');
-  const jy = document.getElementById('cal-jump-year-input');
+  const jy = document.getElementById('cal-jump-year');
   if (jm) jm.value = calMonth;
   if (jy) jy.value = calYear;
 
@@ -184,7 +184,7 @@ function calToday() {
 }
 function calJumpTo() {
   const mo = parseInt(document.getElementById('cal-jump-month').value);
-  const yr = parseInt(document.getElementById('cal-jump-year-input').value);
+  const yr = parseInt(document.getElementById('cal-jump-year').value);
   if(yr>=1900&&yr<=2100){ calMonth=mo; calYear=yr; renderCalendar(); }
 }
 

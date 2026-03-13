@@ -1691,14 +1691,16 @@ footer {
   padding: env(safe-area-inset-bottom) 0 0; /* iOS safe area */
 }
 .mobile-nav-inner {
-  display: flex; justify-content: space-around;
+  display: flex; justify-content: flex-start;
+  overflow-x: auto;
   padding: 6px 0 8px;
 }
+.mobile-nav-inner::-webkit-scrollbar { display: none; }
 .mob-nav-btn {
   display: flex; flex-direction: column; align-items: center; gap: 3px;
   background: none; border: none; cursor: pointer;
-  padding: 6px 12px; transition: opacity 0.2s;
-  flex: 1;
+  padding: 6px 8px; transition: opacity 0.2s;
+  flex: 1 0 72px;
 }
 .mob-nav-btn:active { opacity: 0.6; }
 .mob-nav-icon { font-size: 20px; }
@@ -1733,7 +1735,7 @@ footer {
 
   /* Nav: hide desktop nav, show mobile bottom bar */
   nav { display: none !important; }
-  .mobile-nav { display: block; }
+  .mobile-nav { display: block !important; }
   .mobile-menu-btn { display: flex; }
 
   /* Add bottom padding so content clears the mobile nav */

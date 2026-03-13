@@ -64,8 +64,9 @@ document.addEventListener('keydown', e => {
   if (k === '1') { switchView('clock'); document.querySelectorAll('.nav-btn')[0].classList.add('active'); }
   if (k === '2') { switchView('stopwatch'); document.querySelectorAll('.nav-btn')[1].classList.add('active'); }
   if (k === '3') { switchView('timer'); document.querySelectorAll('.nav-btn')[2].classList.add('active'); }
-  if (k === '4') { switchView('calendar'); document.querySelectorAll('.nav-btn')[3].classList.add('active'); }
-  if (k === '5') { switchView('converter'); document.querySelectorAll('.nav-btn')[4].classList.add('active'); }
+  if (k === '4') { switchView('calendar'); document.querySelectorAll('.nav-btn')[4].classList.add('active'); }
+  if (k === '5') { switchView('converter'); document.querySelectorAll('.nav-btn')[5].classList.add('active'); }
+  if (k === '6') { switchView('alarm'); document.querySelectorAll('.nav-btn')[6].classList.add('active'); }
 });
 
 // ═══════════════════════════════════════════════════

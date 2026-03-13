@@ -890,29 +890,33 @@
 <!-- ═══ MOBILE BOTTOM NAV ═══ -->
 <nav class="mobile-nav" id="mobile-nav">
   <div class="mobile-nav-inner">
-    <button class="mob-nav-btn active" onclick="switchView('clock',null);mobSetActive(this)">
+    <button class="mob-nav-btn active" data-view="clock" onclick="switchView('clock',null);mobSetActive(this)">
       <span class="mob-nav-icon">🕐</span>
       <span class="mob-nav-label">Clock</span>
     </button>
-    <button class="mob-nav-btn" onclick="switchView('stopwatch',null);mobSetActive(this)">
+    <button class="mob-nav-btn" data-view="stopwatch" onclick="switchView('stopwatch',null);mobSetActive(this)">
       <span class="mob-nav-icon">⏱</span>
       <span class="mob-nav-label">Stopwatch</span>
     </button>
-    <button class="mob-nav-btn" onclick="switchView('timer',null);mobSetActive(this)">
+    <button class="mob-nav-btn" data-view="timer" onclick="switchView('timer',null);mobSetActive(this)">
       <span class="mob-nav-icon">⏳</span>
       <span class="mob-nav-label">Timer</span>
     </button>
-    <button class="mob-nav-btn" onclick="switchView('converter',null);mobSetActive(this)">
+    <button class="mob-nav-btn" data-view="tasks" onclick="switchView('tasks',null);mobSetActive(this)">
+      <span class="mob-nav-icon">✅</span>
+      <span class="mob-nav-label">Tasks</span>
+    </button>
+    <button class="mob-nav-btn" data-view="calendar" onclick="switchView('calendar',null);mobSetActive(this)">
+      <span class="mob-nav-icon">📅</span>
+      <span class="mob-nav-label">Calendar</span>
+    </button>
+    <button class="mob-nav-btn" data-view="converter" onclick="switchView('converter',null);mobSetActive(this)">
       <span class="mob-nav-icon">🌐</span>
       <span class="mob-nav-label">Convert</span>
     </button>
-    <button class="mob-nav-btn" onclick="switchView('alarm',null);mobSetActive(this)">
+    <button class="mob-nav-btn" data-view="alarm" onclick="switchView('alarm',null);mobSetActive(this)">
       <span class="mob-nav-icon">🔔</span>
       <span class="mob-nav-label">Alarm</span>
-    </button>
-    <button class="mob-nav-btn" onclick="toggleThemePanel()">
-      <span class="mob-nav-icon">⬡</span>
-      <span class="mob-nav-label">Theme</span>
     </button>
   </div>
 </nav>

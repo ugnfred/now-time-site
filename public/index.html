@@ -212,7 +212,7 @@
 <!-- ═══════════ FONTS ═══════════ -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/styles/base.css">
+<link rel="stylesheet" href="./styles/base.css">
 
   
 </head>
@@ -964,17 +964,58 @@
   </div>
 </div>
 
-<script src="/js/core/time.js"></script>
-<script src="/js/core/storage.js"></script>
-<script src="/js/holidays.js"></script>
-<script src="/js/features/stopwatch-timer.js"></script>
-<script src="/js/features/calendar.js"></script>
-<script src="/js/features/converter.js"></script>
-<script src="/js/features/alarms.js"></script>
-<script src="/js/features/tasks.js"></script>
-<script src="/js/ui/navigation.js"></script>
-<script src="/js/ui/sidebar.js"></script>
-<script src="/js/ui/theme.js"></script>
-<script src="/js/app.js"></script>
+<script>
+(function(){
+  const scriptFiles = [
+    'js/core/time.js',
+    'js/core/storage.js',
+    'js/holidays.js',
+    'js/features/stopwatch-timer.js',
+    'js/features/calendar.js',
+    'js/features/converter.js',
+    'js/features/alarms.js',
+    'js/features/tasks.js',
+    'js/ui/navigation.js',
+    'js/ui/sidebar.js',
+    'js/ui/theme.js',
+    'js/app.js'
+  ];
+
+  const baseCandidates = ['./', '/', '/public/'];
+
+  function loadWithFallback(file, done) {
+    let idx = 0;
+    const tryNext = () => {
+      if (idx >= baseCandidates.length) {
+        console.error('Failed to load script:', file);
+        done(new Error(file));
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = baseCandidates[idx] + file;
+      script.async = false;
+      script.onload = () => done();
+      script.onerror = () => {
+        script.remove();
+        idx += 1;
+        tryNext();
+      };
+      document.body.appendChild(script);
+    };
+    tryNext();
+  }
+
+  function loadSequential(i) {
+    if (i >= scriptFiles.length) return;
+    loadWithFallback(scriptFiles[i], (err) => {
+      if (err) return;
+      loadSequential(i + 1);
+    });
+  }
+
+  loadSequential(0);
+})();
+</script>
 
 </body>

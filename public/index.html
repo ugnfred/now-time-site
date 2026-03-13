@@ -3601,7 +3601,8 @@ function updateSun() {
   }
 
   // Location badge
-  const tzName = Intl.DateTimeFormat().resolvedOptions().timeZone.replace(/_/g,' ');
+  const resolvedTz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+  const tzName = resolvedTz.replace(/_/g,' ');
   document.getElementById('tz-label').textContent = geoSource === 'gps'
     ? `${tzName} · 📍 GPS`
     : `${tzName} · 📌 approx`;
@@ -3651,8 +3652,8 @@ function getRegionFromLocale() {
 }
 
 function inferHolidayRegion() {
-  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  if (TZ_REGION_MAP[tz]) return TZ_REGION_MAP[tz];
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+  if (tz && TZ_REGION_MAP[tz]) return TZ_REGION_MAP[tz];
 
   const localeRegion = getRegionFromLocale();
   if (localeRegion && HOLIDAY_REGION_LABELS[localeRegion]) return localeRegion;
@@ -3716,6 +3717,10 @@ function getHolidaysForRegion(year, region) {
   };
 
   return listByRegion[region] || listByRegion.GLOBAL;
+}
+
+function getHolidays(year) {
+  return getHolidaysForRegion(year, inferHolidayRegion());
 }
 
 function easterDate(y) {

@@ -49,6 +49,7 @@ function toggleKbd() {
   document.getElementById('kbd-hint').classList.toggle('show');
 }
 
+// View switching moved to /js/ui/navigation.js
 // ═══════════════════════════════════════════════════
 //  VIEW SWITCHING
 // ═══════════════════════════════════════════════════

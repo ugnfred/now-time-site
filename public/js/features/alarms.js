@@ -9,9 +9,9 @@ function renderAlarms() {
   }
   list.innerHTML = alarms.map((a,i) => `
     <div class="alarm-item">
-      <div class="alarm-item-time">${a.time}</div>
+      <div class="alarm-item-time">${escapeHTML(a.time)}</div>
       <div class="alarm-item-info">
-        <div class="alarm-item-label">${a.label||'Alarm'}</div>
+        <div class="alarm-item-label">${escapeHTML(a.label||'Alarm')}</div>
         <div class="alarm-item-countdown" id="alarm-cd-${i}">—</div>
       </div>
       <label class="alarm-toggle">

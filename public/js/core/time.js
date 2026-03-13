@@ -5,6 +5,25 @@ const ALL_TZ = Intl.supportedValuesOf ? Intl.supportedValuesOf('timeZone') : ['A
 const pad = n => String(n).padStart(2,'0');
 const pad3 = n => String(n).padStart(3,'0');
 
+function escapeHTML(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function escapeJsSingleQuoted(value) {
+  return String(value)
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/\n/g, '\\n')
+    .replace(/\r/g, '\\r')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
+}
+
 function getWeek(d) {
   const date = new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
   date.setUTCDate(date.getUTCDate()+4-(date.getUTCDay()||7));

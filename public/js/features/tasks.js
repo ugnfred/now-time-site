@@ -93,7 +93,7 @@ function renderTasks() {
     <div class="task-item ${t.running ? 'running' : ''} ${t.done ? 'done' : ''}">
       <div class="task-item-inner">
         <div class="task-item-info">
-          <div class="task-item-name">${t.name}</div>
+          <div class="task-item-name">${escapeHTML(t.name)}</div>
           <div class="task-item-meta">${t.done ? '✅ COMPLETED' : t.running ? '▶ RUNNING' : '⏸ PAUSED'} · ${fmtTaskDuration(t.totalSecs)}</div>
         </div>
         <div class="task-item-timer ${urgent ? 'urgent' : ''}" id="task-timer-${i}">${t.done ? '00:00' : fmtTaskTime(t.remainSecs)}</div>

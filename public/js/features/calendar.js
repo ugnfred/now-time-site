@@ -95,12 +95,12 @@ function renderCalendar() {
     el.className = cls;
 
     let inner = `<span class="cal-day-num">${d}</span>`;
-    if (hol) inner += `<span class="cal-day-event cat-holiday">${CAT_ICONS.holiday} ${hol.name}</span>`;
+    if (hol) inner += `<span class="cal-day-event cat-holiday">${CAT_ICONS.holiday} ${escapeHTML(hol.name)}</span>`;
 
     const maxShow = hol ? 1 : 2;
     dayEvs.slice(0, maxShow).forEach(ev => {
       const catCls = CAT_COLORS[ev.category] || '';
-      inner += `<span class="cal-day-event ${catCls}">${CAT_ICONS[ev.category]||'📌'} ${ev.title}</span>`;
+      inner += `<span class="cal-day-event ${catCls}">${CAT_ICONS[ev.category]||'📌'} ${escapeHTML(ev.title)}</span>`;
     });
     if (dayEvs.length > maxShow) {
       inner += `<span class="cal-more-badge">+${dayEvs.length - maxShow} more</span>`;
@@ -145,7 +145,7 @@ function renderCalendar() {
       ${monthEvs.length
         ? monthEvs.slice(0,6).map(ev => `
           <div class="cal-info-item" onclick="calOpenDayPopup('${dateKey(calYear,calMonth,ev._day)}',null)" style="cursor:pointer">
-            <span class="cal-info-key" style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${CAT_ICONS[ev.category]||'📌'} ${ev.title}</span>
+            <span class="cal-info-key" style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${CAT_ICONS[ev.category]||'📌'} ${escapeHTML(ev.title)}</span>
             <span class="cal-info-val">${MSHORT[calMonth]} ${ev._day}</span>
           </div>`).join('') + (monthEvs.length>6 ? `<div style="font-size:10px;color:var(--muted);padding:8px 0;font-family:'DM Mono',monospace;">+${monthEvs.length-6} more events</div>` : '')
         : '<div style="font-family:DM Mono,monospace;font-size:11px;color:var(--muted);padding:8px 0;">No events — click any day or use + Add Event</div>'
@@ -156,7 +156,7 @@ function renderCalendar() {
       ${holidays.filter(h=>h.date.getMonth()===calMonth).length
         ? holidays.filter(h=>h.date.getMonth()===calMonth).map(h=>`
           <div class="cal-info-item">
-            <span class="cal-info-key">${h.name}</span>
+            <span class="cal-info-key">${escapeHTML(h.name)}</span>
             <span class="cal-info-val">${MSHORT[h.date.getMonth()]} ${h.date.getDate()}</span>
           </div>`).join('')
         : '<div style="font-family:DM Mono,monospace;font-size:11px;color:var(--muted);padding:8px 0;">None</div>'
@@ -207,16 +207,16 @@ function calOpenDayPopup(dateStr, triggerEl) {
     list.innerHTML = [
       ...hols.map(h=>`<div class="cal-popup-event" style="border-left-color:#facc15;">
         <div class="cal-popup-event-info">
-          <div class="cal-popup-event-title">🎉 ${h.name}</div>
+          <div class="cal-popup-event-title">🎉 ${escapeHTML(h.name)}</div>
           <div class="cal-popup-event-meta">Public Holiday</div>
         </div></div>`),
-      ...evs.map(ev=>`<div class="cal-popup-event" style="border-left-color:${catColor(ev.category)};cursor:pointer" onclick="calEditEvent('${ev.id}')">
+      ...evs.map(ev=>`<div class="cal-popup-event" style="border-left-color:${catColor(ev.category)};cursor:pointer" onclick="calEditEvent('${escapeJsSingleQuoted(ev.id)}')">
         <div class="cal-popup-event-info">
-          <div class="cal-popup-event-title">${CAT_ICONS[ev.category]||'📌'} ${ev.title}</div>
-          <div class="cal-popup-event-meta">${ev.time||'All day'} ${ev.repeat&&ev.repeat!=='none'?'· 🔁 '+ev.repeat:''} ${ev.reminder?'· 🔔':''}</div>
-          ${ev.notes?`<div class="cal-popup-event-meta" style="margin-top:2px;opacity:0.7">${ev.notes}</div>`:''}
+          <div class="cal-popup-event-title">${CAT_ICONS[ev.category]||'📌'} ${escapeHTML(ev.title)}</div>
+          <div class="cal-popup-event-meta">${escapeHTML(ev.time||'All day')} ${ev.repeat&&ev.repeat!=='none'?'· 🔁 '+escapeHTML(ev.repeat):''} ${ev.reminder?'· 🔔':''}</div>
+          ${ev.notes?`<div class="cal-popup-event-meta" style="margin-top:2px;opacity:0.7">${escapeHTML(ev.notes)}</div>`:''}
         </div>
-        <button class="cal-popup-event-del" onclick="event.stopPropagation();calDeleteEventById('${ev.id}')">✕</button>
+        <button class="cal-popup-event-del" onclick="event.stopPropagation();calDeleteEventById('${escapeJsSingleQuoted(ev.id)}')">✕</button>
       </div>`)
     ].join('');
   }

@@ -2107,12 +2107,10 @@ footer {
   background:var(--surface); border:1px solid var(--accent);
   border-top:none; max-height:320px; overflow-y:auto; display:none; }
 .tz-results.open { display:block; }
-
 .tz-item { display:flex; align-items:center; gap:10px; padding:10px 14px;
   cursor:pointer; border-bottom:1px solid var(--border); transition:background 0.15s; }
 .tz-item:hover, .tz-item-active { background:color-mix(in srgb, var(--accent) 10%, var(--surface)); }
 .tz-item:last-child { border-bottom:none; }
-
 .tz-item-flag { font-size:18px; flex-shrink:0; width:24px; text-align:center; }
 .tz-item-info { flex:1; min-width:0; }
 .tz-item-name { display:block; font-family:'DM Sans',sans-serif;
@@ -2127,78 +2125,13 @@ footer {
   font-size:10px; color:var(--muted); }
 .tz-no-result { font-family:'DM Mono',monospace; font-size:11px;
   color:var(--muted); padding:14px; text-align:center; letter-spacing:1px; }
-.tz-item-active { background:color-mix(in srgb, var(--accent) 12%, var(--surface)); }
-
-/* ── Timezone result card improvements ──────────── */
-#tz-result-card { border-radius:0; }
-#tzrc-offset { font-family:'DM Mono',monospace; font-size:13px;
-  color:var(--accent2); letter-spacing:1px; margin-bottom:4px; }
-
-/* ── Enhanced Timezone Search Results ─────────────── */
-.tz-results { position:absolute; top:100%; left:0; right:0; z-index:999;
-  background:var(--surface); border:1px solid var(--accent);
-  border-top:none; max-height:320px; overflow-y:auto; display:none; }
-.tz-results.open { display:block; }
-
-.tz-item { display:flex; align-items:center; gap:10px; padding:10px 14px;
-  cursor:pointer; border-bottom:1px solid var(--border); transition:background 0.15s; }
-.tz-item:hover, .tz-item-active { background:color-mix(in srgb, var(--accent) 10%, var(--surface)); }
-.tz-item:last-child { border-bottom:none; }
-
-.tz-item-flag { font-size:18px; flex-shrink:0; width:24px; text-align:center; }
-.tz-item-info { flex:1; min-width:0; }
-.tz-item-name { display:block; font-family:'DM Sans',sans-serif;
-  font-size:13px; font-weight:500; color:var(--text);
-  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.tz-item-abbr { display:block; font-family:'DM Mono',monospace;
-  font-size:10px; color:var(--accent); letter-spacing:1px; margin-top:1px; }
-.tz-item-right { text-align:right; flex-shrink:0; }
-.tz-item-time { display:block; font-family:'Bebas Neue',sans-serif;
-  font-size:18px; color:var(--accent); letter-spacing:1px; }
-.tz-item-off { display:block; font-family:'DM Mono',monospace;
-  font-size:10px; color:var(--muted); }
-.tz-no-result { font-family:'DM Mono',monospace; font-size:11px;
-  color:var(--muted); padding:14px; text-align:center; letter-spacing:1px; }
-.tz-item-active { background:color-mix(in srgb, var(--accent) 12%, var(--surface)); }
-
-/* ── Timezone result card improvements ──────────── */
-#tz-result-card { border-radius:0; }
-#tzrc-offset { font-family:'DM Mono',monospace; font-size:13px;
-  color:var(--accent2); letter-spacing:1px; margin-bottom:4px; }
-
-/* ── Theme Panel Cards ─────────────────────────────── */
-.theme-cards { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; }
-.theme-card {
-  background:var(--dim); border:1.5px solid var(--border);
-  border-radius:8px; padding:10px 8px; cursor:pointer;
-  transition:border-color 0.2s, transform 0.15s;
-}
-.theme-card:hover { border-color:var(--muted); transform:scale(1.02); }
-.theme-card.active { border-color:var(--accent); }
-.tc-preview { display:flex; gap:3px; margin-bottom:6px; height:6px; }
-.tc-bar { flex:1; border-radius:2px; height:6px; }
-.tc-name {
-  font-family:'DM Mono',monospace; font-size:10px;
-  letter-spacing:1px; text-transform:uppercase;
-  color:var(--muted); text-align:center;
-}
-.theme-card.active .tc-name { color:var(--accent); }
-
-/* ── Accent Color Dots ─────────────────────────────── */
-.accent-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
-.accent-dot {
-  width:24px; height:24px; border-radius:50%;
-  cursor:pointer; transition:transform 0.15s;
-  border:2px solid transparent;
-}
-.accent-dot:hover { transform:scale(1.2); }
 
 /* ── Theme Panel ───────────────────────────────────── */
 .theme-panel {
   position:fixed; right:0; top:0; height:100vh; width:280px;
   background:var(--surface); border-left:1px solid var(--border);
   z-index:1000; transform:translateX(100%);
-  transition:transform 0.3s ease; overflow-y:auto; padding:0;
+  transition:transform 0.3s ease; overflow-y:auto;
 }
 .theme-panel.open { transform:translateX(0); }
 .theme-panel-overlay {
@@ -2227,7 +2160,44 @@ footer {
 }
 .tp-section-label:first-child { margin-top:0; }
 
-/* ── Fix theme preview bars — make them taller and visible ── */
-.tc-preview { display:flex; gap:3px; margin-bottom:8px; height:10px !important; border-radius:4px; overflow:hidden; }
-.tc-bar { flex:1; height:10px !important; border-radius:0; }
-.theme-card { min-height:64px; }
+/* ── Theme Cards ───────────────────────────────────── */
+.theme-cards {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:8px; margin-bottom:16px;
+}
+.theme-card {
+  background:var(--dim); border:1.5px solid var(--border);
+  border-radius:8px; padding:10px 8px 8px;
+  cursor:pointer; transition:border-color 0.2s, transform 0.15s;
+  min-height:60px;
+}
+.theme-card:hover { border-color:var(--muted); transform:scale(1.02); }
+.theme-card.active { border-color:var(--accent); }
+
+/* Color preview bars — 3 strips showing theme accent colors */
+.tc-preview {
+  display:flex; gap:3px;
+  height:8px; margin-bottom:8px;
+  border-radius:4px; overflow:hidden;
+}
+.tc-bar {
+  flex:1;
+  height:8px;
+  min-height:8px;
+  display:block;
+}
+
+.tc-name {
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:1px; text-transform:uppercase;
+  color:var(--muted); text-align:center;
+}
+.theme-card.active .tc-name { color:var(--accent); }
+
+/* ── Accent Color Dots ─────────────────────────────── */
+.accent-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+.accent-dot {
+  width:26px; height:26px; border-radius:50%;
+  cursor:pointer; transition:transform 0.15s;
+}
+.accent-dot:hover { transform:scale(1.2); }

@@ -316,7 +316,10 @@
         <div class="time-display">
           <span id="dh">00</span><span class="colon">:</span><span id="dm">00</span><span class="colon">:</span><span id="ds">00</span>
         </div>
-        <div class="ampm-tag" id="ampm-tag">AM</div>
+        <div style="display:flex;align-items:center;gap:10px;justify-content:center;margin-top:4px;">
+          <div class="ampm-tag" id="ampm-tag">AM</div>
+          <div id="hero-tz-badge" style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--accent2);background:color-mix(in srgb,var(--accent2) 12%,transparent);padding:3px 10px;border-radius:4px;border:1px solid color-mix(in srgb,var(--accent2) 30%,transparent);"></div>
+        </div>
       </div>
     </div>
 
@@ -968,50 +971,6 @@
   </div>
 </div>
 
-<!-- ═══ INSTANT CLOCK BOOT — runs before any JS modules load ═══ -->
-<script>
-(function() {
-  // Render the clock immediately so users never see 00:00:00
-  function bootClock() {
-    var now = new Date();
-    var h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
-    var is24 = localStorage.getItem('is24h') === 'true';
-    var ampm = h >= 12 ? 'PM' : 'AM';
-    var dh = is24 ? h : (h % 12 || 12);
-    var pad = function(n){ return String(n).padStart(2,'0'); };
-    var dEl = document.getElementById('dh');
-    var mEl = document.getElementById('dm');
-    var sEl = document.getElementById('ds');
-    var aEl = document.getElementById('ampm-tag');
-    if (dEl) dEl.textContent = pad(dh);
-    if (mEl) mEl.textContent = pad(m);
-    if (sEl) sEl.textContent = pad(s);
-    if (aEl) { aEl.textContent = ampm; aEl.style.display = is24 ? 'none' : 'block'; }
-    // Analog hands
-    var hDeg = (h % 12) * 30 + m * 0.5;
-    var mDeg = m * 6 + s * 0.1;
-    var sDeg = s * 6;
-    var hh = document.getElementById('hand-hour');
-    var mh = document.getElementById('hand-min');
-    var sh = document.getElementById('hand-sec');
-    if (hh) hh.style.transform = 'rotate(' + hDeg + 'deg)';
-    if (mh) mh.style.transform = 'rotate(' + mDeg + 'deg)';
-    if (sh) sh.style.transform = 'rotate(' + sDeg + 'deg)';
-    // Date row
-    var DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    var wdEl = document.getElementById('d-weekday');
-    var dfEl = document.getElementById('d-full');
-    if (wdEl) wdEl.textContent = DAYS[now.getDay()];
-    if (dfEl) dfEl.textContent = MONTHS[now.getMonth()] + ' ' + now.getDate() + ', ' + now.getFullYear();
-  }
-  bootClock();
-  // Keep ticking every second until the real tick() takes over
-  var bootInterval = setInterval(bootClock, 1000);
-  window._bootClockInterval = bootInterval;
-})();
-</script>
-
 <script>
 (function(){
   const scriptFiles = [
@@ -1029,60 +988,40 @@
     'js/app.js'
   ];
 
-  // Load in dependency groups — files within a group load in parallel,
-  // groups execute in order so dependencies are always satisfied.
-  const groups = [
-    ['js/core/time.js', 'js/core/storage.js'],          // pure utilities, no deps
-    ['js/holidays.js'],                                   // needs nothing
-    ['js/features/stopwatch-timer.js',
-     'js/features/calendar.js',
-     'js/features/converter.js',
-     'js/features/alarms.js',
-     'js/features/tasks.js'],                            // features (need core)
-    ['js/ui/navigation.js',
-     'js/ui/sidebar.js',
-     'js/ui/theme.js'],                                  // UI (needs features+core)
-    ['js/app.js']                                        // init — must be last
-  ];
+  const baseCandidates = ['./', '/', '/public/'];
 
-  const base = (function detectBase() {
-    // Pick the base path that actually serves files
-    // Try './' first (works on Vercel), fallback to '/'
-    return './';
-  })();
+  function loadWithFallback(file, done) {
+    let idx = 0;
+    const tryNext = () => {
+      if (idx >= baseCandidates.length) {
+        console.error('Failed to load script:', file);
+        done(new Error(file));
+        return;
+      }
 
-  function loadScript(file) {
-    return new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      script.src = base + file;
+      script.src = baseCandidates[idx] + file;
       script.async = false;
-      script.onload = resolve;
+      script.onload = () => done();
       script.onerror = () => {
-        // Try /public/ fallback
         script.remove();
-        const s2 = document.createElement('script');
-        s2.src = '/public/' + file;
-        s2.async = false;
-        s2.onload = resolve;
-        s2.onerror = () => { console.warn('Could not load:', file); resolve(); };
-        document.body.appendChild(s2);
+        idx += 1;
+        tryNext();
       };
       document.body.appendChild(script);
+    };
+    tryNext();
+  }
+
+  function loadSequential(i) {
+    if (i >= scriptFiles.length) return;
+    loadWithFallback(scriptFiles[i], (err) => {
+      if (err) return;
+      loadSequential(i + 1);
     });
   }
 
-  async function loadGroups() {
-    for (const group of groups) {
-      await Promise.all(group.map(loadScript));
-    }
-    // All modules loaded — stop the boot clock, real tick() takes over
-    if (window._bootClockInterval) {
-      clearInterval(window._bootClockInterval);
-      window._bootClockInterval = null;
-    }
-  }
-
-  loadGroups();
+  loadSequential(0);
 })();
 </script>
 

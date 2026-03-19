@@ -971,6 +971,37 @@
   </div>
 </div>
 
+<!-- ═══ INSTANT CLOCK BOOT — runs before any JS modules load ═══ -->
+<script>
+(function() {
+  function bootClock() {
+    var now = new Date();
+    var h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
+    var is24 = localStorage.getItem('is24h') === 'true';
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    var dh = is24 ? h : (h % 12 || 12);
+    var pad = function(n){ return String(n).padStart(2,'0'); };
+    var set = function(id, v){ var e=document.getElementById(id); if(e) e.textContent=v; };
+    set('dh', pad(dh)); set('dm', pad(m)); set('ds', pad(s));
+    var aEl = document.getElementById('ampm-tag');
+    if (aEl) { aEl.textContent = ampm; aEl.style.display = is24 ? 'none' : 'block'; }
+    // Analog hands
+    var hDeg = (h%12)*30 + m*0.5, mDeg = m*6 + s*0.1, sDeg = s*6;
+    var hh=document.getElementById('hand-hour'), mh=document.getElementById('hand-min'), sh=document.getElementById('hand-sec');
+    if (hh) hh.style.transform='rotate('+hDeg+'deg)';
+    if (mh) mh.style.transform='rotate('+mDeg+'deg)';
+    if (sh) sh.style.transform='rotate('+sDeg+'deg)';
+    // Date
+    var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    set('d-weekday', DAYS[now.getDay()]);
+    set('d-full', MONTHS[now.getMonth()]+' '+now.getDate()+', '+now.getFullYear());
+  }
+  bootClock();
+  window._bootInterval = setInterval(bootClock, 1000);
+})();
+</script>
+
 <script>
 (function(){
   const scriptFiles = [

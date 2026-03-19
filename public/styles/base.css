@@ -2102,7 +2102,7 @@ footer {
 ::-webkit-scrollbar-track { background:transparent; }
 ::-webkit-scrollbar-thumb { background:var(--dim); }
 
-/* ── Enhanced Timezone Search Results ─────────────── */
+/* ── Timezone Search Results ───────────────────────── */
 .tz-results { position:absolute; top:100%; left:0; right:0; z-index:999;
   background:var(--surface); border:1px solid var(--accent);
   border-top:none; max-height:320px; overflow-y:auto; display:none; }
@@ -2121,83 +2121,82 @@ footer {
 .tz-item-right { text-align:right; flex-shrink:0; }
 .tz-item-time { display:block; font-family:'Bebas Neue',sans-serif;
   font-size:18px; color:var(--accent); letter-spacing:1px; }
-.tz-item-off { display:block; font-family:'DM Mono',monospace;
-  font-size:10px; color:var(--muted); }
+.tz-item-off { display:block; font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); }
 .tz-no-result { font-family:'DM Mono',monospace; font-size:11px;
   color:var(--muted); padding:14px; text-align:center; letter-spacing:1px; }
+.tz-item-active { background:color-mix(in srgb, var(--accent) 12%, var(--surface)); }
 
 /* ── Theme Panel ───────────────────────────────────── */
 .theme-panel {
-  position:fixed; right:0; top:0; height:100vh; width:280px;
+  position:fixed; top:0; right:-320px; bottom:0; width:300px;
   background:var(--surface); border-left:1px solid var(--border);
-  z-index:1000; transform:translateX(100%);
-  transition:transform 0.3s ease; overflow-y:auto;
+  z-index:800; transition:right 0.3s cubic-bezier(0.4,0,0.2,1);
+  display:flex; flex-direction:column;
+  box-shadow:-4px 0 30px rgba(0,0,0,0.3);
 }
-.theme-panel.open { transform:translateX(0); }
+.theme-panel.open { right:0; }
 .theme-panel-overlay {
   position:fixed; inset:0; background:rgba(0,0,0,0.4);
-  z-index:999; display:none;
+  backdrop-filter:blur(2px); z-index:799; display:none;
 }
 .theme-panel-overlay.open { display:block; }
 .theme-panel-header {
+  padding:20px 20px 16px; border-bottom:1px solid var(--border);
   display:flex; align-items:center; justify-content:space-between;
-  padding:16px 20px; border-bottom:1px solid var(--border);
-  position:sticky; top:0; background:var(--surface); z-index:1;
 }
 .theme-panel-title {
   font-family:'DM Mono',monospace; font-size:11px;
-  letter-spacing:3px; text-transform:uppercase; color:var(--text);
+  letter-spacing:3px; text-transform:uppercase; color:var(--muted);
 }
 .theme-panel-close {
-  background:none; border:none; color:var(--muted);
-  cursor:pointer; font-size:16px; padding:4px;
+  background:none; border:1px solid var(--border); color:var(--muted);
+  width:28px; height:28px; cursor:pointer; font-size:16px;
+  display:flex; align-items:center; justify-content:center; transition:all 0.2s;
 }
-.theme-panel-body { padding:20px; }
+.theme-panel-close:hover { border-color:var(--accent); color:var(--accent); }
+.theme-panel-body { padding:20px; flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:24px; }
 .tp-section-label {
   font-family:'DM Mono',monospace; font-size:9px;
-  letter-spacing:3px; text-transform:uppercase;
-  color:var(--muted); margin-bottom:10px; margin-top:16px;
+  letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:10px;
 }
-.tp-section-label:first-child { margin-top:0; }
 
-/* ── Theme Cards ───────────────────────────────────── */
-.theme-cards {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:8px; margin-bottom:16px;
-}
+/* ── Theme Cards — mini preview with bg, dots, time ── */
+.theme-cards { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
 .theme-card {
-  background:var(--dim); border:1.5px solid var(--border);
-  border-radius:8px; padding:10px 8px 8px;
-  cursor:pointer; transition:border-color 0.2s, transform 0.15s;
-  min-height:60px;
+  border:2px solid var(--border); cursor:pointer;
+  transition:all 0.2s; overflow:hidden; position:relative;
+  aspect-ratio:16/9;
 }
-.theme-card:hover { border-color:var(--muted); transform:scale(1.02); }
+.theme-card:hover { border-color:var(--muted); transform:translateY(-1px); }
 .theme-card.active { border-color:var(--accent); }
-
-/* Color preview bars — 3 strips showing theme accent colors */
-.tc-preview {
-  display:flex; gap:3px;
-  height:8px; margin-bottom:8px;
-  border-radius:4px; overflow:hidden;
+.theme-card.active::after {
+  content:'✓'; position:absolute; top:4px; right:6px;
+  font-size:11px; color:var(--accent);
+  font-family:'DM Mono',monospace; font-weight:bold;
 }
-.tc-bar {
-  flex:1;
-  height:8px;
-  min-height:8px;
-  display:block;
-}
-
+.tc-preview { width:100%; height:100%; display:flex; flex-direction:column; }
+.tc-header { height:30%; display:flex; align-items:center; gap:4px; padding:0 6px; }
+.tc-dot { width:5px; height:5px; border-radius:50%; }
+.tc-body { flex:1; display:flex; align-items:center; justify-content:center; }
+.tc-time { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:1px; line-height:1; }
 .tc-name {
-  font-family:'DM Mono',monospace; font-size:10px;
-  letter-spacing:1px; text-transform:uppercase;
-  color:var(--muted); text-align:center;
+  font-family:'DM Mono',monospace; font-size:9px;
+  letter-spacing:1.5px; text-transform:uppercase;
+  padding:4px 6px; border-top-width:1px; border-top-style:solid;
 }
-.theme-card.active .tc-name { color:var(--accent); }
 
-/* ── Accent Color Dots ─────────────────────────────── */
-.accent-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
-.accent-dot {
-  width:26px; height:26px; border-radius:50%;
-  cursor:pointer; transition:transform 0.15s;
+/* ── Accent Swatches ───────────────────────────────── */
+.accent-row { display:flex; gap:8px; flex-wrap:wrap; }
+.tp-swatch {
+  width:28px; height:28px; border-radius:50%; cursor:pointer;
+  border:2px solid transparent; transition:all 0.2s; position:relative;
 }
+.tp-swatch:hover { transform:scale(1.15); }
+.tp-swatch.active { border-color:var(--text); }
+.tp-swatch.active::after {
+  content:''; position:absolute; inset:4px; border-radius:50%;
+  border:1.5px solid rgba(0,0,0,0.4);
+}
+/* keep accent-dot working too */
+.accent-dot { width:28px; height:28px; border-radius:50%; cursor:pointer; transition:transform 0.15s; }
 .accent-dot:hover { transform:scale(1.2); }

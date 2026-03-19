@@ -680,51 +680,59 @@ function removeCity(i) {
 // ═══════════════════════════════════════════════════
 const tzSearch = document.getElementById('tz-search');
 const tzResults = document.getElementById('tz-results');
+let tzSelectedIdx = -1;
 
 tzSearch.addEventListener('input', () => {
-  const q = tzSearch.value.trim().toLowerCase();
+  const q = tzSearch.value.trim();
+  tzSelectedIdx = -1;
   if (!q) { tzResults.classList.remove('open'); return; }
-  const matches = ALL_TZ.filter(tz => tz.toLowerCase().replace(/_/g,' ').includes(q)).slice(0,12);
-  tzResults.innerHTML = matches.map(tz =>
-    `<div class="tz-item" onclick="selectTz('${tz}')">
-      <span class="tz-item-name">${tz.replace(/_/g,' ')}</span>
-      <span class="tz-item-off">${getOffset(tz)}</span>
-    </div>`
-  ).join('');
-  tzResults.classList.toggle('open', matches.length>0);
+  const matches = tzElasticSearch(q);
+  renderTzResults(matches, tzResults, 'selectTz');
+});
+
+tzSearch.addEventListener('keydown', e => {
+  const items = tzResults.querySelectorAll('.tz-item:not(.tz-no-result)');
+  if (e.key === 'ArrowDown') { e.preventDefault(); tzSelectedIdx = Math.min(tzSelectedIdx+1, items.length-1); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); tzSelectedIdx = Math.max(tzSelectedIdx-1, 0); }
+  else if (e.key === 'Enter' && tzSelectedIdx >= 0) { items[tzSelectedIdx]?.click(); return; }
+  else if (e.key === 'Escape') { tzResults.classList.remove('open'); return; }
+  items.forEach((el,i) => el.classList.toggle('tz-item-active', i === tzSelectedIdx));
 });
 
 document.addEventListener('click', e => {
   if (!e.target.closest('.tz-search-wrap')) tzResults.classList.remove('open');
 });
 
-function selectTz(tz) {
+function selectTz(tz, label, abbr) {
   selectedTz = tz;
-  tzSearch.value = tz.replace(/_/g,' ');
+  // Show friendly label in input
+  tzSearch.value = label || tz.replace(/_/g,' ');
   tzResults.classList.remove('open');
   document.getElementById('tz-result-card').style.display = 'block';
-  updateTzCard(tz, new Date());
+  updateTzCard(tz, new Date(), label, abbr);
 
-  // Ask to add to world clocks
+  // Add to world clocks
   if (!worldClocks.find(c=>c.tz===tz)) {
-    const city = tz.split('/').pop().replace(/_/g,' ');
+    const city = label || tz.split('/').pop().replace(/_/g,' ');
     worldClocks.push({city, tz});
     localStorage.setItem('worldClocks', JSON.stringify(worldClocks));
     renderWorldClocks();
   }
 }
 
-function updateTzCard(tz, now) {
+function updateTzCard(tz, now, label, abbr) {
   const MNAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const DNAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const tzDate = new Date(now.toLocaleString('en-US',{timeZone:tz}));
   let h = tzDate.getHours(), m = tzDate.getMinutes(), s = tzDate.getSeconds();
   const ampm = h>=12?'PM':'AM';
   if (!is24h) h = h%12||12;
-  document.getElementById('tzrc-name').textContent = tz.replace(/_/g,' ');
+  const displayName = label || tz.replace(/_/g,' ');
+  const displayAbbr = abbr || getOffset(tz);
+  document.getElementById('tzrc-name').textContent = displayName;
   document.getElementById('tzrc-time').textContent = `${pad(h)}:${pad(m)}:${pad(s)}${is24h?'':' '+ampm}`;
   document.getElementById('tzrc-date').textContent = `${DNAMES[tzDate.getDay()]}, ${MNAMES[tzDate.getMonth()]} ${tzDate.getDate()}, ${tzDate.getFullYear()}`;
-  document.getElementById('tzrc-offset').textContent = getOffset(tz);
+  document.getElementById('tzrc-offset').textContent = `${getOffset(tz)} · ${displayAbbr}`;
 
   // Correctly compute difference in total minutes between `tz` and local
   const localOffMins  = -now.getTimezoneOffset();                    // local UTC offset in mins

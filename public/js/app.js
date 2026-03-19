@@ -3,6 +3,8 @@
 // ═══════════════════════════════════════════════════
 let is24h = StorageUtil.getJSON('is24h', false);
 let selectedTz = null;
+let selectedTzLabel = null;
+let selectedTzAbbr = null;
 let worldClocks = StorageUtil.getJSON('worldClocks', null) || [
   {city:'New York',   tz:'America/New_York'},
   {city:'London',     tz:'Europe/London'},
@@ -609,7 +611,7 @@ function tick() {
   updateWorldClocks(now);
 
   // TZ result card
-  if (selectedTz) updateTzCard(selectedTz, now);
+  if (selectedTz) updateTzCard(selectedTz, now, selectedTzLabel, selectedTzAbbr);
 
   // Alarms
   checkAlarms(now);
@@ -713,6 +715,8 @@ document.addEventListener('click', e => {
 
 function selectTz(tz, label, abbr) {
   selectedTz = tz;
+  selectedTzLabel = label || tz.replace(/_/g,' ');
+  selectedTzAbbr = abbr || null;
   // Show friendly label in input
   tzSearch.value = label || tz.replace(/_/g,' ');
   tzResults.classList.remove('open');

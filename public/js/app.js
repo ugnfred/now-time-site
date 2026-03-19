@@ -510,12 +510,20 @@ function updateSun() {
       sunsetPassedToday  ? 'Already set'   : `in ${minsToSunset}min`;
   }
 
-  // Location badge
+  // Location badge — show timezone abbreviation
   const resolvedTz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
   const tzName = resolvedTz.replace(/_/g,' ');
+  // Look up abbreviation from our search DB
+  const tzEntry = (typeof TZ_SEARCH_DB !== 'undefined')
+    ? TZ_SEARCH_DB.find(e => e.tz === resolvedTz)
+    : null;
+  const tzAbbr = tzEntry ? tzEntry.abbr : getOffset(resolvedTz);
   document.getElementById('tz-label').textContent = geoSource === 'gps'
-    ? `${tzName} · 📍 GPS`
-    : `${tzName} · 📌 approx`;
+    ? `${tzName} · ${tzAbbr} · 📍 GPS`
+    : `${tzName} · ${tzAbbr} · 📌 approx`;
+  // Hero clock timezone badge
+  const heroBadge = document.getElementById('hero-tz-badge');
+  if (heroBadge) heroBadge.textContent = tzAbbr;
 
   // Source label on sunrise/sunset cells
   const srcNote = geoSource === 'gps' ? '' : ' (approx)';
@@ -728,11 +736,13 @@ function updateTzCard(tz, now, label, abbr) {
   const ampm = h>=12?'PM':'AM';
   if (!is24h) h = h%12||12;
   const displayName = label || tz.replace(/_/g,' ');
-  const displayAbbr = abbr || getOffset(tz);
+  const utcOffset = getOffset(tz);
+  // Only show abbr if it's meaningfully different from the UTC offset
+  const displayAbbr = (abbr && abbr !== utcOffset && !abbr.startsWith('UTC')) ? abbr : '';
   document.getElementById('tzrc-name').textContent = displayName;
   document.getElementById('tzrc-time').textContent = `${pad(h)}:${pad(m)}:${pad(s)}${is24h?'':' '+ampm}`;
   document.getElementById('tzrc-date').textContent = `${DNAMES[tzDate.getDay()]}, ${MNAMES[tzDate.getMonth()]} ${tzDate.getDate()}, ${tzDate.getFullYear()}`;
-  document.getElementById('tzrc-offset').textContent = `${getOffset(tz)} · ${displayAbbr}`;
+  document.getElementById('tzrc-offset').textContent = displayAbbr ? `${utcOffset} · ${displayAbbr}` : utcOffset;
 
   // Correctly compute difference in total minutes between `tz` and local
   const localOffMins  = -now.getTimezoneOffset();                    // local UTC offset in mins

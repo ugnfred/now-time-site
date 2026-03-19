@@ -2133,3 +2133,64 @@ footer {
 #tz-result-card { border-radius:0; }
 #tzrc-offset { font-family:'DM Mono',monospace; font-size:13px;
   color:var(--accent2); letter-spacing:1px; margin-bottom:4px; }
+
+/* ── Theme Panel Cards ─────────────────────────────── */
+.theme-cards { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; }
+.theme-card {
+  background:var(--dim); border:1.5px solid var(--border);
+  border-radius:8px; padding:10px 8px; cursor:pointer;
+  transition:border-color 0.2s, transform 0.15s;
+}
+.theme-card:hover { border-color:var(--muted); transform:scale(1.02); }
+.theme-card.active { border-color:var(--accent); }
+.tc-preview { display:flex; gap:3px; margin-bottom:6px; height:6px; }
+.tc-bar { flex:1; border-radius:2px; height:6px; }
+.tc-name {
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:1px; text-transform:uppercase;
+  color:var(--muted); text-align:center;
+}
+.theme-card.active .tc-name { color:var(--accent); }
+
+/* ── Accent Color Dots ─────────────────────────────── */
+.accent-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+.accent-dot {
+  width:24px; height:24px; border-radius:50%;
+  cursor:pointer; transition:transform 0.15s;
+  border:2px solid transparent;
+}
+.accent-dot:hover { transform:scale(1.2); }
+
+/* ── Theme Panel ───────────────────────────────────── */
+.theme-panel {
+  position:fixed; right:0; top:0; height:100vh; width:280px;
+  background:var(--surface); border-left:1px solid var(--border);
+  z-index:1000; transform:translateX(100%);
+  transition:transform 0.3s ease; overflow-y:auto; padding:0;
+}
+.theme-panel.open { transform:translateX(0); }
+.theme-panel-overlay {
+  position:fixed; inset:0; background:rgba(0,0,0,0.4);
+  z-index:999; display:none;
+}
+.theme-panel-overlay.open { display:block; }
+.theme-panel-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 20px; border-bottom:1px solid var(--border);
+  position:sticky; top:0; background:var(--surface); z-index:1;
+}
+.theme-panel-title {
+  font-family:'DM Mono',monospace; font-size:11px;
+  letter-spacing:3px; text-transform:uppercase; color:var(--text);
+}
+.theme-panel-close {
+  background:none; border:none; color:var(--muted);
+  cursor:pointer; font-size:16px; padding:4px;
+}
+.theme-panel-body { padding:20px; }
+.tp-section-label {
+  font-family:'DM Mono',monospace; font-size:9px;
+  letter-spacing:3px; text-transform:uppercase;
+  color:var(--muted); margin-bottom:10px; margin-top:16px;
+}
+.tp-section-label:first-child { margin-top:0; }

@@ -245,37 +245,40 @@ function tzElasticSearch(query) {
   const results = [];
   const seenTz = new Set();
 
-  // 1. Search our rich database first
+  // 1. Search our rich database
   for (const entry of TZ_SEARCH_DB) {
     let score = 0;
+    let matchedWord = '';
+
     for (const keyword of entry.q) {
-      if (keyword === q) { score = 100; break; }
-      if (keyword.startsWith(q)) { score = Math.max(score, 80); }
-      else if (keyword.includes(q)) { score = Math.max(score, 50); }
-      else if (q.includes(keyword) && keyword.length > 3) { score = Math.max(score, 40); }
+      if (keyword === q)                              { score = 100; matchedWord = keyword; break; }
+      if (keyword.startsWith(q) && score < 80)       { score = 80;  matchedWord = keyword; }
+      else if (keyword.includes(q) && score < 50)    { score = 50;  matchedWord = keyword; }
+      else if (q.includes(keyword) && keyword.length > 3 && score < 40) { score = 40; matchedWord = keyword; }
     }
-    // Also check abbr
-    if (entry.abbr && entry.abbr.toLowerCase().includes(q)) score = Math.max(score, 70);
-    // Also check label
-    if (entry.label.toLowerCase().includes(q)) score = Math.max(score, 60);
+    if (entry.abbr && entry.abbr.toLowerCase().includes(q) && score < 70) { score = 70; matchedWord = entry.abbr; }
+    if (entry.label.toLowerCase().includes(q) && score < 60)              { score = 60; matchedWord = q; }
 
     if (score > 0 && !seenTz.has(entry.tz + entry.label)) {
       seenTz.add(entry.tz + entry.label);
-      results.push({ ...entry, score });
+      // Title-case the matched word so it looks nice in the dropdown
+      const matchDisplay = matchedWord
+        ? matchedWord.replace(/\b\w/g, c => c.toUpperCase())
+        : '';
+      results.push({ ...entry, score, matchDisplay });
     }
   }
 
-  // 2. Also scan ALL_TZ for any remaining IANA timezone matches
+  // 2. Fallback: scan ALL_TZ IANA list
   for (const tz of ALL_TZ) {
     const tzLower = tz.toLowerCase().replace(/_/g,' ');
     let score = 0;
-    if (tzLower === q) score = 90;
+    if (tzLower === q)            score = 90;
     else if (tzLower.includes(q)) score = 30;
     if (score > 0 && !seenTz.has(tz + tz)) {
       seenTz.add(tz + tz);
       const city = tz.split('/').pop().replace(/_/g,' ');
-      const region = tz.split('/')[0];
-      results.push({ tz, label: city, abbr: getOffset(tz), country:'', score });
+      results.push({ tz, label: city, abbr: getOffset(tz), country:'', score, matchDisplay: city });
     }
   }
 
@@ -295,11 +298,19 @@ function renderTzResults(results, containerEl, onSelect) {
     const tzDate = new Date(now.toLocaleString('en-US',{timeZone:r.tz}));
     const th = tzDate.getHours(), tm = tzDate.getMinutes();
     const timeStr = `${pad(th)}:${pad(tm)}`;
-    return `<div class="tz-item" onmousedown="event.preventDefault()" onclick="${onSelect}('${escapeJsSingleQuoted(r.tz)}','${escapeJsSingleQuoted(r.label)}','${escapeJsSingleQuoted(r.abbr)}')">
+
+    // Show the specific matched place name as the primary label
+    // e.g. search "chennai" → primary: "Chennai", secondary: "India (IST)"
+    const matchedDisplay = r.matchDisplay || r.label;
+    const isMatchDifferentFromLabel = matchedDisplay.toLowerCase() !== r.label.toLowerCase();
+    const primaryName = matchedDisplay;
+    const secondaryName = isMatchDifferentFromLabel ? r.label : '';
+
+    return `<div class="tz-item" onmousedown="event.preventDefault()" onclick="${onSelect}('${escapeJsSingleQuoted(r.tz)}','${escapeJsSingleQuoted(primaryName)}','${escapeJsSingleQuoted(r.abbr)}')">
       <span class="tz-item-flag">${flag}</span>
       <span class="tz-item-info">
-        <span class="tz-item-name">${escapeHTML(r.label)}</span>
-        <span class="tz-item-abbr">${escapeHTML(r.abbr)}</span>
+        <span class="tz-item-name">${escapeHTML(primaryName)}</span>
+        <span class="tz-item-abbr">${secondaryName ? escapeHTML(secondaryName) + ' · ' : ''}${escapeHTML(r.abbr)}</span>
       </span>
       <span class="tz-item-right">
         <span class="tz-item-time">${timeStr}</span>

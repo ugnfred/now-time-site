@@ -97,13 +97,18 @@ function renderThemeCards() {
   if (!container) return;
   container.innerHTML = THEMES.map(t => `
     <div class="theme-card ${t.id === currentTheme ? 'active' : ''}" data-id="${t.id}" onclick="applyTheme('${t.id}')"
-      style="--tc-bg:${t.bg};--tc-surface:${t.surface};--tc-accent:${t.accent};--tc-accent2:${t.accent2};">
+      style="background:${t.bg}; border-color:${t.id === currentTheme ? t.accent : t.border};">
       <div class="tc-preview">
-        <div class="tc-bar" style="background:${t.accent}"></div>
-        <div class="tc-bar" style="background:${t.accent2}"></div>
-        <div class="tc-bar" style="background:${t.accent3}"></div>
+        <div class="tc-header" style="background:${t.surface};">
+          <div class="tc-dot" style="background:${t.accent};"></div>
+          <div class="tc-dot" style="background:${t.accent2};"></div>
+          <div class="tc-dot" style="background:${t.accent3};"></div>
+        </div>
+        <div class="tc-body" style="background:${t.bg};">
+          <div class="tc-time" style="color:${t.accent};">12:00</div>
+        </div>
+        <div class="tc-name" style="color:${t.muted}; background:${t.surface}; border-top-color:${t.border};">${t.name}</div>
       </div>
-      <div class="tc-name">${t.name}</div>
     </div>`).join('');
 }
 

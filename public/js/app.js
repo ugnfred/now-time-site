@@ -780,6 +780,8 @@ renderCalendar();
 convInit();
 renderAlarms();
 updateHolidays();
+// Stop boot clock — real tick takes over
+if (window._bootInterval) { clearInterval(window._bootInterval); window._bootInterval = null; }
 tick();
 setInterval(tick, 1000);
 setInterval(updateSun, 60000);

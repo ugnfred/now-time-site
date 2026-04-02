@@ -2,48 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- ═══════════ MAIN PAGE ═══════════ -->
   <url>
     <loc>https://time24.co.in/</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>always</changefreq>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- ═══════════ CORE TOOLS ═══════════ -->
   <url>
-    <loc>https://time24.co.in/#view=converter</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <url>
-    <loc>https://time24.co.in/#view=stopwatch</loc>
-    <lastmod>2026-03-04</lastmod>
+    <loc>https://time24.co.in/about.html</loc>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.65</priority>
   </url>
 
   <url>
-    <loc>https://time24.co.in/#view=timer</loc>
-    <lastmod>2026-03-04</lastmod>
+    <loc>https://time24.co.in/contact.html</loc>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://time24.co.in/#view=calendar</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.75</priority>
+    <loc>https://time24.co.in/privacy-policy.html</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
   </url>
 
   <url>
-    <loc>https://time24.co.in/#view=alarm</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
+    <loc>https://time24.co.in/terms.html</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
   </url>
 
 </urlset>

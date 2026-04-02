@@ -1,0 +1,88 @@
+.react-shell {
+  min-height: 100vh;
+}
+
+.react-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(54px, 11vw, 112px);
+  text-align: center;
+  margin: 8px 0;
+}
+
+.react-panel {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 20px;
+  margin-top: 18px;
+}
+.react-panel input,
+.react-panel select {
+  width: 100%;
+  margin-top: 6px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 12px;
+}
+
+.clock-card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 14px;
+}
+
+.cc-city {
+  font-family: 'DM Mono', monospace;
+  color: var(--accent2);
+}
+
+.cc-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 34px;
+  margin-top: 4px;
+}
+
+.cc-date {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.big-numbers {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 9vw, 90px);
+  margin: 10px 0 16px;
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.result-row {
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.date-chip {
+  border: 1px solid var(--border);
+  padding: 10px;
+  display: grid;
+  gap: 6px;
+}
+
+.date-chip.is-today {
+  border-color: var(--accent2);
+}

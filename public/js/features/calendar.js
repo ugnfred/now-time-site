@@ -272,7 +272,7 @@ function calOpenAddEvent(preDate) {
   document.getElementById('cal-event-id').value = '';
   document.getElementById('cal-ev-title').value = '';
   document.getElementById('cal-ev-date').value = preDate || new Date().toLocaleDateString('en-CA');
-  document.getElementById('cal-ev-time').value = '';
+  clearCalTime();
   document.getElementById('cal-ev-end').value = '';
   document.getElementById('cal-ev-cat').value = 'general';
   document.getElementById('cal-ev-reminder').value = '';
@@ -291,7 +291,7 @@ function calEditEvent(id) {
   document.getElementById('cal-event-id').value = ev.id;
   document.getElementById('cal-ev-title').value = ev.title;
   document.getElementById('cal-ev-date').value = ev.date;
-  document.getElementById('cal-ev-time').value = ev.time||'';
+  setCalTime(ev.time || '');
   document.getElementById('cal-ev-end').value = ev.endDate||'';
   document.getElementById('cal-ev-cat').value = ev.category||'general';
   document.getElementById('cal-ev-reminder').value = ev.reminder||'';
@@ -378,4 +378,56 @@ function checkCalEventReminders() {
   });
 }
 setInterval(checkCalEventReminders, 60000);
+
+// ── Time Picker ──────────────────────────────────────
+function initCalTimePicker() {
+  const hourSel = document.getElementById('cal-ev-hour');
+  const minSel  = document.getElementById('cal-ev-min');
+  if (!hourSel || !minSel) return;
+
+  hourSel.innerHTML = '<option value="">HH</option>';
+  for (let h = 1; h <= 12; h++) {
+    hourSel.innerHTML += `<option value="${h}">${String(h).padStart(2,'0')}</option>`;
+  }
+
+  minSel.innerHTML = '<option value="">MM</option>';
+  for (let m = 0; m < 60; m += 5) {
+    minSel.innerHTML += `<option value="${m}">${String(m).padStart(2,'0')}</option>`;
+  }
+}
+
+function syncCalTime() {
+  const h    = document.getElementById('cal-ev-hour').value;
+  const m    = document.getElementById('cal-ev-min').value;
+  const ampm = document.getElementById('cal-ev-ampm').value;
+  if (!h || m === '') { document.getElementById('cal-ev-time').value = ''; return; }
+  let h24 = parseInt(h);
+  if (ampm === 'AM' && h24 === 12) h24 = 0;
+  if (ampm === 'PM' && h24 !== 12) h24 += 12;
+  document.getElementById('cal-ev-time').value =
+    `${String(h24).padStart(2,'0')}:${String(parseInt(m)).padStart(2,'0')}`;
+}
+
+function setCalTime(val) {
+  if (!val) { clearCalTime(); return; }
+  const [hStr, mStr] = val.split(':');
+  const h24  = parseInt(hStr);
+  const mins = parseInt(mStr);
+  const ampm = h24 >= 12 ? 'PM' : 'AM';
+  const h12  = h24 % 12 || 12;
+  const snap = Math.round(mins / 5) * 5 % 60;
+  document.getElementById('cal-ev-hour').value  = h12;
+  document.getElementById('cal-ev-min').value   = snap;
+  document.getElementById('cal-ev-ampm').value  = ampm;
+  syncCalTime();
+}
+
+function clearCalTime() {
+  document.getElementById('cal-ev-hour').value  = '';
+  document.getElementById('cal-ev-min').value   = '';
+  document.getElementById('cal-ev-ampm').value  = 'AM';
+  document.getElementById('cal-ev-time').value  = '';
+}
+
+initCalTimePicker();
 

@@ -599,7 +599,17 @@
         </div>
         <div class="cal-field">
           <label class="cal-label">Time (optional)</label>
-          <input type="time" id="cal-ev-time" class="cal-input">
+          <div class="cal-time-picker">
+            <select id="cal-ev-hour" class="cal-time-sel" onchange="syncCalTime()"></select>
+            <span class="cal-time-colon">:</span>
+            <select id="cal-ev-min" class="cal-time-sel" onchange="syncCalTime()"></select>
+            <select id="cal-ev-ampm" class="cal-time-sel" onchange="syncCalTime()">
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+            <button type="button" class="cal-time-clear-btn" onclick="clearCalTime()">Clear</button>
+          </div>
+          <input type="hidden" id="cal-ev-time">
         </div>
       </div>
       <div class="cal-field-row">

@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Primary sitemap
-Sitemap: https://time24.co.in/sitemap.xml
+Sitemap: https://www.time24.co.in/sitemap.xml
 
 # Welcome all major crawlers
 User-agent: Googlebot

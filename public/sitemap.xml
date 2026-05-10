@@ -3,35 +3,35 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://time24.co.in/</loc>
+    <loc>https://www.time24.co.in/</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://time24.co.in/about.html</loc>
+    <loc>https://www.time24.co.in/about.html</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
 
   <url>
-    <loc>https://time24.co.in/contact.html</loc>
+    <loc>https://www.time24.co.in/contact.html</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.60</priority>
   </url>
 
   <url>
-    <loc>https://time24.co.in/privacy-policy.html</loc>
+    <loc>https://www.time24.co.in/privacy-policy.html</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.50</priority>
   </url>
 
   <url>
-    <loc>https://time24.co.in/terms.html</loc>
+    <loc>https://www.time24.co.in/terms.html</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.50</priority>

@@ -97,16 +97,6 @@ body { font-size: 16px; }
 .sw-display { font-size: clamp(60px, 12vw, 120px) !important; }
 .timer-ring-text { font-size: 32px !important; }
 
-/* Buttons get gradient */
-.sw-btn.primary, .alarm-add-btn, .conv-date-btn {
-  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent2) 60%, var(--accent))) !important;
-  border: none !important;
-  box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 40%, transparent) !important;
-}
-.sw-btn.primary:hover, .alarm-add-btn:hover {
-  opacity: 0.9;
-  box-shadow: 0 6px 24px color-mix(in srgb, var(--accent) 55%, transparent) !important;
-}
 
 /* Sidebar accent text bigger */
 .sb-time { font-size: 22px !important; }
@@ -955,7 +945,7 @@ nav { display: flex; gap: 4px; }
   color:var(--text); font-family:'DM Sans',sans-serif;
   font-size:14px; padding:10px 12px; outline:none;
   transition:border-color 0.2s; width:100%; box-sizing:border-box;
-  color-scheme: light dark;
+  color-scheme: dark;
 }
 .cal-input:focus { border-color:var(--accent); }
 .cal-textarea { resize:vertical; min-height:60px; font-family:'DM Sans',sans-serif; }

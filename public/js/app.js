@@ -615,6 +615,9 @@ function tick() {
 
   // Alarms
   checkAlarms(now);
+
+  // Task timers
+  if (typeof tickTasks === 'function') tickTasks();
 }
 
 // ═══════════════════════════════════════════════════

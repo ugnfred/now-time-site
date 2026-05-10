@@ -37,6 +37,11 @@ function toggleTask(idx) {
   const t = tasks[idx];
   if (t.done) return;
   t.running = !t.running;
+  if (t.running) {
+    t.endTime = Date.now() + t.remainSecs * 1000;
+  } else {
+    t.endTime = null;
+  }
   renderTasks();
 }
 
@@ -112,7 +117,9 @@ function tickTasks() {
   let changed = false;
   tasks.forEach((t, i) => {
     if (!t.running || t.done) return;
-    t.remainSecs = Math.max(0, t.remainSecs - 1);
+    t.remainSecs = t.endTime
+      ? Math.round(Math.max(0, t.endTime - Date.now()) / 1000)
+      : Math.max(0, t.remainSecs - 1);
     changed = true;
     // Update timer display without full re-render
     const el = document.getElementById(`task-timer-${i}`);
@@ -123,6 +130,7 @@ function tickTasks() {
     if (t.remainSecs === 0) {
       t.running = false;
       t.done = true;
+      t.endTime = null;
       fireTask(t);
       renderTasks();
     }
@@ -194,16 +202,6 @@ function stopTaskSound() {
     taskAudioCtx = null;
   }
 }
-
-// Hook tickTasks into main tick
-const _origTick = window.tick;
-(function() {
-  const orig = window.tick;
-  window.tick = function() {
-    orig && orig();
-    tickTasks();
-  };
-})();
 
 renderTasks();
 

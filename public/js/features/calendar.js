@@ -210,15 +210,21 @@ function calOpenDayPopup(dateStr, triggerEl) {
           <div class="cal-popup-event-title">🎉 ${escapeHTML(h.name)}</div>
           <div class="cal-popup-event-meta">Public Holiday</div>
         </div></div>`),
-      ...evs.map(ev=>`<div class="cal-popup-event" style="border-left-color:${catColor(ev.category)};cursor:pointer" onclick="calEditEvent('${escapeJsSingleQuoted(ev.id)}')">
+      ...evs.map(ev=>`<div class="cal-popup-event" style="border-left-color:${catColor(ev.category)};cursor:pointer" data-edit-id="${escapeHTML(ev.id)}">
         <div class="cal-popup-event-info">
           <div class="cal-popup-event-title">${CAT_ICONS[ev.category]||'📌'} ${escapeHTML(ev.title)}</div>
           <div class="cal-popup-event-meta">${escapeHTML(ev.time||'All day')} ${ev.repeat&&ev.repeat!=='none'?'· 🔁 '+escapeHTML(ev.repeat):''} ${ev.reminder?'· 🔔':''}</div>
           ${ev.notes?`<div class="cal-popup-event-meta" style="margin-top:2px;opacity:0.7">${escapeHTML(ev.notes)}</div>`:''}
         </div>
-        <button class="cal-popup-event-del" onclick="event.stopPropagation();calDeleteEventById('${escapeJsSingleQuoted(ev.id)}')">✕</button>
+        <button class="cal-popup-event-del" data-delete-id="${escapeHTML(ev.id)}">✕</button>
       </div>`)
     ].join('');
+    list.querySelectorAll('[data-edit-id]').forEach(el => {
+      el.addEventListener('click', () => calEditEvent(el.dataset.editId));
+    });
+    list.querySelectorAll('[data-delete-id]').forEach(el => {
+      el.addEventListener('click', e => { e.stopPropagation(); calDeleteEventById(el.dataset.deleteId); });
+    });
   }
 
   // Position popup near click

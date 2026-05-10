@@ -82,7 +82,7 @@ function swReset() {
 // ═══════════════════════════════════════════════════
 //  TIMER
 // ═══════════════════════════════════════════════════
-let timerTotal = 0, timerRemaining = 0, timerInterval = null, timerRunning = false;
+let timerTotal = 0, timerRemaining = 0, timerEndTime = 0, timerInterval = null, timerRunning = false;
 const CIRCUMFERENCE = 2 * Math.PI * 90; // r=90
 
 function setTimer(h,m,s) {
@@ -102,11 +102,12 @@ function timerToggle() {
       timerRemaining = timerTotal;
       if (!timerTotal) return;
     }
+    timerEndTime = Date.now() + timerRemaining;
     document.getElementById('timer-inputs').style.display = 'none';
     document.getElementById('timer-ring').classList.add('show');
     timerRunning = true;
     document.getElementById('timer-start-btn').textContent = 'Pause';
-    timerInterval = setInterval(timerTick, 100);
+    timerInterval = setInterval(timerTick, 200);
   } else {
     timerRunning = false;
     clearInterval(timerInterval);
@@ -115,7 +116,7 @@ function timerToggle() {
 }
 
 function timerTick() {
-  timerRemaining -= 100;
+  timerRemaining = Math.max(0, timerEndTime - Date.now());
   if (timerRemaining <= 0) {
     timerRemaining = 0;
     timerRunning = false;
@@ -154,6 +155,14 @@ function timerDone() {
     });
   }
 }
+
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && timerRunning) {
+    timerRemaining = Math.max(0, timerEndTime - Date.now());
+    updateTimerDisplay();
+    if (timerRemaining === 0) { timerRunning = false; clearInterval(timerInterval); timerDone(); }
+  }
+});
 
 function timerReset() {
   clearInterval(timerInterval);

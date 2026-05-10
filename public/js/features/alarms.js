@@ -1,6 +1,8 @@
 // ═══════════════════════════════════════════════════
 //  ALARMS
 // ═══════════════════════════════════════════════════
+let editingAlarmIdx = -1;
+
 function renderAlarms() {
   const list = document.getElementById('alarms-list');
   if (!alarms.length) {
@@ -8,7 +10,7 @@ function renderAlarms() {
     return;
   }
   list.innerHTML = alarms.map((a,i) => `
-    <div class="alarm-item">
+    <div class="alarm-item${editingAlarmIdx===i?' alarm-item-editing':''}">
       <div class="alarm-item-time">${escapeHTML(a.time)}</div>
       <div class="alarm-item-info">
         <div class="alarm-item-label">${escapeHTML(a.label||'Alarm')}</div>
@@ -18,18 +20,51 @@ function renderAlarms() {
         <input type="checkbox" ${a.enabled?'checked':''} onchange="toggleAlarm(${i},this.checked)">
         <span class="alarm-slider"></span>
       </label>
+      <button class="alarm-edit-btn" onclick="startEditAlarm(${i})" title="Edit">✎</button>
       <button class="alarm-del-btn" onclick="deleteAlarm(${i})">✕</button>
     </div>`).join('');
+}
+
+function startEditAlarm(i) {
+  editingAlarmIdx = i;
+  const a = alarms[i];
+  document.getElementById('alarm-time-input').value  = a.time;
+  document.getElementById('alarm-label-input').value = a.label || '';
+  const btn    = document.getElementById('alarm-add-btn');
+  const cancel = document.getElementById('alarm-cancel-btn');
+  if (btn)    { btn.textContent = 'Update'; btn.classList.add('alarm-btn-editing'); }
+  if (cancel) cancel.style.display = 'inline-block';
+  renderAlarms();
+  document.getElementById('alarm-time-input').focus();
+}
+
+function cancelEditAlarm() {
+  editingAlarmIdx = -1;
+  document.getElementById('alarm-label-input').value = '';
+  const btn    = document.getElementById('alarm-add-btn');
+  const cancel = document.getElementById('alarm-cancel-btn');
+  if (btn)    { btn.textContent = '+ Add Alarm'; btn.classList.remove('alarm-btn-editing'); }
+  if (cancel) cancel.style.display = 'none';
+  renderAlarms();
 }
 
 function addAlarm() {
   const timeVal = document.getElementById('alarm-time-input').value;
   const label   = document.getElementById('alarm-label-input').value;
   if (!timeVal) return;
-  alarms.push({time:timeVal,label,enabled:true});
-  localStorage.setItem('alarms',JSON.stringify(alarms));
+
+  if (editingAlarmIdx >= 0) {
+    alarms[editingAlarmIdx].time  = timeVal;
+    alarms[editingAlarmIdx].label = label;
+    alarms[editingAlarmIdx].enabled = true;
+    cancelEditAlarm();
+  } else {
+    alarms.push({time:timeVal, label, enabled:true});
+    document.getElementById('alarm-label-input').value = '';
+  }
+
+  localStorage.setItem('alarms', JSON.stringify(alarms));
   renderAlarms();
-  document.getElementById('alarm-label-input').value = '';
 }
 
 function toggleAlarm(i,v) {

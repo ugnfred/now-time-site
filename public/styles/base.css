@@ -1463,12 +1463,21 @@ nav { display: flex; gap: 4px; }
 }
 .alarm-toggle input:checked + .alarm-slider { background:color-mix(in srgb,var(--accent) 20%,transparent); border-color:var(--accent); }
 .alarm-toggle input:checked + .alarm-slider::before { transform:translateX(20px); background:var(--accent); }
-.alarm-del-btn {
+.alarm-del-btn, .alarm-edit-btn {
   background:var(--surface2); border:1px solid var(--border); color:var(--muted);
   width:28px; height:28px; cursor:pointer; font-size:14px;
   display:flex; align-items:center; justify-content:center; transition:all 0.2s;
 }
 .alarm-del-btn:hover { border-color:var(--red); color:var(--red); background: color-mix(in srgb, var(--red) 8%, var(--surface)); }
+.alarm-edit-btn:hover { border-color:var(--accent2); color:var(--accent2); background: color-mix(in srgb, var(--accent2) 8%, var(--surface)); }
+.alarm-item-editing { border-color: var(--accent2) !important; background: color-mix(in srgb, var(--accent2) 6%, var(--surface)) !important; }
+.alarm-cancel-btn {
+  background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
+  font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px;
+  padding: 8px 14px; cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+}
+.alarm-cancel-btn:hover { border-color: var(--red); color: var(--red); }
+.alarm-btn-editing { border-color: var(--accent2) !important; color: var(--accent2) !important; }
 .alarm-fired {
   position:fixed; inset:0; background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(8px);

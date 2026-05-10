@@ -823,7 +823,8 @@
     <div class="alarm-add">
       <input type="time" id="alarm-time-input" value="08:00">
       <input type="text" class="alarm-label-input" id="alarm-label-input" placeholder="Label (optional)">
-      <button class="alarm-add-btn" onclick="addAlarm()">+ Add Alarm</button>
+      <button class="alarm-add-btn" id="alarm-add-btn" onclick="addAlarm()">+ Add Alarm</button>
+      <button class="alarm-cancel-btn" id="alarm-cancel-btn" onclick="cancelEditAlarm()" style="display:none;">Cancel</button>
     </div>
     <div class="alarms-list" id="alarms-list">
       <div style="padding:24px;text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:2px;">NO ALARMS SET</div>
